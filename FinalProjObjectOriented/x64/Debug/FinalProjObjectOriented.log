@@ -1,27 +1,5 @@
-﻿  pch.cpp
-  Bus.cpp
-  BusCompany.cpp
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\buscompany.cpp(21): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Business.cpp
-  Car.cpp
-  CarCompany.cpp
-  Client.cpp
-  createClientDLG.cpp
-  TransportCompany.cpp
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\transportcompany.cpp(48): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
-  FinalProjObjectOriented.cpp
+﻿  FinalProjObjectOriented.cpp
   FinalProjObjectOrientedDlg.cpp
-  FlyCompany.cpp
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\flycompany.cpp(19): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\flycompany.cpp(24): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Instrument.cpp
-  Location.cpp
-  Plane.cpp
-  Scooter.cpp
-  ScooterCompany.cpp
-  Train.cpp
-  TrainCompany.cpp
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\traincompany.cpp(15): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Travel.cpp
+  createClientDLG.cpp
   Generating Code...
-  FinalProjObjectOriented.vcxproj -> C:\Users\gal.bachar\Documents\BAgit\FinalProjObjectOriented\x64\Debug\FinalProjObjectOriented.exe
+  FinalProjObjectOriented.vcxproj -> C:\Users\shaha\source\repos2017\Final_Proj_newVerstion\FinalProjObjectOriented\x64\Debug\FinalProjObjectOriented.exe

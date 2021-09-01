@@ -31,4 +31,9 @@ public:
 	bool hasDiscount;
 	afx_msg void OnEnChangeEdit2();
 	afx_msg void OnBnClickedOk();
+	afx_msg void OnBnClickedCheck1();
+	afx_msg void OnCbnSelchangeDiscountchoice();
+	CComboBox DiscountChoice;
+	afx_msg void OnEnChangeEdit1();
+	afx_msg void OnCbnSelchangeCombo2();
 };

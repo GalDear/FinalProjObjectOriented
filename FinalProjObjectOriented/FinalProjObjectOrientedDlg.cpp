@@ -8,6 +8,7 @@
 #include "FinalProjObjectOrientedDlg.h"
 #include "afxdialogex.h"
 #include "createClientDLG.h"
+#include <fstream> 
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -85,6 +86,7 @@ BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CFinalProjObjectOrientedDlg::OnBnClickedButton1)
 	ON_STN_CLICKED(PIC_1, &CFinalProjObjectOrientedDlg::OnStnClicked1)
 	ON_STN_CLICKED(PIC2, &CFinalProjObjectOrientedDlg::OnStnClickedPic2)
+	ON_EN_CHANGE(TXT_MAIL, &CFinalProjObjectOrientedDlg::OnEnChangeMail)
 END_MESSAGE_MAP()
 
 
@@ -305,7 +307,7 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 		//	m_picture->SetBitmap(hb);
 		//	bLastFile = FALSE;
 		//}
-
+		
 	}
 
 	//CDialogEx::OnOK();
@@ -315,14 +317,31 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 void CFinalProjObjectOrientedDlg::OnBnClickedButton1()
 {
 	// TODO: Add your control notification handler code here
-	createClientDLG dlg;
-	dlg.DoModal();
-	Client c(dlg.name, dlg.id, dlg.email, dlg.hasDiscount);
-	bool found = (std::find(clientList.begin(), clientList.end(), c) != clientList.end());
-	if (!found)
-		clientList.push_front(c);
-	else
-		AfxMessageBox(_T("The client already exist"), MB_OK | MB_ICONSTOP);
+	CString st_dest;
+	int nSel = dest.GetCurSel();
+	dest.GetLBText(nSel, st_dest);
+
+	CString st_source;
+	nSel = source.GetCurSel();
+	source.GetLBText(nSel, st_source);
+
+	if (st_dest == st_source)
+	{
+		AfxMessageBox(_T("The source and the destination are identical! \n Please change one of them"), MB_OK | MB_ICONSTOP);
+	}
+	else{
+		createClientDLG dlg;
+		dlg.DoModal();
+		Client c(dlg.name, dlg.id, dlg.email, dlg.hasDiscount);
+	
+		bool found = (std::find(clientList.begin(), clientList.end(), c) != clientList.end());
+		if (!found)
+			clientList.push_front(c);
+		else
+			AfxMessageBox(_T("The client already exist"), MB_OK | MB_ICONSTOP);
+	}
+
+
 }
 
 
@@ -335,4 +354,15 @@ void CFinalProjObjectOrientedDlg::OnStnClicked1()
 void CFinalProjObjectOrientedDlg::OnStnClickedPic2()
 {
 	// TODO: Add your control notification handler code here
+}
+
+
+void CFinalProjObjectOrientedDlg::OnEnChangeMail()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
 }

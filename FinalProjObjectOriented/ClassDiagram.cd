@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CAboutDlg" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FinalProjObjectOrientedDlg.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BusCompany" Collapsed="true">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAACAAAAAAAAAAAAACAAAAAAAAIgAAAAAEAAA=</HashCode>
+      <FileName>BusCompany.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAxMQAEAAAAAABAAYQAQAABAAAAEAAgABAAAMAAA=</HashCode>
+      <FileName>Business.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Client" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAEAgAAAAAAAAggAAAAACAAAABEAACAAAAkAAIAAgQ=</HashCode>
+      <FileName>Client.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransportCompany" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAABAAAAAAAAAAEAEBIAAQAAEJAAAEQBAAACgAEAAEA=</HashCode>
+      <FileName>TransportCompany.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFinalProjObjectOrientedApp" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>FinalProjObjectOriented.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFinalProjObjectOrientedDlg" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EoGCCBMAhAAEgEYIABAAIBIQQAKgCgQCADFEAAAQAAA=</HashCode>
+      <FileName>FinalProjObjectOrientedDlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlyCompany" Collapsed="true">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAIAQAAAAAAAAABAAAAACAAAAEAAAIgAABAAEAAA=</HashCode>
+      <FileName>FlyCompany.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Instrument" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAUAQAAMCIAQAAAEgAQAAIIESAbBgAGEAAgAAAAAAAA=</HashCode>
+      <FileName>Instrument.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Location" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAAQAAAAAIIAAAAAEAEAABAAAAEBAAAAAA=</HashCode>
+      <FileName>Location.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScooterCompany" Collapsed="true">
+    <Position X="7.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>ScooterCompany.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrainCompany" Collapsed="true">
+    <Position X="9.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAACAAAAAAABIgAAAAAEAAA=</HashCode>
+      <FileName>TrainCompany.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Travel" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAEAQAAAAIAAAAIAAAIAAIIAACAQQAgBAAAIAg=</HashCode>
+      <FileName>Travel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bus" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIIAIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bus.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Car" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAUAAAAQAAQAAAAAAAAAAAAQAAEBAAAAAAA=</HashCode>
+      <FileName>Car.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plane" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAQAAAAAAAAAAAAAAAYAAAAAAAA=</HashCode>
+      <FileName>Plane.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scooter" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAgAAIAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Scooter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Train" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgABAAAAEAAAAAAAQAAAAAAAABAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Train.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarCompany" Collapsed="true">
+    <Position X="11.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>CarCompany.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="seat" Collapsed="true">
+    <Position X="13.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAACAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instrument.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Date" Collapsed="true">
+    <Position X="12" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAkAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instrument.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

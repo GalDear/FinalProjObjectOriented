@@ -1,0 +1,23 @@
+﻿  pch.cpp
+  Bus.cpp
+  BusCompany.cpp
+  Business.cpp
+  Car.cpp
+  CarCompany.cpp
+  Client.cpp
+  createClientDLG.cpp
+  TransportCompany.cpp
+c:\users\gal.bachar\source\repos\finalprojobjectoriented\finalprojobjectoriented\transportcompany.cpp(48): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
+  FinalProjObjectOriented.cpp
+  FinalProjObjectOrientedDlg.cpp
+  FlyCompany.cpp
+  Instrument.cpp
+  Location.cpp
+  Plane.cpp
+  Scooter.cpp
+  ScooterCompany.cpp
+  Train.cpp
+  TrainCompany.cpp
+  Travel.cpp
+  Generating Code...
+  FinalProjObjectOriented.vcxproj -> C:\Users\gal.bachar\source\repos\FinalProjObjectOriented\Debug\FinalProjObjectOriented.exe

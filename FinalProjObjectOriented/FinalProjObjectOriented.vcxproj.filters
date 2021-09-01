@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\InstrumentTypes">
+      <UniqueIdentifier>{ef62c51d-e212-461b-ad1a-cf40665888b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\InstrumentTypes">
+      <UniqueIdentifier>{0b86a169-2ac1-4fc2-8690-1a7448778303}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FinalProjObjectOriented.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FinalProjObjectOrientedDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Business.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Instrument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Location.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Travel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BusCompany.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bus.h">
+      <Filter>Header Files\InstrumentTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>Header Files\InstrumentTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Header Files\InstrumentTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Train.h">
+      <Filter>Header Files\InstrumentTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scooter.h">
+      <Filter>Header Files\InstrumentTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="CarCompany.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyCompany.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScooterCompany.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrainCompany.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransportCompany.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="createClientDLG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FinalProjObjectOriented.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FinalProjObjectOrientedDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Business.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Instrument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Location.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Travel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BusCompany.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bus.cpp">
+      <Filter>Source Files\InstrumentTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
+      <Filter>Source Files\InstrumentTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scooter.cpp">
+      <Filter>Source Files\InstrumentTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Train.cpp">
+      <Filter>Source Files\InstrumentTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>Source Files\InstrumentTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="CarCompany.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyCompany.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScooterCompany.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TrainCompany.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TransportCompany.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="createClientDLG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FinalProjObjectOriented.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\FinalProjObjectOriented.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\FinalProjObjectOriented.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

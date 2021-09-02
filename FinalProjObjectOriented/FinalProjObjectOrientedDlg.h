@@ -37,26 +37,12 @@ public:
 	list<Location>stationsForBus;
 	list<Location>stationsForFly;
 	list<Location>stationsForRail;
+	list<Location> allLoc;
 
 	list<Client> clientList;
 
-	Location Eilat;
-	Location QiryatShmona;
-	Location TA;
-	Location Holon;
-	Location Haifa;
-	Location Jerusalem;
-	Location RishonLezion;
-	Location Yeruham;
-	Location BeerSheva;
-	Location Herzeliya;
-	Location Azor;
-	Location BatYam;
-	Location Paris;
-	Location Cyprus;
-	Location Barcelona;
-	Location Madrid;
-	Location Thailand;
+	list<TransportCompany*> companyList;
+	list<TransportCompany*> topResult;
 
 	CComboBox source;
 	CComboBox dest;

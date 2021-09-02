@@ -52,11 +52,7 @@ END_MESSAGE_MAP()
 
 
 CFinalProjObjectOrientedDlg::CFinalProjObjectOrientedDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_FINALPROJOBJECTORIENTED_DIALOG, pParent), 
-	QiryatShmona("Qiryat-Shmona", 175, true), TA("Tel-Aviv", 0, true), Holon("Holon", 10, true), Haifa("Haifa", 91, true),
-	Jerusalem("Jerusalem", 68, true), RishonLezion("Rishon-Lezion", 20, true), Yeruham("Yeruham", 140, true), 
-	BeerSheva("Beer-Sheva", 11, true),Herzeliya("Herzeliya", 11, true), Azor("Azor", 7, true), BatYam("Bat-Yam", 10, true),
-	Paris("Paris", 3000, false), Cyprus("Cyprus", 360, false), Barcelona("Barcelona", 3000, false), Madrid("Madrid", 3500, false), Thailand("Thailand", 7000, false), Eilat("Eilat", 350, true)
+	: CDialogEx(IDD_FINALPROJOBJECTORIENTED_DIALOG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -118,8 +114,22 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
-	// TODO: Add extra initialization here
-
+	Location QiryatShmona("Qiryat-Shmona", 175, true); 
+	Location TA("Tel-Aviv", 0, true); 
+	Location Holon("Holon", 10, true); 
+	Location Haifa("Haifa", 91, true); 
+	Location Jerusalem("Jerusalem", 68, true);
+	Location RishonLezion("Rishon-Lezion", 20, true); 
+	Location Yeruham("Yeruham", 140, true); 
+	Location BeerSheva("Beer-Sheva", 11, true); 
+	Location Herzeliya("Herzeliya", 11, true); 
+	Location Azor("Azor", 7, true), BatYam("Bat-Yam", 10, true); 
+	Location Paris("Paris", 3000, false); 
+	Location Cyprus("Cyprus", 360, false); 
+	Location Barcelona("Barcelona", 3000, false); 
+	Location Madrid("Madrid", 3500, false); 
+	Location Thailand("Thailand", 7000, false); 
+	Location Eilat("Eilat", 350, true);
 
 	Location busArr[] = { Eilat, QiryatShmona, TA, Holon, Haifa, Jerusalem, RishonLezion,Yeruham, BeerSheva,Herzeliya,Azor,BatYam };
 	Location flyArr[] = { Eilat, TA, Haifa, Paris, Cyprus, Barcelona, Madrid, Thailand };
@@ -128,12 +138,14 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	for (int i = 0; i < 12; i++)
 	{
 		stationsForBus.push_front(busArr[i]);
+		allLoc.push_front(busArr[i]);
 		dest.AddString(busArr[i].getName());
 		source.AddString(busArr[i].getName());
 	}
 	for (int i = 0; i < 8; i++)
 	{
 		stationsForFly.push_front(flyArr[i]);
+		allLoc.push_front(flyArr[i]);
 		if (!flyArr[i].GetInIsrael())
 		{
 			dest.AddString(flyArr[i].getName());
@@ -151,6 +163,7 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Eged.addAvailableInstrument(b2);
 	Eged.addAvailableInstrument(b3);
 
+	companyList.push_front(&Eged);
 
 	BusCompany Metropolin(stationsForBus, "Bus", 0.17, "Metropolin", 2, 1970, "Metropolin@support.com", "0732634938", 7);
 	Bus b4(1, "Bus", 13, true, 2020, 30000);
@@ -160,11 +173,15 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Metropolin.addAvailableInstrument(b5);
 	Metropolin.addAvailableInstrument(b6);
 
+	companyList.push_front(&Metropolin);
+
 	FlyCompany Elal(stationsForFly, "Plane", 0.5, "Elal", 3, 1949, "Elal@support.com", "039771111", 8);
 	Plane p1(Date(16, 4, 2021), "Plane", 20, true, 2020, 30000);
 	Plane p2(Date(28, 8, 2021), "Plane", 21, true, 2021, 500500);
 	Elal.addAvailableInstrument(p1);
 	Elal.addAvailableInstrument(p2);
+
+	companyList.push_front(&Elal);
 
 	FlyCompany Arkia(stationsForFly, "Plane", 0.48, "Arkia", 4, 1960, "Arkia@support.com", "036902222", 6);
 	Plane p3(Date(1, 5, 2021), "Plane", 22, true, 2021, 10000);
@@ -172,12 +189,15 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Arkia.addAvailableInstrument(p3);
 	Arkia.addAvailableInstrument(p4);
 
+	companyList.push_front(&Arkia);
+
 	TrainCompany IsraelRail(stationsForRail, "Train", 0.3, "IsraelRail", 5, 1935, "IsraelRail@support.com", "086831222", 9);
 	Train t1(Date(6, 1, 2021), "Electric", "Train", 30, true, 2021, 106000);
 	Train t2(Date(20, 5, 2021), "Fuel", "Train", 31, true, 2020, 475900);
 	IsraelRail.addAvailableInstrument(t1);
 	IsraelRail.addAvailableInstrument(t2);
 
+	companyList.push_front(&IsraelRail);
 
 	CarCompany ShlomoSixt("Car", 0.35, "ShlomoSixt", 6, 1990, "ShlomoSixt@support.com", "089191400", 7);
 	Car c1(Date(6, 8, 2021), "Electric", true, "Car", 40, true, 2021, 8000);
@@ -185,11 +205,15 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	ShlomoSixt.addAvailableInstrument(c1);
 	ShlomoSixt.addAvailableInstrument(c2);
 
+	companyList.push_front(&ShlomoSixt);
+
 	CarCompany Eldan("Car", 0.342, "Eldan", 7, 1993, "Eldan@support.com", "086848333", 8);
 	Car c3(Date(25, 3, 2021), "Electric", true, "Car", 42, true, 2021, 8000);
 	Car c4(Date(1, 7, 2021), "Fuel", false, "Car", 43, true, 2021, 19050);
 	Eldan.addAvailableInstrument(c3);
 	Eldan.addAvailableInstrument(c4);
+
+	companyList.push_front(&Eldan);
 
 	ScooterCompany Bird("Scooter", 1, "Bird", 8, 2018, "Bird@support.com", "035195454", 9);
 	Scooter s1(true, "Scooter", 50, true, 2021, 700);
@@ -197,17 +221,15 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Bird.addAvailableInstrument(s1);
 	Bird.addAvailableInstrument(s2);
 
+	companyList.push_front(&Bird);
+
 	ScooterCompany Wind("Scooter", 0.8, "Wind", 9, 2019, "Wind@support.com", "036186543", 8);
 	Scooter s3(true, "Scooter", 52, true, 2021, 555);
 	Scooter s4(false, "Scooter", 53, true, 2021, 780);
 	Wind.addAvailableInstrument(s3);
 	Wind.addAvailableInstrument(s4);
 
-	//list<Location>::iterator iter;
-	//for (iter = stationsForBus.begin(); iter != stationsForBus.end(); ++iter)
-	//{
-	//	
-	//}
+	companyList.push_front(&Wind);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -291,6 +313,39 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 		AfxMessageBox(_T("The source and the destination are identical! \n Please change one of them"), MB_OK | MB_ICONSTOP);
 	else
 	{
+		Location l_source, l_dest;
+		list<Location>::iterator loc_iter;
+		for (loc_iter = this->allLoc.begin(); loc_iter != this->allLoc.end(); ++loc_iter)
+		{
+			if (loc_iter->getName() == st_source)
+			{
+				l_source = *loc_iter;
+			}
+			if (loc_iter->getName() == st_dest)
+			{
+				l_dest = *loc_iter;
+			}
+		}
+		double r;
+		list<TransportCompany*>::iterator comp_iter;
+		for (comp_iter = this->companyList.begin(); comp_iter != this->companyList.end(); ++comp_iter)
+		{
+			if (l_source + l_dest > 30)
+			{
+				if (!l_source.GetInIsrael() || !l_dest.GetInIsrael())
+				{
+					/*if ((*comp_iter)->GetTypeOfTransportation() == "Plane")
+					{
+						list<Instrument>::iterator inst_iter;
+						for (inst_iter = (*comp_iter)->GetAvailableInstruments().begin(); inst_iter != (*comp_iter)->GetAvailableInstruments().end(); ++inst_iter)
+						{
+
+						}
+					}*/
+				}
+			}
+				
+		}
 		//CStatic*  m_picture;    // pointer to a picture control
 		//CFileFind finder;       // for file loading
 		//BOOL      bLastFile;

@@ -29,6 +29,8 @@ public:
 	void addAvailableInstrument(Instrument);
 	void changeInstrumentStatus(Instrument);
 	void addTravel(Travel);
+
+	double calcPrice(Location l1, Location l2);
 	
 
 };

@@ -95,3 +95,8 @@ void TransportCompany::addTravel(Travel t)
 	}
 }
 
+double TransportCompany::calcPrice(Location l1, Location l2)
+{
+	return this->price*(l1.getDistance() + l2.getDistance());
+}
+

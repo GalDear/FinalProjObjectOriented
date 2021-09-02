@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <string>
 #include "Instrument.h"
 #include <list>
 #include "Client.h"

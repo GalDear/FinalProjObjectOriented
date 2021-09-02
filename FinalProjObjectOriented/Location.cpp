@@ -18,6 +18,7 @@ void Location::setDistance(double d)
 	distance = d;
 }
 
+
 CString Location::getName()
 {
 	return this->name;
@@ -39,4 +40,9 @@ bool operator== (const Location& l1, const Location&l2)
 	if (l1.distance == l2.distance && l1.name == l2.name)
 		return true;
 	return false;
+}
+
+double operator+(const Location &l1, const Location &l2)
+{
+	return l1.distance + l2.distance;
 }

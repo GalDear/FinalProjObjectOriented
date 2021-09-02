@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Business.h"
 
-Business::Business(string BusinessName, long BusinessNumber, int YearOfEstablishment, string BusinessMail , string BusinessPhoneNumber , int Rating ) :BusinessName(BusinessName)
+Business::Business(const string BusinessName, long BusinessNumber, int YearOfEstablishment, string BusinessMail , string BusinessPhoneNumber , int Rating ) :BusinessName(BusinessName)
 {
 	this->BusinessNumber = BusinessNumber;
     this->BusinessPhoneNumber = BusinessPhoneNumber;

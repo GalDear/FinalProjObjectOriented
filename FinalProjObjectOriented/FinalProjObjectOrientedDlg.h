@@ -46,6 +46,7 @@ public:
 
 	CComboBox source;
 	CComboBox dest;
+	CComboBox DiscountChoice;
 	afx_msg void OnCbnSelchangesource();
 	afx_msg void OnBnClickedOk();
 	CButton search;
@@ -58,4 +59,5 @@ public:
 	CStatic pic_res3;
 	afx_msg void OnStnClicked1();
 	afx_msg void OnStnClickedPic2();
+	afx_msg void OnEnChangeMail();
 };

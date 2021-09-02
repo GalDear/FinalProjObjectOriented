@@ -1,1 +1,3 @@
-﻿  FinalProjObjectOriented.vcxproj -> C:\Users\gal.bachar\Documents\BAgit\FinalProjObjectOriented\x64\Debug\FinalProjObjectOriented.exe
+﻿  FinalProjObjectOrientedDlg.cpp
+c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(331): warning C4101: 'r': unreferenced local variable
+  FinalProjObjectOriented.vcxproj -> C:\Users\gal.bachar\Documents\BAgit\FinalProjObjectOriented\x64\Debug\FinalProjObjectOriented.exe

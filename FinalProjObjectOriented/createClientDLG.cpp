@@ -28,7 +28,6 @@ void createClientDLG::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT2, email_box);
 	DDX_Control(pDX, IDC_EDIT3, id_box);
 	DDX_Control(pDX, IDC_CHECK1, is_discount_check);
-	//DDX_Control(pDX, DD_DiscountChoice, DiscountChoice);
 }
 
 
@@ -37,7 +36,6 @@ BEGIN_MESSAGE_MAP(createClientDLG, CDialogEx)
 	ON_BN_CLICKED(IDOK, &createClientDLG::OnBnClickedOk)
 	ON_BN_CLICKED(IDC_CHECK1, &createClientDLG::OnBnClickedCheck1)
 	ON_EN_CHANGE(IDC_EDIT1, &createClientDLG::OnEnChangeEdit1)
-	//ON_CBN_SELCHANGE(DD_DiscountChoice, &createClientDLG::OnCbnSelchangeCombo2)
 END_MESSAGE_MAP()
 
 

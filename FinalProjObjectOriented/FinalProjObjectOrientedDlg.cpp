@@ -372,19 +372,19 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 void CFinalProjObjectOrientedDlg::OnBnClickedButton1()
 {
 	// TODO: Add your control notification handler code here
-	CString st_dest;
+	/*CString st_dest;
 	int nSel = dest.GetCurSel();
 	dest.GetLBText(nSel, st_dest);
 
 	CString st_source;
 	nSel = source.GetCurSel();
-	source.GetLBText(nSel, st_source);
+	source.GetLBText(nSel, st_source);*/
 
-	if (st_dest == st_source)
+	/*if (st_dest == st_source)
 	{
 		AfxMessageBox(_T("The source and the destination are identical! \n Please change one of them"), MB_OK | MB_ICONSTOP);
 	}
-	else{
+	else{*/
 		createClientDLG dlg;
 		dlg.DoModal();
 		Client c(dlg.name, dlg.id, dlg.email, dlg.hasDiscount);
@@ -394,7 +394,7 @@ void CFinalProjObjectOrientedDlg::OnBnClickedButton1()
 			clientList.push_front(c);
 		else
 			AfxMessageBox(_T("The client already exist"), MB_OK | MB_ICONSTOP);
-	}
+	//}
 
 
 }

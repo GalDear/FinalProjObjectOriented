@@ -14,21 +14,22 @@ private:
 	Location destination;
 	Instrument instrument;
 	int numOfReservedSeats;
-	Date departure;
+	//Date departure;
 
 public:
-	Travel(Location, Location, Instrument, Date);
+	Travel(Location, Location, Instrument);
+	Travel(const Travel &);
 	~Travel() {};
 
 	const Location getSource();
 	const Location getDestination();
 	const Instrument getInstrument();
 	list<seat> getReservedSeats();
-	const Date getDeparture();
+	//const Date getDeparture();
 
 	void changeInstrument(Instrument);
 	void upDateReservedSeat(seat);
-	void UpDateDate(Date);
+	//void UpDateDate(Date);
 
 	friend bool operator==(const Travel&, const Travel&);
 

@@ -53,7 +53,7 @@ END_MESSAGE_MAP()
 
 
 CFinalProjObjectOrientedDlg::CFinalProjObjectOrientedDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_FINALPROJOBJECTORIENTED_DIALOG, pParent)
+	: CDialogEx(IDD_FINALPROJOBJECTORIENTED_DIALOG, pParent), Eged(stationsForBus, "Bus", 0.2, "Eged", 1, 1948, "Eged@support.com", "039142237", 8)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -70,6 +70,9 @@ void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, PIC_1, pic_res1);
 	DDX_Control(pDX, PIC2, pic_res2);
 	DDX_Control(pDX, PIC3, pic_res3);
+	DDX_Control(pDX, BTN_RES1, selectRes1);
+	DDX_Control(pDX, BTN_RES2, selectRes2);
+	DDX_Control(pDX, BTN_RES3, selectRes3);
 }
 
 BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
@@ -83,6 +86,9 @@ BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
 	ON_STN_CLICKED(PIC_1, &CFinalProjObjectOrientedDlg::OnStnClicked1)
 	ON_STN_CLICKED(PIC2, &CFinalProjObjectOrientedDlg::OnStnClickedPic2)
 	ON_EN_CHANGE(TXT_MAIL, &CFinalProjObjectOrientedDlg::OnEnChangeMail)
+	ON_BN_CLICKED(BTN_RES1, &CFinalProjObjectOrientedDlg::OnBnClickedRes1)
+	ON_BN_CLICKED(BTN_RES3, &CFinalProjObjectOrientedDlg::OnBnClickedRes3)
+	ON_BN_CLICKED(BTN_RES2, &CFinalProjObjectOrientedDlg::OnBnClickedRes2)
 END_MESSAGE_MAP()
 
 
@@ -157,7 +163,6 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	for (int i = 0; i < 9; i++)
 		stationsForRail.push_front(trainArr[i]);
 
-	BusCompany Eged(stationsForBus, "Bus", 0.2, "Eged", 1, 1948, "Eged@support.com", "039142237", 8);
 	Bus b1(18, "Bus", 10, true, 2015, 100000);
 	Bus b2(365, "Bus", 11, true, 2018, 80000);
 	Bus b3(95, "Bus", 12, true, 2016, 180000);
@@ -315,7 +320,7 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 		AfxMessageBox(_T("The source and the destination are identical! \n Please change one of them"), MB_OK | MB_ICONSTOP);
 	else
 	{
-		Location l_source, l_dest;
+		
 		list<Location>::iterator loc_iter;
 		for (loc_iter = this->allLoc.begin(); loc_iter != this->allLoc.end(); ++loc_iter)
 		{
@@ -420,4 +425,34 @@ void CFinalProjObjectOrientedDlg::OnEnChangeMail()
 	// with the ENM_CHANGE flag ORed into the mask.
 
 	// TODO:  Add your control notification handler code here
+}
+
+
+void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
+{
+	// TODO: Add your control notification handler code here
+	topResult.push_front(&Eged);
+	list<TransportCompany*>::iterator t_iter = topResult.begin();
+	list<Instrument> available_inst = (*t_iter)->GetAvailableInstruments();
+	list<Instrument>::iterator i_iter = available_inst.begin();
+	std::advance(i_iter, 1);
+	Travel t(l_source, l_dest, *i_iter);
+}
+
+
+void CFinalProjObjectOrientedDlg::OnBnClickedRes3()
+{
+	// TODO: Add your control notification handler code here
+}
+
+
+void CFinalProjObjectOrientedDlg::OnBnClickedRes2()
+{
+	// TODO: Add your control notification handler code here
+	list<TransportCompany*>::iterator t_iter = topResult.begin();
+	std::advance(t_iter, 1);
+	list<Instrument> available_inst = (*t_iter)->GetAvailableInstruments();
+	list<Instrument>::iterator i_iter = available_inst.begin();
+	std::advance(i_iter, 1);
+	Travel t(l_source, l_dest, *i_iter);
 }

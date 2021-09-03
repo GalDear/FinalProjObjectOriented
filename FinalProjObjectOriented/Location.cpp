@@ -8,6 +8,13 @@ Location::Location(string name, double distance,bool inIsrael)
 	this->inIsrael = inIsrael;
 }
 
+Location::Location(const Location &l)
+{
+	this->name = l.name;
+	this->distance = l.distance;
+	this->inIsrael = l.inIsrael;
+}
+
 void Location::setName(CString n)
 {
 	name = n;

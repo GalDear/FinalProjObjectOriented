@@ -14,32 +14,32 @@ Business::~Business()
 {
 }
 
-string Business::GetBusinessName()
+const string Business::GetBusinessName() const
 {
     return this->BusinessName;
 }
 
-long Business::GetBusinessNumber()
+const long Business::GetBusinessNumber() const
 {
     return this->BusinessNumber;
 }
 
-string Business::GetBusinessPhoneNumber()
+const string Business::GetBusinessPhoneNumber() const 
 {
     return this->BusinessPhoneNumber;
 }
 
-string Business::GetBusinessMail()
+const string Business::GetBusinessMail() const
 {
     return this->BusinessMail;
 }
 
-int Business::GetYearOfEstablishment()
+const int Business::GetYearOfEstablishment() const
 {
     return this->YearOfEstablishment;
 }
 
-int Business::GetRating()
+const int Business::GetRating() const
 {
     return this->Rating;
 }

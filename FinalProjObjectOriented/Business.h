@@ -16,12 +16,12 @@ public:
 	~Business();
 
 	
-	string GetBusinessName();
-	long GetBusinessNumber();
-	string GetBusinessPhoneNumber();
-	string GetBusinessMail();
-	int GetYearOfEstablishment();
-	int GetRating();
+	const string GetBusinessName() const;
+	const long GetBusinessNumber() const;
+	const string GetBusinessPhoneNumber() const;
+	const string GetBusinessMail() const;
+	const int GetYearOfEstablishment() const;
+	const int GetRating() const;
 
 	
 	void SetBusinessPhoneNumber(string phoneNumber);

@@ -44,6 +44,11 @@ public:
 	list<TransportCompany*> companyList;
 	list<TransportCompany*> topResult;
 
+	Location l_source;
+	Location l_dest;
+
+	BusCompany Eged;
+
 	CComboBox source;
 	CComboBox dest;
 	CComboBox DiscountChoice;
@@ -60,4 +65,10 @@ public:
 	afx_msg void OnStnClicked1();
 	afx_msg void OnStnClickedPic2();
 	afx_msg void OnEnChangeMail();
+	afx_msg void OnBnClickedRes1();
+	CButton selectRes1;
+	CButton selectRes2;
+	CButton selectRes3;
+	afx_msg void OnBnClickedRes3();
+	afx_msg void OnBnClickedRes2();
 };

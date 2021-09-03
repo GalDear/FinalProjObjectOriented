@@ -17,6 +17,7 @@ private:
 
 public:
 	Location(string, double,bool);
+	Location(const Location&);
 	Location() { };
 	CString getName();
 	double getDistance();

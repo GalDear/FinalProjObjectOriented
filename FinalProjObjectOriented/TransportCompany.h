@@ -16,6 +16,8 @@ public:
 	TransportCompany();
 	TransportCompany(string typeOfTransportation,double pricePerKM, string BusinessName, long BusinessNumber, int YearOfEstablishment,
 		string BusinessMail = NULL, string BusinessPhoneNumber = 0, int Rating = 0);
+	TransportCompany(const TransportCompany&);
+
 
 	string GetTypeOfTransportation();
 	list<Instrument> GetAvailableInstruments();
@@ -32,5 +34,4 @@ public:
 
 	double calcPrice(Location l1, Location l2);
 	
-
 };

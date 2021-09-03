@@ -16,6 +16,13 @@ TransportCompany::TransportCompany(string typeOfTransportation, double pricePerK
 	this->totalInstruments = 0;
 }
 
+TransportCompany::TransportCompany(const TransportCompany &t) : price(t.price), Business(t.GetBusinessName(), t.GetBusinessNumber(), t.GetYearOfEstablishment(),
+	t.GetBusinessMail(), t.GetBusinessPhoneNumber(), t.GetRating())
+{
+	this->typeOfTransportation = typeOfTransportation;
+	this->totalInstruments = 0;
+}
+
 
 
 string TransportCompany::GetTypeOfTransportation()
@@ -99,4 +106,5 @@ double TransportCompany::calcPrice(Location l1, Location l2)
 {
 	return this->price*(l1.getDistance() + l2.getDistance());
 }
+
 

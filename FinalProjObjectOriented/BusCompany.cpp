@@ -10,6 +10,11 @@ BusinessMail , BusinessPhoneNumber , Rating )
 }
 
 
+bool BusCompany::hasStation(Location l)
+{
+	return std::find(stations.begin(), stations.end(), l) != stations.end();
+}
+
 double BusCompany::Discount()
 {
 	int price = this->GetPrice();
@@ -29,5 +34,10 @@ void BusCompany::AddLocation( Location city)
 void BusCompany::RemoveLocation(Location city) 
 {	
 	this->stations.remove(city);
+}
+
+void BusCompany::setStations(list<Location> s)
+{
+	this->stations = s;
 }
 

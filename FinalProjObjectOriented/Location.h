@@ -31,5 +31,6 @@ public:
 	friend bool operator== (const Location&, const Location&);
 	friend double operator+(const Location&, const Location&);
 
+
 };
 

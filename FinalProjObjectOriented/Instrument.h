@@ -32,7 +32,7 @@ using namespace std;
 class Instrument {
 public:
 	Instrument();
-	Instrument(string , long ,bool ,int ,int);
+	Instrument(string , long ,bool ,int ,int, int);
 
 	// Gets
 	long GetInstrumentID();
@@ -46,6 +46,7 @@ public:
 	string GetManufacturer();
 	string GetColor();
 	int getNumOfSeats();
+	double getPrice();
 
 	// Sets
 	void SetSpeedLimit(int newSpeedLimit);
@@ -53,6 +54,8 @@ public:
 	void SetColor(string newColor);
 	void SetSeats(int, int);
 	void addKilometers(int);
+	void setPrice(double);
+
 
 	friend bool operator==(const Instrument&, const Instrument&);
 
@@ -68,4 +71,5 @@ private:
 	int kilometers;// how much kilometers the instrument can do
 	string manufacturer;		
 	string color;
+	double price;
 };

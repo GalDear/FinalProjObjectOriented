@@ -8,6 +8,12 @@ FlyCompany::FlyCompany( list<Location> stations, string typeOfTransportation, do
 	this->stations = stations;
 }
 
+bool FlyCompany::hasStation(Location l)
+{
+	bool b = std::find(stations.begin(), stations.end(), l) != stations.end();
+	return b;
+}
+
 double FlyCompany::Discount()
 {
 	double price = this->GetPrice();
@@ -41,4 +47,9 @@ void FlyCompany::AddLocation(Location city)
 
 void FlyCompany::RemoveLocation(Location city) {
 	this->stations.remove(city);
+}
+
+void FlyCompany::setStations(list<Location> s)
+{
+	this->stations = s;
 }

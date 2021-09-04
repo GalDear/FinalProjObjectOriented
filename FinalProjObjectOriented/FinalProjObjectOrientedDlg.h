@@ -11,6 +11,7 @@ class CFinalProjObjectOrientedDlg : public CDialogEx
 // Construction
 public:
 	CFinalProjObjectOrientedDlg(CWnd* pParent = nullptr);	// standard constructor
+	void updateTopResult(Travel);
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -42,12 +43,10 @@ public:
 	list<Client> clientList;
 
 	list<TransportCompany*> companyList;
-	list<TransportCompany*> topResult;
+	list<Travel> topResult;
 
 	Location l_source;
 	Location l_dest;
-
-	BusCompany Eged;
 
 	CComboBox source;
 	CComboBox dest;
@@ -69,6 +68,19 @@ public:
 	CButton selectRes1;
 	CButton selectRes2;
 	CButton selectRes3;
+	CButton selectRes4;
 	afx_msg void OnBnClickedRes3();
 	afx_msg void OnBnClickedRes2();
+	afx_msg void OnBnClickedRes4();
+
+private:
+	BusCompany Eged;
+	BusCompany Metropolin;
+	FlyCompany Elal;
+	FlyCompany Arkia;
+	TrainCompany IsraelRail;
+	CarCompany ShlomoSixt;
+	CarCompany Eldan;
+	ScooterCompany Bird;
+	ScooterCompany Wind;
 };

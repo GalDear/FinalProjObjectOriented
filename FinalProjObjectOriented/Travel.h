@@ -27,6 +27,9 @@ public:
 	list<seat> getReservedSeats();
 	//const Date getDeparture();
 
+	double getTravelTime();
+	double getTravelPrice();
+
 	void changeInstrument(Instrument);
 	void upDateReservedSeat(seat);
 	//void UpDateDate(Date);

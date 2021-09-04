@@ -38,6 +38,16 @@ list<seat> Travel::getReservedSeats()
 	return this->instrument.GetSeats();
 }
 
+double Travel::getTravelTime()
+{
+	return ((this->source + this->destination) / this->instrument.GetSpeedLimit());
+}
+
+double Travel::getTravelPrice()
+{
+	return ((this->destination + this->source)*this->instrument.getPrice());
+}
+
 //const Date Travel::getDeparture()
 //{
 //	return this->departure;

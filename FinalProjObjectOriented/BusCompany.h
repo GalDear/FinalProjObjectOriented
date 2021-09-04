@@ -16,5 +16,9 @@ public:
 
 	void AddLocation(Location);
 	void RemoveLocation(Location);	
+
+	void setStations(list<Location>);
+
+	bool hasStation(Location);
 	double Discount();
 };

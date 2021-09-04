@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Scooter.h"
 
-Scooter::Scooter(bool b, string type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument) : Instrument(type, InstrumentID, availableOrFaulty, yearOfCreate, kilometersPerInstrument)
+Scooter::Scooter(bool b, string type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument) : Instrument(type, InstrumentID, availableOrFaulty, yearOfCreate, kilometersPerInstrument,20)
 {
 	this->helmet = b;
 }

@@ -13,14 +13,12 @@ TransportCompany::TransportCompany(string typeOfTransportation, double pricePerK
 		 BusinessMail, BusinessPhoneNumber , Rating )
 {
 	this->typeOfTransportation = typeOfTransportation;
-	this->totalInstruments = 0;
 }
 
 TransportCompany::TransportCompany(const TransportCompany &t) : price(t.price), Business(t.GetBusinessName(), t.GetBusinessNumber(), t.GetYearOfEstablishment(),
 	t.GetBusinessMail(), t.GetBusinessPhoneNumber(), t.GetRating())
 {
 	this->typeOfTransportation = typeOfTransportation;
-	this->totalInstruments = 0;
 }
 
 
@@ -38,11 +36,6 @@ list<Instrument> TransportCompany::GetAvailableInstruments()
 list<Instrument> TransportCompany::GetNotAvailableInstruments()
 {
 	return this->unAvailableInstruments;
-}
-
-int TransportCompany::GetTotalInstruments()
-{
-	return this->totalInstruments;
 }
 
 list<Travel> TransportCompany::GetArrayOfAvailableTravels()
@@ -63,8 +56,8 @@ void TransportCompany::SetTypeOfTransportation(string typeOfTransportation)
 
 void TransportCompany::addAvailableInstrument(Instrument i)
 {
+	i.setPrice(this->price);
 	this->availableInstruments.push_front(i);
-	this->totalInstruments++;
 }
 
 void TransportCompany::changeInstrumentStatus(Instrument i)

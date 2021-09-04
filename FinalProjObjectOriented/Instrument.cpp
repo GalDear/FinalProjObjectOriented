@@ -6,13 +6,14 @@ Instrument::Instrument()
 {
 }
 
-Instrument::Instrument(string type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument)
+Instrument::Instrument(string type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument, int speedLimit)
 {
 	this->type = type;
 	this->InstrumentID = InstrumentID;
 	this->status = availableOrFaulty;
 	this->yearOfCreate = yearOfCreate;
 	this->kilometers = kilometersPerInstrument;
+	this->speedLimit = speedLimit;
 }
 
 long Instrument::GetInstrumentID()
@@ -70,6 +71,11 @@ string Instrument::GetColor()
 	return this->color;
 }
 
+double Instrument::getPrice()
+{
+	return this->price;
+}
+
 void Instrument::SetSpeedLimit(int newSpeedLimit)
 {
 	this->speedLimit = newSpeedLimit;
@@ -101,6 +107,11 @@ void Instrument::SetSeats(int rows, int cols)
 void Instrument::addKilometers(int km)
 {
 	this->kilometers += km;
+}
+
+void Instrument::setPrice(double p)
+{
+	this->price = p;
 }
 
 bool operator==(const Date &d1, const Date &d2)

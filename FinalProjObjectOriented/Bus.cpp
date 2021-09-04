@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Bus.h"
 
-Bus::Bus(int linenumber , string type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument) : Instrument(type, InstrumentID, availableOrFaulty, yearOfCreate, kilometersPerInstrument)
+Bus::Bus(int linenumber , string type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument) : Instrument(type, InstrumentID, availableOrFaulty, yearOfCreate, kilometersPerInstrument, 100)
 {
 	this->lineNumber = lineNumber;
 }

@@ -8,7 +8,6 @@ private:
 	string typeOfTransportation;				// Rent, transportation, train, fly..
 	list<Instrument> availableInstruments;
 	list<Instrument> unAvailableInstruments;
-	int totalInstruments;
 	list <Travel> availableTravel;
 	const double price;									//  per KM
 
@@ -22,7 +21,6 @@ public:
 	string GetTypeOfTransportation();
 	list<Instrument> GetAvailableInstruments();
 	list<Instrument> GetNotAvailableInstruments();
-	int GetTotalInstruments();
 	list <Travel> GetArrayOfAvailableTravels();
 	int GetPrice();
 	
@@ -33,5 +31,7 @@ public:
 	void addTravel(Travel);
 
 	double calcPrice(Location l1, Location l2);
+
+	virtual bool hasStation(Location) { return false; };
 	
 };

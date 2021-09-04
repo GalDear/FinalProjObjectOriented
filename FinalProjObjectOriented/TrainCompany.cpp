@@ -24,6 +24,17 @@ void TrainCompany::RemoveLocation(Location city) {
 	this->stations.remove(city);
 }
 
+void TrainCompany::setStations(list<Location> s)
+{
+	this->stations = s;
+}
+
+bool TrainCompany::hasStation(Location l)
+{
+	bool b = std::find(stations.begin(), stations.end(), l) != stations.end();
+	return b;
+}
+
 double TrainCompany::Discount()
 {
 	return GetPrice() * 0.85;

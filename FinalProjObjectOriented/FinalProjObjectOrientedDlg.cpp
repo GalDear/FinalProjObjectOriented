@@ -53,9 +53,46 @@ END_MESSAGE_MAP()
 
 
 CFinalProjObjectOrientedDlg::CFinalProjObjectOrientedDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_FINALPROJOBJECTORIENTED_DIALOG, pParent), Eged(stationsForBus, "Bus", 0.2, "Eged", 1, 1948, "Eged@support.com", "039142237", 8)
+	: CDialogEx(IDD_FINALPROJOBJECTORIENTED_DIALOG, pParent), Eged(stationsForBus, "Bus", 0.2, "Eged", 1, 1948, "Eged@support.com", "039142237", 8),
+	Metropolin(stationsForBus, "Bus", 0.17, "Metropolin", 2, 1970, "Metropolin@support.com", "0732634938", 7),
+	Elal(stationsForFly, "Plane", 0.5, "Elal", 3, 1949, "Elal@support.com", "039771111", 8),
+	Arkia(stationsForFly, "Plane", 0.48, "Arkia", 4, 1960, "Arkia@support.com", "036902222", 6),
+	IsraelRail(stationsForRail, "Train", 0.3, "IsraelRail", 5, 1935, "IsraelRail@support.com", "086831222", 9),
+	ShlomoSixt("Car", 0.35, "ShlomoSixt", 6, 1990, "ShlomoSixt@support.com", "089191400", 7),
+	Eldan("Car", 0.342, "Eldan", 7, 1993, "Eldan@support.com", "086848333", 8),
+	Bird("Scooter", 1, "Bird", 8, 2018, "Bird@support.com", "035195454", 9),
+	Wind("Scooter", 0.8, "Wind", 9, 2019, "Wind@support.com", "036186543", 8)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+}
+
+void CFinalProjObjectOrientedDlg::updateTopResult(Travel t)
+{
+	list<Travel>::iterator t_iter;
+	if (topResult.size() == 4)
+	{
+		for (t_iter = topResult.begin(); t_iter != topResult.end(); ++t_iter)
+		{
+			if (t_iter->getTravelTime() > t.getTravelTime())
+			{
+				this->topResult.erase(t_iter);
+				this->topResult.push_front(t);
+			}
+			else if (t_iter->getTravelTime() == t.getTravelTime())
+			{
+				if (t_iter->getTravelPrice() > t.getTravelPrice())
+				{
+					this->topResult.erase(t_iter);
+					this->topResult.push_front(t);
+				}
+			}
+		}
+	}
+	else
+	{
+		topResult.push_front(t);
+	}
+	
 }
 
 void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
@@ -89,6 +126,7 @@ BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
 	ON_BN_CLICKED(BTN_RES1, &CFinalProjObjectOrientedDlg::OnBnClickedRes1)
 	ON_BN_CLICKED(BTN_RES3, &CFinalProjObjectOrientedDlg::OnBnClickedRes3)
 	ON_BN_CLICKED(BTN_RES2, &CFinalProjObjectOrientedDlg::OnBnClickedRes2)
+
 END_MESSAGE_MAP()
 
 
@@ -129,7 +167,7 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Location Jerusalem("Jerusalem", 68, true);
 	Location RishonLezion("Rishon-Lezion", 20, true); 
 	Location Yeruham("Yeruham", 140, true); 
-	Location BeerSheva("Beer-Sheva", 11, true); 
+	Location BeerSheva("Beer-Sheva", 110, true); 
 	Location Herzeliya("Herzeliya", 11, true); 
 	Location Azor("Azor", 7, true), BatYam("Bat-Yam", 10, true); 
 	Location Paris("Paris", 3000, false); 
@@ -170,9 +208,9 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Eged.addAvailableInstrument(b2);
 	Eged.addAvailableInstrument(b3);
 
+	Eged.setStations(stationsForBus);
 	companyList.push_front(&Eged);
 
-	BusCompany Metropolin(stationsForBus, "Bus", 0.17, "Metropolin", 2, 1970, "Metropolin@support.com", "0732634938", 7);
 	Bus b4(1, "Bus", 13, true, 2020, 30000);
 	Bus b5(900, "Bus", 14, true, 2019, 64500);
 	Bus b6(450, "Bus", 15, true, 2016, 122000);
@@ -180,33 +218,33 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Metropolin.addAvailableInstrument(b5);
 	Metropolin.addAvailableInstrument(b6);
 
+	Metropolin.setStations(stationsForBus);
 	companyList.push_front(&Metropolin);
 
-	FlyCompany Elal(stationsForFly, "Plane", 0.5, "Elal", 3, 1949, "Elal@support.com", "039771111", 8);
 	Plane p1(Date(16, 4, 2021), "Plane", 20, true, 2020, 30000);
 	Plane p2(Date(28, 8, 2021), "Plane", 21, true, 2021, 500500);
 	Elal.addAvailableInstrument(p1);
 	Elal.addAvailableInstrument(p2);
 
+	Elal.setStations(stationsForFly);
 	companyList.push_front(&Elal);
 
-	FlyCompany Arkia(stationsForFly, "Plane", 0.48, "Arkia", 4, 1960, "Arkia@support.com", "036902222", 6);
 	Plane p3(Date(1, 5, 2021), "Plane", 22, true, 2021, 10000);
 	Plane p4(Date(1, 9, 2021), "Plane", 23, true, 2019, 475900);
 	Arkia.addAvailableInstrument(p3);
 	Arkia.addAvailableInstrument(p4);
 
+	Arkia.setStations(stationsForFly);
 	companyList.push_front(&Arkia);
 
-	TrainCompany IsraelRail(stationsForRail, "Train", 0.3, "IsraelRail", 5, 1935, "IsraelRail@support.com", "086831222", 9);
 	Train t1(Date(6, 1, 2021), "Electric", "Train", 30, true, 2021, 106000);
 	Train t2(Date(20, 5, 2021), "Fuel", "Train", 31, true, 2020, 475900);
 	IsraelRail.addAvailableInstrument(t1);
 	IsraelRail.addAvailableInstrument(t2);
 
+	IsraelRail.setStations(stationsForRail);
 	companyList.push_front(&IsraelRail);
 
-	CarCompany ShlomoSixt("Car", 0.35, "ShlomoSixt", 6, 1990, "ShlomoSixt@support.com", "089191400", 7);
 	Car c1(Date(6, 8, 2021), "Electric", true, "Car", 40, true, 2021, 8000);
 	Car c2(Date(20, 5, 2021), "Fuel", false, "Car", 41, true, 2021, 15000);
 	ShlomoSixt.addAvailableInstrument(c1);
@@ -214,7 +252,6 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 
 	companyList.push_front(&ShlomoSixt);
 
-	CarCompany Eldan("Car", 0.342, "Eldan", 7, 1993, "Eldan@support.com", "086848333", 8);
 	Car c3(Date(25, 3, 2021), "Electric", true, "Car", 42, true, 2021, 8000);
 	Car c4(Date(1, 7, 2021), "Fuel", false, "Car", 43, true, 2021, 19050);
 	Eldan.addAvailableInstrument(c3);
@@ -222,7 +259,6 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 
 	companyList.push_front(&Eldan);
 
-	ScooterCompany Bird("Scooter", 1, "Bird", 8, 2018, "Bird@support.com", "035195454", 9);
 	Scooter s1(true, "Scooter", 50, true, 2021, 700);
 	Scooter s2(true, "Scooter", 51, true, 2021, 999);
 	Bird.addAvailableInstrument(s1);
@@ -230,7 +266,6 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 
 	companyList.push_front(&Bird);
 
-	ScooterCompany Wind("Scooter", 0.8, "Wind", 9, 2019, "Wind@support.com", "036186543", 8);
 	Scooter s3(true, "Scooter", 52, true, 2021, 555);
 	Scooter s4(false, "Scooter", 53, true, 2021, 780);
 	Wind.addAvailableInstrument(s3);
@@ -337,36 +372,33 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 		list<TransportCompany*>::iterator comp_iter;
 		for (comp_iter = this->companyList.begin(); comp_iter != this->companyList.end(); ++comp_iter)
 		{
-			if (l_source + l_dest > 30)
+			string tType = (*comp_iter)->GetTypeOfTransportation();
+			if (tType == "Plane" || tType == "Train" || tType == "Bus")
 			{
-				if (!l_source.GetInIsrael() || !l_dest.GetInIsrael())
+				if ((*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
 				{
-					/*if ((*comp_iter)->GetTypeOfTransportation() == "Plane")
-					{
-						list<Instrument>::iterator inst_iter;
-						for (inst_iter = (*comp_iter)->GetAvailableInstruments().begin(); inst_iter != (*comp_iter)->GetAvailableInstruments().end(); ++inst_iter)
-						{
-
-						}
-					}*/
+					Travel t(l_source, l_dest, *(*comp_iter)->GetAvailableInstruments().begin());
+					updateTopResult(t);
+				}
+			}
+			if (tType == "Car")
+			{
+				if (l_source.GetInIsrael() && l_dest.GetInIsrael())
+				{
+					Travel t1(l_source, l_dest, *(*comp_iter)->GetAvailableInstruments().begin());
+					updateTopResult(t1);
+				}
+			}
+			if (l_dest + l_source < 30)
+			{
+				if (tType == "Scooter")
+				{
+					Travel t1(l_source, l_dest, *(*comp_iter)->GetAvailableInstruments().begin());
+					updateTopResult(t1);
 				}
 			}
 				
 		}
-		//CStatic*  m_picture;    // pointer to a picture control
-		//CFileFind finder;       // for file loading
-		//BOOL      bLastFile;
-
-		//m_picture = (CStatic *)GetDlgItem(PIC2);
-		//BOOL bWorking = finder.FindFile(L"test.bmp");
-		//if (bWorking)
-		//{
-		//	finder.FindNextFile();
-		//	HBITMAP hb = (HBITMAP)::LoadImage(AfxGetInstanceHandle(), finder.GetFilePath(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-		//	m_picture->ModifyStyle(0x0000F, SS_BITMAP, SWP_NOSIZE);
-		//	m_picture->SetBitmap(hb);
-		//	bLastFile = FALSE;
-		//}
 		
 	}
 
@@ -431,12 +463,12 @@ void CFinalProjObjectOrientedDlg::OnEnChangeMail()
 void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 {
 	// TODO: Add your control notification handler code here
-	topResult.push_front(&Eged);
+	/*topResult.push_front(&Eged);
 	list<TransportCompany*>::iterator t_iter = topResult.begin();
 	list<Instrument> available_inst = (*t_iter)->GetAvailableInstruments();
 	list<Instrument>::iterator i_iter = available_inst.begin();
 	std::advance(i_iter, 1);
-	Travel t(l_source, l_dest, *i_iter);
+	Travel t(l_source, l_dest, *i_iter);*/
 }
 
 
@@ -449,10 +481,22 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes3()
 void CFinalProjObjectOrientedDlg::OnBnClickedRes2()
 {
 	// TODO: Add your control notification handler code here
-	list<TransportCompany*>::iterator t_iter = topResult.begin();
+	/*list<TransportCompany*>::iterator t_iter = topResult.begin();
 	std::advance(t_iter, 1);
 	list<Instrument> available_inst = (*t_iter)->GetAvailableInstruments();
 	list<Instrument>::iterator i_iter = available_inst.begin();
 	std::advance(i_iter, 1);
-	Travel t(l_source, l_dest, *i_iter);
+	Travel t(l_source, l_dest, *i_iter);*/
 }
+
+
+
+void CFinalProjObjectOrientedDlg::OnBnClickedRes4()
+{
+	// TODO: Add your control notification handler code here
+}
+
+
+
+
+

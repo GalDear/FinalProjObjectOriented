@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Plane.h"
 
-Plane::Plane(Date testday, string type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument) : Instrument(type, InstrumentID, availableOrFaulty, yearOfCreate, kilometersPerInstrument,800)
+Plane::Plane(Date testday, CString type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument) : Instrument(type, InstrumentID, availableOrFaulty, yearOfCreate, kilometersPerInstrument,800)
 {
 	this->testDate = testDate;
 }

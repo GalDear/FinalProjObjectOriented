@@ -8,14 +8,14 @@ using namespace std;
 class Train :public Instrument {
 public:
 	Train() {};
-	Train(Date, string, string , long , bool , int , int );
+	Train(Date, CString, CString, long , bool , int , int );
 
 	Date GetDate();
-	string GetType();
+	CString GetType();
 
 	void SetDate(Date);
 
 private:
 	Date testDate;
-	string type;			// electric or fuel
+	CString type;			// electric or fuel
 };

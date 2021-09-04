@@ -6,7 +6,7 @@ Instrument::Instrument()
 {
 }
 
-Instrument::Instrument(string type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument, int speedLimit)
+Instrument::Instrument(CString type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument, int speedLimit)
 {
 	this->type = type;
 	this->InstrumentID = InstrumentID;
@@ -21,7 +21,7 @@ long Instrument::GetInstrumentID()
 	return this->InstrumentID;
 }
 
-string Instrument::GetType()
+CString Instrument::GetType()
 {
 	return this->type;
 }
@@ -61,12 +61,12 @@ int Instrument::getNumOfSeats()
 	return this->numOberfPassengers;
 }
 
-string Instrument::GetManufacturer()
+CString Instrument::GetManufacturer()
 {
 	return this->manufacturer;
 }
 
-string Instrument::GetColor()
+CString Instrument::GetColor()
 {
 	return this->color;
 }
@@ -86,7 +86,7 @@ void Instrument::SetStatus(bool newStatus)
 	this->status = newStatus;
 }
 
-void Instrument::SetColor(string newColor)
+void Instrument::SetColor(CString newColor)
 {
 	this->color = newColor;
 }

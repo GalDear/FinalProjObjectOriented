@@ -7,7 +7,7 @@ using namespace std;
 class Plane :public Instrument {
 public:
 	Plane() {};
-	Plane(Date, string , long , bool , int , int );
+	Plane(Date, CString, long , bool , int , int );
 
 	Date GetTestDate();
 

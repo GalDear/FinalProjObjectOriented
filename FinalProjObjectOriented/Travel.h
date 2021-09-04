@@ -23,7 +23,7 @@ public:
 
 	const Location getSource();
 	const Location getDestination();
-	const Instrument getInstrument();
+	Instrument getInstrument();
 	list<seat> getReservedSeats();
 	//const Date getDeparture();
 

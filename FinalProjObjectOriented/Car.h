@@ -7,16 +7,16 @@ using namespace std;
 class Car :public Instrument {
 public:
 	Car() {};
-	Car(Date, string, bool, string , long , bool , int , int );
+	Car(Date, CString, bool, CString, long , bool , int , int );
 	
 	Date GetDate();
-	string GetTypeOfFuel();
+	CString GetTypeOfFuel();
 
 	void SetDate(Date);
-	void SetTypeOfFuel(string);
+	void SetTypeOfFuel(CString);
 
 private:
 	Date testDate;
-	string typeOfFuel;
-	const string gear;
+	CString typeOfFuel;
+	const CString gear;
 };

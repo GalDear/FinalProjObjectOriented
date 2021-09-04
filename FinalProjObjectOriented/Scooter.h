@@ -7,7 +7,7 @@ using namespace std;
 class Scooter :public Instrument {
 public:
 	Scooter() {};
-	Scooter(bool, string , long , bool , int , int );
+	Scooter(bool, CString, long , bool , int , int );
 
 	bool GetHelmet();
 

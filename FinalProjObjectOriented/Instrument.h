@@ -32,26 +32,26 @@ using namespace std;
 class Instrument {
 public:
 	Instrument();
-	Instrument(string , long ,bool ,int ,int, int);
+	Instrument(CString, long ,bool ,int ,int, int);
 
 	// Gets
 	long GetInstrumentID();
-	string GetType();
+	CString GetType();
 	int GetSpeedLimit();
 	Date GetDateOfStart();
 	bool GetStatus();
 	list <seat> GetSeats();
 	int GetYearOfCreate();
 	int GetKilometers();
-	string GetManufacturer();
-	string GetColor();
+	CString GetManufacturer();
+	CString GetColor();
 	int getNumOfSeats();
 	double getPrice();
 
 	// Sets
 	void SetSpeedLimit(int newSpeedLimit);
 	void SetStatus(bool newStatus);
-	void SetColor(string newColor);
+	void SetColor(CString newColor);
 	void SetSeats(int, int);
 	void addKilometers(int);
 	void setPrice(double);
@@ -60,7 +60,7 @@ public:
 	friend bool operator==(const Instrument&, const Instrument&);
 
 private:
-	string type;
+	CString type;
 	long InstrumentID;
 	int speedLimit;				// speed limit of the instrument
 	Date DateOfStart;
@@ -69,7 +69,7 @@ private:
 	list <seat> seats;
 	int yearOfCreate;
 	int kilometers;// how much kilometers the instrument can do
-	string manufacturer;		
-	string color;
+	CString manufacturer;
+	CString color;
 	double price;
 };

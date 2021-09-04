@@ -6,7 +6,7 @@ using namespace std;
 class Bus : public Instrument {
 public:
 	Bus() {};
-	Bus(int, string type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument);
+	Bus(int, CString type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument);
 
 	int GetLineNumber();
 

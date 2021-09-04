@@ -95,6 +95,13 @@ void CFinalProjObjectOrientedDlg::updateTopResult(Travel t)
 	
 }
 
+void CFinalProjObjectOrientedDlg::updateResultLabel()
+{
+	list<Travel>::iterator t_iter = topResult.begin();
+	CString s = t_iter->getInstrument().GetType();
+	res1.SetWindowTextW(s);
+}
+
 void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
@@ -105,6 +112,7 @@ void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, TXT_ID, id_box);
 	DDX_Control(pDX, IDC_BUTTON1, createUser_btn);
 
+	DDX_Control(pDX, TXT_RES1, res1);
 }
 
 BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
@@ -119,7 +127,6 @@ BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
 	ON_BN_CLICKED(BTN_RES1, &CFinalProjObjectOrientedDlg::OnBnClickedRes1)
 	ON_BN_CLICKED(BTN_RES3, &CFinalProjObjectOrientedDlg::OnBnClickedRes3)
 	ON_BN_CLICKED(BTN_RES2, &CFinalProjObjectOrientedDlg::OnBnClickedRes2)
-
 END_MESSAGE_MAP()
 
 
@@ -194,9 +201,9 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	for (int i = 0; i < 9; i++)
 		stationsForRail.push_front(trainArr[i]);
 
-	Bus b1(18, "Bus", 10, true, 2015, 100000);
-	Bus b2(365, "Bus", 11, true, 2018, 80000);
-	Bus b3(95, "Bus", 12, true, 2016, 180000);
+	Bus b1(18, L"Bus", 10, true, 2015, 100000);
+	Bus b2(365, L"Bus", 11, true, 2018, 80000);
+	Bus b3(95, L"Bus", 12, true, 2016, 180000);
 	Eged.addAvailableInstrument(b1);
 	Eged.addAvailableInstrument(b2);
 	Eged.addAvailableInstrument(b3);
@@ -204,9 +211,9 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Eged.setStations(stationsForBus);
 	companyList.push_front(&Eged);
 
-	Bus b4(1, "Bus", 13, true, 2020, 30000);
-	Bus b5(900, "Bus", 14, true, 2019, 64500);
-	Bus b6(450, "Bus", 15, true, 2016, 122000);
+	Bus b4(1, L"Bus", 13, true, 2020, 30000);
+	Bus b5(900, L"Bus", 14, true, 2019, 64500);
+	Bus b6(450, L"Bus", 15, true, 2016, 122000);
 	Metropolin.addAvailableInstrument(b4);
 	Metropolin.addAvailableInstrument(b5);
 	Metropolin.addAvailableInstrument(b6);
@@ -214,53 +221,53 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Metropolin.setStations(stationsForBus);
 	companyList.push_front(&Metropolin);
 
-	Plane p1(Date(16, 4, 2021), "Plane", 20, true, 2020, 30000);
-	Plane p2(Date(28, 8, 2021), "Plane", 21, true, 2021, 500500);
+	Plane p1(Date(16, 4, 2021), L"Plane", 20, true, 2020, 30000);
+	Plane p2(Date(28, 8, 2021), L"Plane", 21, true, 2021, 500500);
 	Elal.addAvailableInstrument(p1);
 	Elal.addAvailableInstrument(p2);
 
 	Elal.setStations(stationsForFly);
 	companyList.push_front(&Elal);
 
-	Plane p3(Date(1, 5, 2021), "Plane", 22, true, 2021, 10000);
-	Plane p4(Date(1, 9, 2021), "Plane", 23, true, 2019, 475900);
+	Plane p3(Date(1, 5, 2021), L"Plane", 22, true, 2021, 10000);
+	Plane p4(Date(1, 9, 2021), L"Plane", 23, true, 2019, 475900);
 	Arkia.addAvailableInstrument(p3);
 	Arkia.addAvailableInstrument(p4);
 
 	Arkia.setStations(stationsForFly);
 	companyList.push_front(&Arkia);
 
-	Train t1(Date(6, 1, 2021), "Electric", "Train", 30, true, 2021, 106000);
-	Train t2(Date(20, 5, 2021), "Fuel", "Train", 31, true, 2020, 475900);
+	Train t1(Date(6, 1, 2021), L"Electric", L"Train", 30, true, 2021, 106000);
+	Train t2(Date(20, 5, 2021), L"Fuel", L"Train", 31, true, 2020, 475900);
 	IsraelRail.addAvailableInstrument(t1);
 	IsraelRail.addAvailableInstrument(t2);
 
 	IsraelRail.setStations(stationsForRail);
 	companyList.push_front(&IsraelRail);
 
-	Car c1(Date(6, 8, 2021), "Electric", true, "Car", 40, true, 2021, 8000);
-	Car c2(Date(20, 5, 2021), "Fuel", false, "Car", 41, true, 2021, 15000);
+	Car c1(Date(6, 8, 2021), L"Electric", true, L"Car", 40, true, 2021, 8000);
+	Car c2(Date(20, 5, 2021), L"Fuel", false, L"Car", 41, true, 2021, 15000);
 	ShlomoSixt.addAvailableInstrument(c1);
 	ShlomoSixt.addAvailableInstrument(c2);
 
 	companyList.push_front(&ShlomoSixt);
 
-	Car c3(Date(25, 3, 2021), "Electric", true, "Car", 42, true, 2021, 8000);
-	Car c4(Date(1, 7, 2021), "Fuel", false, "Car", 43, true, 2021, 19050);
+	Car c3(Date(25, 3, 2021), L"Electric", true, L"Car", 42, true, 2021, 8000);
+	Car c4(Date(1, 7, 2021), L"Fuel", false, L"Car", 43, true, 2021, 19050);
 	Eldan.addAvailableInstrument(c3);
 	Eldan.addAvailableInstrument(c4);
 
 	companyList.push_front(&Eldan);
 
-	Scooter s1(true, "Scooter", 50, true, 2021, 700);
-	Scooter s2(true, "Scooter", 51, true, 2021, 999);
+	Scooter s1(true, L"Scooter", 50, true, 2021, 700);
+	Scooter s2(true, L"Scooter", 51, true, 2021, 999);
 	Bird.addAvailableInstrument(s1);
 	Bird.addAvailableInstrument(s2);
 
 	companyList.push_front(&Bird);
 
-	Scooter s3(true, "Scooter", 52, true, 2021, 555);
-	Scooter s4(false, "Scooter", 53, true, 2021, 780);
+	Scooter s3(true, L"Scooter", 52, true, 2021, 555);
+	Scooter s4(false, L"Scooter", 53, true, 2021, 780);
 	Wind.addAvailableInstrument(s3);
 	Wind.addAvailableInstrument(s4);
 
@@ -392,6 +399,7 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 			}
 				
 		}
+		updateResultLabel();
 		
 	}
 
@@ -488,8 +496,6 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes4()
 {
 	// TODO: Add your control notification handler code here
 }
-
-
 
 
 

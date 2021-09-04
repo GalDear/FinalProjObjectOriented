@@ -12,6 +12,7 @@ class CFinalProjObjectOrientedDlg : public CDialogEx
 public:
 	CFinalProjObjectOrientedDlg(CWnd* pParent = nullptr);	// standard constructor
 	void updateTopResult(Travel);
+	void updateResultLabel();
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -58,9 +59,6 @@ public:
 	CEdit id_box;
 	CButton createUser_btn;
 	afx_msg void OnBnClickedButton1();
-	CStatic pic_res1;
-	CStatic pic_res2;
-	CStatic pic_res3;
 	afx_msg void OnStnClicked1();
 	afx_msg void OnStnClickedPic2();
 	afx_msg void OnEnChangeMail();
@@ -83,4 +81,6 @@ private:
 	CarCompany Eldan;
 	ScooterCompany Bird;
 	ScooterCompany Wind;
+public:
+	CStatic res1;
 };

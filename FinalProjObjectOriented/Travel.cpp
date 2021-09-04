@@ -28,7 +28,7 @@ const Location Travel::getDestination()
 	return this->destination;
 }
 
-const Instrument Travel::getInstrument()
+Instrument Travel::getInstrument()
 {
 	return this->instrument;
 }

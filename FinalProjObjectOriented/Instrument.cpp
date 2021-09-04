@@ -76,6 +76,11 @@ double Instrument::getPrice()
 	return this->price;
 }
 
+CString Instrument::GetOwner()
+{
+	return this->company;
+}
+
 void Instrument::SetSpeedLimit(int newSpeedLimit)
 {
 	this->speedLimit = newSpeedLimit;
@@ -103,6 +108,12 @@ void Instrument::SetSeats(int rows, int cols)
 			this->seats.push_front(s);
 		}
 	}
+}
+
+
+void Instrument::SetOwner(CString s)
+{
+	this->company = s;
 }
 void Instrument::addKilometers(int km)
 {

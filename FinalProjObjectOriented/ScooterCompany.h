@@ -4,8 +4,8 @@
 class ScooterCompany : public TransportCompany {
 public:
 	ScooterCompany() {};
-	ScooterCompany(string typeOfTransportation, double pricePerKM, string BusinessName, long BusinessNumber, int YearOfEstablishment,
-		string BusinessMail = NULL, string BusinessPhoneNumber = NULL, int Rating = 0);
+	ScooterCompany(CString typeOfTransportation, double pricePerKM, CString BusinessName, long BusinessNumber, int YearOfEstablishment,
+		CString BusinessMail = NULL, CString BusinessPhoneNumber = NULL, int Rating = 0);
 
 	double Discount();
 };

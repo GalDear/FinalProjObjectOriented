@@ -53,15 +53,15 @@ END_MESSAGE_MAP()
 
 
 CFinalProjObjectOrientedDlg::CFinalProjObjectOrientedDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_FINALPROJOBJECTORIENTED_DIALOG, pParent), Eged(stationsForBus, "Bus", 0.2, "Eged", 1, 1948, "Eged@support.com", "039142237", 8),
-	Metropolin(stationsForBus, "Bus", 0.17, "Metropolin", 2, 1970, "Metropolin@support.com", "0732634938", 7),
-	Elal(stationsForFly, "Plane", 0.5, "Elal", 3, 1949, "Elal@support.com", "039771111", 8),
-	Arkia(stationsForFly, "Plane", 0.48, "Arkia", 4, 1960, "Arkia@support.com", "036902222", 6),
-	IsraelRail(stationsForRail, "Train", 0.3, "IsraelRail", 5, 1935, "IsraelRail@support.com", "086831222", 9),
-	ShlomoSixt("Car", 0.35, "ShlomoSixt", 6, 1990, "ShlomoSixt@support.com", "089191400", 7),
-	Eldan("Car", 0.342, "Eldan", 7, 1993, "Eldan@support.com", "086848333", 8),
-	Bird("Scooter", 1, "Bird", 8, 2018, "Bird@support.com", "035195454", 9),
-	Wind("Scooter", 0.8, "Wind", 9, 2019, "Wind@support.com", "036186543", 8)
+	: CDialogEx(IDD_FINALPROJOBJECTORIENTED_DIALOG, pParent), Eged(stationsForBus, L"Bus", 0.2, L"Eged", 1, 1948, L"Eged@support.com", L"039142237", 8),
+	Metropolin(stationsForBus, L"Bus", 0.17, L"Metropolin", 2, 1970, L"Metropolin@support.com", L"0732634938", 7),
+	Elal(stationsForFly, L"Plane", 0.5, L"Elal", 3, 1949, L"Elal@support.com", L"039771111", 8),
+	Arkia(stationsForFly, L"Plane", 0.48, L"Arkia", 4, 1960, L"Arkia@support.com", L"036902222", 6),
+	IsraelRail(stationsForRail, L"Train", 0.3, L"IsraelRail", 5, 1935, L"IsraelRail@support.com", L"086831222", 9),
+	ShlomoSixt(L"Car", 0.35, L"ShlomoSixt", 6, 1990, L"ShlomoSixt@support.com", L"089191400", 7),
+	Eldan(L"Car", 0.342, L"Eldan", 7, 1993, L"Eldan@support.com", L"086848333", 8),
+	Bird(L"Scooter", 1, L"Bird", 8, 2018, L"Bird@support.com", L"035195454", 9),
+	Wind(L"Scooter", 0.8, L"Wind", 9, 2019, L"Wind@support.com", L"036186543", 8)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -94,12 +94,29 @@ void CFinalProjObjectOrientedDlg::updateTopResult(Travel t)
 	}
 	
 }
-
+CString CFinalProjObjectOrientedDlg::buildResult(list<Travel>::iterator t_iter)
+{
+	CString time, price;
+	time.Format(_T("%f"), t_iter->getTravelTime());
+	price.Format(_T("%f"), t_iter->getTravelPrice());
+	CString fullResult = L"Source: " + t_iter->getSource().getName() + L" Destination: " + t_iter->getDestination().getName() + L"\nCompany: " +
+		t_iter->getInstrument().GetOwner() + L"\nTravel Time: " + time + L", Travel Price: " + price;
+	return fullResult;
+}
 void CFinalProjObjectOrientedDlg::updateResultLabel()
 {
 	list<Travel>::iterator t_iter = topResult.begin();
-	CString s = t_iter->getInstrument().GetType();
-	res1.SetWindowTextW(s);
+	CString fullResult = buildResult(t_iter);
+	res1.SetWindowTextW(fullResult);
+	std::advance(t_iter, 1);
+	fullResult = buildResult(t_iter);
+	res2.SetWindowTextW(fullResult);
+	std::advance(t_iter, 1);
+	fullResult = buildResult(t_iter);
+	res3.SetWindowTextW(fullResult);
+	std::advance(t_iter, 1);
+	fullResult = buildResult(t_iter);
+	res4.SetWindowTextW(fullResult);
 }
 
 void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
@@ -113,6 +130,9 @@ void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BUTTON1, createUser_btn);
 
 	DDX_Control(pDX, TXT_RES1, res1);
+	DDX_Control(pDX, TXT_RES2, res2);
+	DDX_Control(pDX, TXT_RES3, res3);
+	DDX_Control(pDX, TXT_RES4, res4);
 }
 
 BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
@@ -127,6 +147,7 @@ BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
 	ON_BN_CLICKED(BTN_RES1, &CFinalProjObjectOrientedDlg::OnBnClickedRes1)
 	ON_BN_CLICKED(BTN_RES3, &CFinalProjObjectOrientedDlg::OnBnClickedRes3)
 	ON_BN_CLICKED(BTN_RES2, &CFinalProjObjectOrientedDlg::OnBnClickedRes2)
+	ON_STN_CLICKED(TXT_RES1, &CFinalProjObjectOrientedDlg::OnStnClickedRes1)
 END_MESSAGE_MAP()
 
 
@@ -372,8 +393,8 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 		list<TransportCompany*>::iterator comp_iter;
 		for (comp_iter = this->companyList.begin(); comp_iter != this->companyList.end(); ++comp_iter)
 		{
-			string tType = (*comp_iter)->GetTypeOfTransportation();
-			if (tType == "Plane" || tType == "Train" || tType == "Bus")
+			CString tType = (*comp_iter)->GetTypeOfTransportation();
+			if (tType == L"Plane" || tType == L"Train" || tType == L"Bus")
 			{
 				if ((*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
 				{
@@ -381,7 +402,7 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 					updateTopResult(t);
 				}
 			}
-			if (tType == "Car")
+			if (tType == L"Car")
 			{
 				if (l_source.GetInIsrael() && l_dest.GetInIsrael())
 				{
@@ -391,7 +412,7 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 			}
 			if (l_dest + l_source < 30)
 			{
-				if (tType == "Scooter")
+				if (tType == L"Scooter")
 				{
 					Travel t1(l_source, l_dest, *(*comp_iter)->GetAvailableInstruments().begin());
 					updateTopResult(t1);
@@ -499,3 +520,9 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes4()
 
 
 
+
+
+void CFinalProjObjectOrientedDlg::OnStnClickedRes1()
+{
+	// TODO: Add your control notification handler code here
+}

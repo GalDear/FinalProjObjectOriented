@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Business.h"
 
-Business::Business(const string BusinessName, long BusinessNumber, int YearOfEstablishment, string BusinessMail , string BusinessPhoneNumber , int Rating ) :BusinessName(BusinessName)
+Business::Business(const CString BusinessName, long BusinessNumber, int YearOfEstablishment, CString BusinessMail , CString BusinessPhoneNumber , int Rating ) :BusinessName(BusinessName)
 {
 	this->BusinessNumber = BusinessNumber;
     this->BusinessPhoneNumber = BusinessPhoneNumber;
@@ -14,7 +14,7 @@ Business::~Business()
 {
 }
 
-const string Business::GetBusinessName() const
+const CString Business::GetBusinessName() const
 {
     return this->BusinessName;
 }
@@ -24,12 +24,12 @@ const long Business::GetBusinessNumber() const
     return this->BusinessNumber;
 }
 
-const string Business::GetBusinessPhoneNumber() const 
+const CString Business::GetBusinessPhoneNumber() const
 {
     return this->BusinessPhoneNumber;
 }
 
-const string Business::GetBusinessMail() const
+const CString Business::GetBusinessMail() const
 {
     return this->BusinessMail;
 }
@@ -45,12 +45,12 @@ const int Business::GetRating() const
 }
 
 
-void Business::SetBusinessPhoneNumber(string phoneNumber)
+void Business::SetBusinessPhoneNumber(CString phoneNumber)
 {
     this->BusinessPhoneNumber = phoneNumber;
 }
 
-void Business::SetBusinessMail(string email)
+void Business::SetBusinessMail(CString email)
 {
     this->BusinessMail = email;
 }

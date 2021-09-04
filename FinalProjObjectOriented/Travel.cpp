@@ -18,12 +18,12 @@ Travel::Travel(const Travel &t)
 	this->numOfReservedSeats = t.numOfReservedSeats;
 }
 
-const Location Travel::getSource()
+Location Travel::getSource()
 {
 	return this->source;
 }
 
-const Location Travel::getDestination()
+Location Travel::getDestination()
 {
 	return this->destination;
 }

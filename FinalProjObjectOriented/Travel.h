@@ -21,8 +21,8 @@ public:
 	Travel(const Travel &);
 	~Travel() {};
 
-	const Location getSource();
-	const Location getDestination();
+	Location getSource();
+	Location getDestination();
 	Instrument getInstrument();
 	list<seat> getReservedSeats();
 	//const Date getDeparture();

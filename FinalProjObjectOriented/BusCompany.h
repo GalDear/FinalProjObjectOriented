@@ -9,8 +9,8 @@ private:
 public:
 	BusCompany() :TransportCompany(){};
 	BusCompany(list<Location> stations,
-		string typeOfTransportation, double pricePerKM, string BusinessName, long BusinessNumber, int YearOfEstablishment,
-		string BusinessMail = NULL, string BusinessPhoneNumber = NULL, int Rating = 0);
+		CString typeOfTransportation, double pricePerKM, CString BusinessName, long BusinessNumber, int YearOfEstablishment,
+		CString BusinessMail = NULL, CString BusinessPhoneNumber = NULL, int Rating = 0);
 
 	int GetListSize();
 

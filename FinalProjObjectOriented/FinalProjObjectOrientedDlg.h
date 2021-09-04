@@ -13,6 +13,7 @@ public:
 	CFinalProjObjectOrientedDlg(CWnd* pParent = nullptr);	// standard constructor
 	void updateTopResult(Travel);
 	void updateResultLabel();
+	CString buildResult(list<Travel>::iterator);
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -83,4 +84,8 @@ private:
 	ScooterCompany Wind;
 public:
 	CStatic res1;
+	afx_msg void OnStnClickedRes1();
+	CStatic res2;
+	CStatic res3;
+	CStatic res4;
 };

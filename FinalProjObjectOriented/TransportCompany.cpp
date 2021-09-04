@@ -7,9 +7,9 @@ TransportCompany::TransportCompany():price(0)
 {
 }
 
-TransportCompany::TransportCompany(string typeOfTransportation, double pricePerKM
-	,string BusinessName, long BusinessNumber, int YearOfEstablishment,
-	string BusinessMail , string BusinessPhoneNumber , int Rating ) : price(pricePerKM),Business(BusinessName, BusinessNumber, YearOfEstablishment,
+TransportCompany::TransportCompany(CString typeOfTransportation, double pricePerKM
+	, CString BusinessName, long BusinessNumber, int YearOfEstablishment,
+	CString BusinessMail , CString BusinessPhoneNumber , int Rating ) : price(pricePerKM),Business(BusinessName, BusinessNumber, YearOfEstablishment,
 		 BusinessMail, BusinessPhoneNumber , Rating )
 {
 	this->typeOfTransportation = typeOfTransportation;
@@ -23,7 +23,7 @@ TransportCompany::TransportCompany(const TransportCompany &t) : price(t.price), 
 
 
 
-string TransportCompany::GetTypeOfTransportation()
+CString TransportCompany::GetTypeOfTransportation()
 {
 	return this->typeOfTransportation;
 }
@@ -48,7 +48,7 @@ int TransportCompany::GetPrice()
 	return this->price;
 }
 
-void TransportCompany::SetTypeOfTransportation(string typeOfTransportation)
+void TransportCompany::SetTypeOfTransportation(CString typeOfTransportation)
 {
 	this->typeOfTransportation = typeOfTransportation;
 }
@@ -57,6 +57,7 @@ void TransportCompany::SetTypeOfTransportation(string typeOfTransportation)
 void TransportCompany::addAvailableInstrument(Instrument i)
 {
 	i.setPrice(this->price);
+	i.SetOwner(this->GetBusinessName());
 	this->availableInstruments.push_front(i);
 }
 

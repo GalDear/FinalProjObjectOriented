@@ -11,31 +11,31 @@ using namespace std;
 class Business {
 public:
 	Business() {};
-	Business(string BusinessName, long BusinessNumber,int YearOfEstablishment,
-		string BusinessMail = NULL, string BusinessPhoneNumber = 0 ,int Rating = 0);
+	Business(CString BusinessName, long BusinessNumber,int YearOfEstablishment,
+		CString BusinessMail = NULL, CString BusinessPhoneNumber = 0 ,int Rating = 0);
 	~Business();
 
 	
-	const string GetBusinessName() const;
+	const CString GetBusinessName() const;
 	const long GetBusinessNumber() const;
-	const string GetBusinessPhoneNumber() const;
-	const string GetBusinessMail() const;
+	const CString GetBusinessPhoneNumber() const;
+	const CString GetBusinessMail() const;
 	const int GetYearOfEstablishment() const;
 	const int GetRating() const;
 
 	
-	void SetBusinessPhoneNumber(string phoneNumber);
-	void SetBusinessMail(string email);
+	void SetBusinessPhoneNumber(CString phoneNumber);
+	void SetBusinessMail(CString email);
 	void SetYearOfEstablishment(int number);
 	void SetRating(int rate);
 
 	virtual double Discount() = 0;
 
 private:
-	const string BusinessName;
+	const CString BusinessName;
 	long BusinessNumber;
-	string BusinessPhoneNumber;
-	string BusinessMail;
+	CString BusinessPhoneNumber;
+	CString BusinessMail;
 	int YearOfEstablishment;
 	int Rating;						// 1-10 stars
 

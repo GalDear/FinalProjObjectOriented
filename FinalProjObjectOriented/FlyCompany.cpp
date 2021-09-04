@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "FlyCompany.h"
 
-FlyCompany::FlyCompany( list<Location> stations, string typeOfTransportation, double pricePerKM, string BusinessName, long BusinessNumber, int YearOfEstablishment
-	, string BusinessMail, string BusinessPhoneNumber, int Rating) :TransportCompany(typeOfTransportation, pricePerKM, BusinessName, BusinessNumber, YearOfEstablishment,
+FlyCompany::FlyCompany( list<Location> stations, CString typeOfTransportation, double pricePerKM, CString BusinessName, long BusinessNumber, int YearOfEstablishment
+	, CString BusinessMail, CString BusinessPhoneNumber, int Rating) :TransportCompany(typeOfTransportation, pricePerKM, BusinessName, BusinessNumber, YearOfEstablishment,
 		BusinessMail, BusinessPhoneNumber, Rating)
 {
 	this->stations = stations;
@@ -37,7 +37,7 @@ void FlyCompany::AddVipClient(Client c)
 
 void FlyCompany::RemoveVipClient(Client c)
 {
-	//this->VipClients.remove(c);
+	this->VipClients.remove(c);
 }
 
 void FlyCompany::AddLocation(Location city)

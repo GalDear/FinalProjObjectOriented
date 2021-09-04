@@ -3,8 +3,8 @@
 
 
 TrainCompany::TrainCompany(list<Location> stations,
-	string typeOfTransportation, double pricePerKM, string BusinessName, long BusinessNumber, int YearOfEstablishment,
-	string BusinessMail, string BusinessPhoneNumber, int Rating) :TransportCompany(typeOfTransportation, pricePerKM, BusinessName, BusinessNumber, YearOfEstablishment,
+	CString typeOfTransportation, double pricePerKM, CString BusinessName, long BusinessNumber, int YearOfEstablishment,
+	CString BusinessMail, CString BusinessPhoneNumber, int Rating) :TransportCompany(typeOfTransportation, pricePerKM, BusinessName, BusinessNumber, YearOfEstablishment,
 		BusinessMail, BusinessPhoneNumber, Rating)
 {
 	this->stations = stations;

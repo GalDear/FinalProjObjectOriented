@@ -5,7 +5,7 @@
 
 class TransportCompany :public Business {
 private:
-	string typeOfTransportation;				// Rent, transportation, train, fly..
+	CString typeOfTransportation;				// Rent, transportation, train, fly..
 	list<Instrument> availableInstruments;
 	list<Instrument> unAvailableInstruments;
 	list <Travel> availableTravel;
@@ -13,22 +13,23 @@ private:
 
 public:
 	TransportCompany();
-	TransportCompany(string typeOfTransportation,double pricePerKM, string BusinessName, long BusinessNumber, int YearOfEstablishment,
-		string BusinessMail = NULL, string BusinessPhoneNumber = 0, int Rating = 0);
+	TransportCompany(CString typeOfTransportation,double pricePerKM, CString BusinessName, long BusinessNumber, int YearOfEstablishment,
+		CString BusinessMail = NULL, CString BusinessPhoneNumber = 0, int Rating = 0);
 	TransportCompany(const TransportCompany&);
 
 
-	string GetTypeOfTransportation();
+	CString GetTypeOfTransportation();
 	list<Instrument> GetAvailableInstruments();
 	list<Instrument> GetNotAvailableInstruments();
 	list <Travel> GetArrayOfAvailableTravels();
 	int GetPrice();
 	
 
-	void SetTypeOfTransportation(string);
+	void SetTypeOfTransportation(CString);
 	void addAvailableInstrument(Instrument);
 	void changeInstrumentStatus(Instrument);
 	void addTravel(Travel);
+
 
 	double calcPrice(Location l1, Location l2);
 

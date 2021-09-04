@@ -47,6 +47,7 @@ public:
 	CString GetColor();
 	int getNumOfSeats();
 	double getPrice();
+	CString GetOwner();
 
 	// Sets
 	void SetSpeedLimit(int newSpeedLimit);
@@ -55,7 +56,7 @@ public:
 	void SetSeats(int, int);
 	void addKilometers(int);
 	void setPrice(double);
-
+	void SetOwner(CString);
 
 	friend bool operator==(const Instrument&, const Instrument&);
 
@@ -72,4 +73,5 @@ private:
 	CString manufacturer;
 	CString color;
 	double price;
+	CString company;
 };

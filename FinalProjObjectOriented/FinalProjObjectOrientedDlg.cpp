@@ -104,12 +104,7 @@ void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, TXT_MAIL, email_box);
 	DDX_Control(pDX, TXT_ID, id_box);
 	DDX_Control(pDX, IDC_BUTTON1, createUser_btn);
-	DDX_Control(pDX, PIC_1, pic_res1);
-	DDX_Control(pDX, PIC2, pic_res2);
-	DDX_Control(pDX, PIC3, pic_res3);
-	DDX_Control(pDX, BTN_RES1, selectRes1);
-	DDX_Control(pDX, BTN_RES2, selectRes2);
-	DDX_Control(pDX, BTN_RES3, selectRes3);
+
 }
 
 BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
@@ -120,8 +115,6 @@ BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
 	ON_CBN_SELCHANGE(DD_source, &CFinalProjObjectOrientedDlg::OnCbnSelchangesource)
 	ON_BN_CLICKED(IDOK, &CFinalProjObjectOrientedDlg::OnBnClickedOk)
 	ON_BN_CLICKED(IDC_BUTTON1, &CFinalProjObjectOrientedDlg::OnBnClickedButton1)
-	ON_STN_CLICKED(PIC_1, &CFinalProjObjectOrientedDlg::OnStnClicked1)
-	ON_STN_CLICKED(PIC2, &CFinalProjObjectOrientedDlg::OnStnClickedPic2)
 	ON_EN_CHANGE(TXT_MAIL, &CFinalProjObjectOrientedDlg::OnEnChangeMail)
 	ON_BN_CLICKED(BTN_RES1, &CFinalProjObjectOrientedDlg::OnBnClickedRes1)
 	ON_BN_CLICKED(BTN_RES3, &CFinalProjObjectOrientedDlg::OnBnClickedRes3)

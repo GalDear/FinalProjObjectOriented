@@ -22,6 +22,7 @@ using namespace std;
 
 	public:
 		Client(CString, CString, CString, bool); // constructor
+		Client() { };
 		~Client() { };
 
 		const CString getName();
@@ -32,6 +33,7 @@ using namespace std;
 
 		void appendTravel(Travel);
 		void setDiscount(bool);
+		void addTrravel(Travel);
 
 		friend bool operator== (const Client&, const Client&);
 	};

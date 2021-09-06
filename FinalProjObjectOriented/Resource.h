@@ -23,6 +23,9 @@
 #define TXT_RES1                        1014
 #define TXT_RES2                        1015
 #define TXT_RES3                        1016
+#define BTN_RES1						1017
+#define BTN_RES2						1018
+#define BTN_RES3						1019
 
 // Next default values for new objects
 // 

@@ -25,6 +25,7 @@ public:
 	const int getMonth() const { return month; };
 	const int getYear() const { return year; };
 	friend bool operator==(const Date&, const Date&);
+
 };
 
 using namespace std;
@@ -55,6 +56,9 @@ public:
 	void addKilometers(int);
 
 	friend bool operator==(const Instrument&, const Instrument&);
+
+	//friend ostream& operator<<(ostream& os, Instrument &t);
+	//friend istream& operator>>(istream& is, Instrument &t);
 
 private:
 	string type;

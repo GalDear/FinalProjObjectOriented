@@ -44,6 +44,11 @@ void Client::setDiscount(bool b)
 	this->discount = b;
 }
 
+void Client::addTrravel(Travel t)
+{
+	this->travels.push_front(t);
+}
+
 bool operator== (const Client& l1, const Client&l2)
 {
 	if (l1.email == l2.email && l1.id == l2.id && l1.email == l2.email)

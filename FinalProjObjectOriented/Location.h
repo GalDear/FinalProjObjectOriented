@@ -31,6 +31,8 @@ public:
 	friend bool operator== (const Location&, const Location&);
 	friend double operator+(const Location&, const Location&);
 
+	friend ostream& operator<<(ostream& os,Location &t);
+	friend istream& operator>>(istream& is, Location &t);
 
 };
 

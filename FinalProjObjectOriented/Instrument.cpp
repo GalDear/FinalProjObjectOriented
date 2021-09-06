@@ -148,3 +148,35 @@ bool operator==(const Instrument &i1, const Instrument &i2)
 	return false;
 }
 
+//ostream & operator<<(ostream & os, Instrument & t)
+//{
+//	os << t.GetType;
+//	os<< t.GetInstrumentID;
+//	os<< t.GetSpeedLimit;				
+//	os << t.GetDateOfStart;
+//	os << t.GetStatus;
+//	os << t.numOberfPassengers;
+//	os << t.GetSeats;
+//	os << t.GetYearOfCreate;
+//	os << t.GetKilometers;
+//	os << t.GetManufacturer;
+//	os << t.GetColor;
+//	return os;
+//}
+//
+//istream & operator>>(istream & is, Instrument & t)
+//{
+//	is.getline(t.type, sizeof(t.GetType()));
+//	is >> t.InstrumentID;
+//	is >> t.GetSpeedLimit;
+//	is >> t.GetDateOfStart;
+//	is >> t.GetStatus;
+//	is >> t.numOberfPassengers;
+//	is >> t.GetSeats;
+//	is >> t.GetYearOfCreate;
+//	is >> t.GetKilometers;
+//	is >> t.GetManufacturer;
+//	is >> t.GetColor;
+//	return is;
+//}
+

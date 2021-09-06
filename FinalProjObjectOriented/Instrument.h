@@ -25,6 +25,7 @@ public:
 	const int getMonth() const { return month; };
 	const int getYear() const { return year; };
 	friend bool operator==(const Date&, const Date&);
+
 };
 
 using namespace std;
@@ -63,6 +64,7 @@ public:
 
 	virtual CString GetTypeOfGear() { return L""; };
 	virtual CString GetTypeOfFuel() { return L""; };
+
 
 private:
 	CString type;

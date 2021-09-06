@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "Travel.h"
 
+
+IMPLEMENT_SERIAL(Travel, CObject,1)
+
 Travel::Travel(Location source, Location destination, Instrument *instrument)
 {
 	this->source = source;
@@ -10,6 +13,7 @@ Travel::Travel(Location source, Location destination, Instrument *instrument)
 	numOfReservedSeats = 0;
 }
 
+
 Travel::Travel(const Travel &t)
 {
 	this->source = t.source;
@@ -18,7 +22,30 @@ Travel::Travel(const Travel &t)
 	this->numOfReservedSeats = t.numOfReservedSeats;
 }
 
-Location Travel::getSource()
+
+void Travel::Serialize(CArchive &ar)
+{
+	CObject::Serialize(ar);
+	if (ar.IsStoring())
+	{
+		ar << &source;
+		ar << &destination;
+		ar << &instrument;
+		ar << numOfReservedSeats;
+	}
+	else 
+	{
+		ar.Read(&source, sizeof(&source));
+		ar.Read(&destination, sizeof(&destination));
+		ar.Read(&instrument, sizeof(&instrument));
+		/*ar >> &source;
+		ar >> destination;
+		ar >> instrument;*/
+		ar >> numOfReservedSeats;
+	}
+}
+
+const Location Travel::getSource()
 {
 	return this->source;
 }
@@ -72,3 +99,19 @@ bool operator==(const Travel &t1, const Travel &t2)
 		return true;
 	return false;
 }
+
+//ostream & operator<<(ostream & os, Travel & t)
+//{
+//	os << t.getSource;
+//	os << t.getDestination;
+//	os << t.getInstrument;
+//	os << t.numOfReservedSeats;
+//}
+//
+//istream & operator>>(istream & is, Travel & t)
+//{
+//	is >> t.source;
+//	is >> t.destination;
+//	is >> t.instrument;
+//	is >> t.numOfReservedSeats;
+//}

@@ -498,7 +498,43 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 	list<Instrument> available_inst = (*t_iter)->GetAvailableInstruments();
 	list<Instrument>::iterator i_iter = available_inst.begin();
 	std::advance(i_iter, 1);
+<<<<<<< HEAD
 	Travel t(l_source, l_dest, *i_iter);*/
+=======
+	Travel t(l_source, l_dest, *i_iter);
+
+	Client c;
+	std::find(clientList.begin(), clientList.end(), c);
+
+
+	CString filename;
+	email_box.GetWindowText(filename);
+	CFile file(filename, CFile::modeCreate | CFile::modeWrite);
+	CArchive ar(&file, CArchive::store);
+	t.Serialize(ar);
+	ar.Close();
+	file.Close();
+
+	//CArchive ar(&file, CArchive::load);  // It should load check it tomorrow
+
+	
+
+	
+
+	/*bool found = (std::find(clientList.begin(), clientList.end(), c) != clientList.end());
+	if (!found)
+		AfxMessageBox(_T("The is no client data, please fill your details"),  BTN_RES1 | MB_ICONSTOP);
+	else
+	{
+		c.addTrravel(t);
+		AfxMessageBox(_T("Travel saved!"), BTN_RES1 | MB_ICONSTOP);
+	}*/
+
+
+
+
+
+>>>>>>> 94f8ee842282551de48902be2396d9ebd8766c77
 }
 
 

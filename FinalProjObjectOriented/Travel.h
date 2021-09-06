@@ -1,15 +1,20 @@
 #pragma once
 #include "Location.h"
 #include "Instrument.h"
+#include <fstream>
+
+
 
 /*
 	Travel from one location to another.
 	Will contain the travel instrument, array of the reserved seats and departure Date.
 */
 
-class Travel
+class Travel : public CObject
 {
 private:
+	
+	
 	Location source;
 	Location destination;
 	Instrument *instrument;
@@ -18,8 +23,13 @@ private:
 
 public:
 	Travel(Location, Location, Instrument*);
+	DECLARE_SERIAL(Travel)
 	Travel(const Travel &);
+	Travel() {};
 	~Travel() {};
+	
+
+	void Serialize(CArchive&);
 
 	Location getSource();
 	Location getDestination();
@@ -35,6 +45,9 @@ public:
 	//void UpDateDate(Date);
 
 	friend bool operator==(const Travel&, const Travel&);
+
+	/*friend ostream& operator<<(ostream& os, Travel &t);
+	friend istream& operator>>(istream& is, Travel &t);*/
 
 };
 

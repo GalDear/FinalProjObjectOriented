@@ -59,15 +59,16 @@ void createClientDLG::OnBnClickedOk()
 	name_box.GetWindowText(this->name);
 	email_box.GetWindowText(this->email);
 	id_box.GetWindowText(this->id);
-
+	/*
 	CString Discount;
 	int nSel = DiscountChoice.GetCurSel();
 	DiscountChoice.GetLBText(nSel, Discount);
 	if (Discount == "Soldier" || Discount == "Student" || Discount == "Senior citizen")
 		this->hasDiscount = true;
 	else
-		this->hasDiscount = false;
-	//this->hasDiscount = is_discount_check.GetCheck();
+		this->hasDiscount = false;*/
+	this->hasDiscount = is_discount_check.GetCheck();
+
 	CDialogEx::OnOK();
 }
 

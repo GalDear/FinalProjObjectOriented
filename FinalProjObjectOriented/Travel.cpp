@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Travel.h"
 
-Travel::Travel(Location source, Location destination, Instrument instrument)
+Travel::Travel(Location source, Location destination, Instrument *instrument)
 {
 	this->source = source;
 	this->destination = destination;
@@ -28,24 +28,24 @@ Location Travel::getDestination()
 	return this->destination;
 }
 
-Instrument Travel::getInstrument()
+Instrument *Travel::getInstrument()
 {
 	return this->instrument;
 }
 
 list<seat> Travel::getReservedSeats()
 {
-	return this->instrument.GetSeats();
+	return this->instrument->GetSeats();
 }
 
 double Travel::getTravelTime()
 {
-	return ((this->source + this->destination) / this->instrument.GetSpeedLimit());
+	return ((this->source + this->destination) / this->instrument->GetSpeedLimit());
 }
 
 double Travel::getTravelPrice()
 {
-	return ((this->destination + this->source)*this->instrument.getPrice());
+	return ((this->destination + this->source)*this->instrument->getPrice());
 }
 
 //const Date Travel::getDeparture()
@@ -53,9 +53,9 @@ double Travel::getTravelPrice()
 //	return this->departure;
 //}
 
-void Travel::changeInstrument(Instrument i)
+void Travel::changeInstrument(Instrument *i)
 {
-	this->instrument = i;
+	*this->instrument = *i;
 }
 
 void Travel::upDateReservedSeat(seat s)

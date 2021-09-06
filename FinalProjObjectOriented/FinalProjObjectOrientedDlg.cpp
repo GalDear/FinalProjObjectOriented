@@ -96,11 +96,16 @@ void CFinalProjObjectOrientedDlg::updateTopResult(Travel t)
 }
 CString CFinalProjObjectOrientedDlg::buildResult(list<Travel>::iterator t_iter)
 {
-	CString time, price;
-	time.Format(_T("%f"), t_iter->getTravelTime());
-	price.Format(_T("%f"), t_iter->getTravelPrice());
+	CString time, price, id, gear, type;
+	time.Format(_T("%.2f"), t_iter->getTravelTime());
+	price.Format(_T("%.2f"), t_iter->getTravelPrice());
+	id.Format(_T("%d"), t_iter->getInstrument()->GetInstrumentID());
+	Instrument *i = t_iter->getInstrument();
+	gear = i->GetTypeOfGear();
+	type = i->GetTypeOfFuel();
 	CString fullResult = L"Source: " + t_iter->getSource().getName() + L" Destination: " + t_iter->getDestination().getName() + L"\nCompany: " +
-		t_iter->getInstrument().GetOwner() + L"\nTravel Time: " + time + L", Travel Price: " + price;
+		t_iter->getInstrument()->GetOwner() + L" - " + t_iter->getInstrument()->GetType() + L"(" + id + L"), " + gear + L" " + type
+		+L"\nTravel Time: " + time + L", Travel Price: " + price;
 	return fullResult;
 }
 void CFinalProjObjectOrientedDlg::updateResultLabel()
@@ -398,7 +403,8 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 			{
 				if ((*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
 				{
-					Travel t(l_source, l_dest, *(*comp_iter)->GetAvailableInstruments().begin());
+					Instrument i = *(*comp_iter)->GetAvailableInstruments().begin();
+					Travel t(l_source, l_dest, &i);
 					updateTopResult(t);
 				}
 			}
@@ -406,16 +412,18 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 			{
 				if (l_source.GetInIsrael() && l_dest.GetInIsrael())
 				{
-					Travel t1(l_source, l_dest, *(*comp_iter)->GetAvailableInstruments().begin());
-					updateTopResult(t1);
+					Instrument i = *(*comp_iter)->GetAvailableInstruments().begin();
+					Travel t(l_source, l_dest, &i);
+					updateTopResult(t);
 				}
 			}
 			if (l_dest + l_source < 30)
 			{
 				if (tType == L"Scooter")
 				{
-					Travel t1(l_source, l_dest, *(*comp_iter)->GetAvailableInstruments().begin());
-					updateTopResult(t1);
+					Instrument i = *(*comp_iter)->GetAvailableInstruments().begin();
+					Travel t(l_source, l_dest, &i);
+					updateTopResult(t);
 				}
 			}
 				

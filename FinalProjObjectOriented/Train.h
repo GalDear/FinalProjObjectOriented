@@ -11,7 +11,7 @@ public:
 	Train(Date, CString, CString, long , bool , int , int );
 
 	Date GetDate();
-	CString GetType();
+	CString GetTypeOfFuel();
 
 	void SetDate(Date);
 

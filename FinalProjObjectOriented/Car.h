@@ -10,7 +10,8 @@ public:
 	Car(Date, CString, bool, CString, long , bool , int , int );
 	
 	Date GetDate();
-	CString GetTypeOfFuel();
+	CString GetTypeOfFuel() override;
+	CString GetTypeOfGear() override;
 
 	void SetDate(Date);
 	void SetTypeOfFuel(CString);

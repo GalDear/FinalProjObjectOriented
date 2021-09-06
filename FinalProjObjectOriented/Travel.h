@@ -12,25 +12,25 @@ class Travel
 private:
 	Location source;
 	Location destination;
-	Instrument instrument;
+	Instrument *instrument;
 	int numOfReservedSeats;
 	//Date departure;
 
 public:
-	Travel(Location, Location, Instrument);
+	Travel(Location, Location, Instrument*);
 	Travel(const Travel &);
 	~Travel() {};
 
 	Location getSource();
 	Location getDestination();
-	Instrument getInstrument();
+	Instrument *getInstrument();
 	list<seat> getReservedSeats();
 	//const Date getDeparture();
 
 	double getTravelTime();
 	double getTravelPrice();
 
-	void changeInstrument(Instrument);
+	void changeInstrument(Instrument*);
 	void upDateReservedSeat(seat);
 	//void UpDateDate(Date);
 

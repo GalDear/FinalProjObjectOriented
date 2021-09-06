@@ -33,6 +33,7 @@ class Instrument {
 public:
 	Instrument();
 	Instrument(CString, long ,bool ,int ,int, int);
+	Instrument(const Instrument &);
 
 	// Gets
 	long GetInstrumentID();
@@ -59,6 +60,9 @@ public:
 	void SetOwner(CString);
 
 	friend bool operator==(const Instrument&, const Instrument&);
+
+	virtual CString GetTypeOfGear() { return L""; };
+	virtual CString GetTypeOfFuel() { return L""; };
 
 private:
 	CString type;

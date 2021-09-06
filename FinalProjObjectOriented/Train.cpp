@@ -16,7 +16,7 @@ Date Train::GetDate()
 	return this->testDate;
 }
 
-CString Train::GetType()
+CString Train::GetTypeOfFuel()
 {
 	return this->type;
 }

@@ -17,6 +17,11 @@ CString Car::GetTypeOfFuel()
 	return this->typeOfFuel;
 }
 
+CString Car::GetTypeOfGear()
+{
+	return this->gear;
+}
+
 void Car::SetDate(Date d)
 {
 	this->testDate = d;

@@ -16,6 +16,16 @@ Instrument::Instrument(CString type, long InstrumentID, bool availableOrFaulty, 
 	this->speedLimit = speedLimit;
 }
 
+Instrument::Instrument(const Instrument &i)
+{
+	this->type = i.type;
+	this->InstrumentID = i.InstrumentID;
+	this->status = i.status;
+	this->yearOfCreate = i.yearOfCreate;
+	this->kilometers =i. kilometers;
+	this->speedLimit = i.speedLimit;
+}
+
 long Instrument::GetInstrumentID()
 {
 	return this->InstrumentID;

@@ -88,4 +88,5 @@ public:
 	CStatic res2;
 	CStatic res3;
 	CStatic res4;
+	list<CStatic*> resList;
 };

@@ -111,17 +111,26 @@ CString CFinalProjObjectOrientedDlg::buildResult(list<Travel>::iterator t_iter)
 void CFinalProjObjectOrientedDlg::updateResultLabel()
 {
 	list<Travel>::iterator t_iter = topResult.begin();
-	CString fullResult = buildResult(t_iter);
-	res1.SetWindowTextW(fullResult);
-	std::advance(t_iter, 1);
-	fullResult = buildResult(t_iter);
-	res2.SetWindowTextW(fullResult);
+	list<CStatic*>::iterator res_iter;
+	CString fullResult;
+	int count = 1;
+	for (res_iter = resList.begin(); res_iter != resList.end(); ++res_iter)
+	{
+		if (count < topResult.size())
+		{
+			fullResult = buildResult(t_iter);
+			(*res_iter)->SetWindowTextW(fullResult);
+			std::advance(t_iter, 1);
+		}
+		count++;
+	}
+	/*res2.SetWindowTextW(fullResult);
 	std::advance(t_iter, 1);
 	fullResult = buildResult(t_iter);
 	res3.SetWindowTextW(fullResult);
 	std::advance(t_iter, 1);
 	fullResult = buildResult(t_iter);
-	res4.SetWindowTextW(fullResult);
+	res4.SetWindowTextW(fullResult);*/
 }
 
 void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
@@ -206,6 +215,11 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Location busArr[] = { Eilat, QiryatShmona, TA, Holon, Haifa, Jerusalem, RishonLezion,Yeruham, BeerSheva,Herzeliya,Azor,BatYam };
 	Location flyArr[] = { Eilat, TA, Haifa, Paris, Cyprus, Barcelona, Madrid, Thailand };
 	Location trainArr[] = { QiryatShmona, TA, Holon, Haifa, Jerusalem, RishonLezion, BeerSheva,Herzeliya,BatYam };
+
+	resList.push_back(&res1);
+	resList.push_back(&res2);
+	resList.push_back(&res3);
+	resList.push_back(&res4);
 
 	for (int i = 0; i < 12; i++)
 	{
@@ -369,6 +383,7 @@ void CFinalProjObjectOrientedDlg::OnCbnSelchangesource()
 void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 {
 	// TODO: Add your control notification handler code here
+	topResult.clear();
 	CString st_dest;
 	int nSel = dest.GetCurSel();
 	dest.GetLBText(nSel, st_dest);

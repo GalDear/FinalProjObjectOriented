@@ -45,7 +45,7 @@ void Travel::Serialize(CArchive &ar)
 	}
 }
 
-const Location Travel::getSource()
+Location Travel::getSource()
 {
 	return this->source;
 }

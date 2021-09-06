@@ -16,7 +16,7 @@
 #define IDC_EDIT2                       1007
 #define IDC_EDIT3                       1008
 #define IDC_CHECK1                      1009
-#define EB_RES3                         1009
+
 #define IDC_BUTTON1                     1010
 #define PIC_1                           1011
 #define PIC2                            1012
@@ -27,6 +27,9 @@
 #define BTN_RES1						1017
 #define BTN_RES2						1018
 #define BTN_RES3						1019
+#define TXT_RES4						1020
+#define EB_RES3                         1021
+#define BTN_RES4						1022
 
 // Next default values for new objects
 // 

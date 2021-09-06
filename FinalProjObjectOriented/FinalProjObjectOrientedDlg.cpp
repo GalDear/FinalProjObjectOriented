@@ -498,11 +498,9 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 	list<Instrument> available_inst = (*t_iter)->GetAvailableInstruments();
 	list<Instrument>::iterator i_iter = available_inst.begin();
 	std::advance(i_iter, 1);
-<<<<<<< HEAD
-	Travel t(l_source, l_dest, *i_iter);*/
-=======
-	Travel t(l_source, l_dest, *i_iter);
 
+	Travel t(l_source, l_dest, *i_iter);*/
+	list<Travel>::iterator t = topResult.begin();
 	Client c;
 	std::find(clientList.begin(), clientList.end(), c);
 
@@ -511,7 +509,7 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 	email_box.GetWindowText(filename);
 	CFile file(filename, CFile::modeCreate | CFile::modeWrite);
 	CArchive ar(&file, CArchive::store);
-	t.Serialize(ar);
+	t->Serialize(ar);
 	ar.Close();
 	file.Close();
 
@@ -533,8 +531,6 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 
 
 
-
->>>>>>> 94f8ee842282551de48902be2396d9ebd8766c77
 }
 
 

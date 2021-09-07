@@ -28,21 +28,29 @@ void Travel::Serialize(CArchive &ar)
 	CObject::Serialize(ar);
 	if (ar.IsStoring())
 	{
-		ar << &source;
-		ar << &destination;
-		ar << &instrument;
+		ar << source;
+		ar << destination;
+		ar << instrument;
 		ar << numOfReservedSeats;
+		ar << client;
 	}
 	else 
-	{
+	{/*
 		ar.Read(&source, sizeof(&source));
 		ar.Read(&destination, sizeof(&destination));
-		ar.Read(&instrument, sizeof(&instrument));
-		/*ar >> &source;
+		ar.Read(&instrument, sizeof(&instrument));*/
+		ar >> source;
 		ar >> destination;
-		ar >> instrument;*/
+		this->instrument = new Instrument();
+		ar >> *instrument;
 		ar >> numOfReservedSeats;
+		ar >> client;
 	}
+}
+
+void Travel::attachClient(Client c)
+{
+	this->client = c;
 }
 
 Location Travel::getSource()
@@ -60,10 +68,7 @@ Instrument *Travel::getInstrument()
 	return this->instrument;
 }
 
-list<seat> Travel::getReservedSeats()
-{
-	return this->instrument->GetSeats();
-}
+
 
 double Travel::getTravelTime()
 {

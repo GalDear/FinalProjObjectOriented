@@ -51,10 +51,7 @@ bool Instrument::GetStatus()
 	return this->status;
 }
 
-list <seat> Instrument::GetSeats()
-{
-	return this->seats;
-}
+
 
 int Instrument::GetYearOfCreate()
 {
@@ -105,20 +102,7 @@ void Instrument::SetColor(CString newColor)
 {
 	this->color = newColor;
 }
-void Instrument::SetSeats(int rows, int cols)
-{
-	for (int i = 1; i <= rows; i++)
-	{
-		for (int j=1 ; j <= cols; j++)
-		{
-			seat s;
-			s.row = i;
-			s.number = j;
-			s.availability = true;
-			this->seats.push_front(s);
-		}
-	}
-}
+
 
 
 void Instrument::SetOwner(CString s)
@@ -148,35 +132,49 @@ bool operator==(const Instrument &i1, const Instrument &i2)
 	return false;
 }
 
-//ostream & operator<<(ostream & os, Instrument & t)
-//{
-//	os << t.GetType;
-//	os<< t.GetInstrumentID;
-//	os<< t.GetSpeedLimit;				
-//	os << t.GetDateOfStart;
-//	os << t.GetStatus;
-//	os << t.numOberfPassengers;
-//	os << t.GetSeats;
-//	os << t.GetYearOfCreate;
-//	os << t.GetKilometers;
-//	os << t.GetManufacturer;
-//	os << t.GetColor;
-//	return os;
-//}
-//
-//istream & operator>>(istream & is, Instrument & t)
-//{
-//	is.getline(t.type, sizeof(t.GetType()));
-//	is >> t.InstrumentID;
-//	is >> t.GetSpeedLimit;
-//	is >> t.GetDateOfStart;
-//	is >> t.GetStatus;
-//	is >> t.numOberfPassengers;
-//	is >> t.GetSeats;
-//	is >> t.GetYearOfCreate;
-//	is >> t.GetKilometers;
-//	is >> t.GetManufacturer;
-//	is >> t.GetColor;
-//	return is;
-//}
+void operator<<(CArchive & os, Instrument & i)
+{
+
+	os << i.type;
+	os << i.InstrumentID;
+	os << i.status;
+	os << i.yearOfCreate;
+	os << i.kilometers;
+	os << i.speedLimit;
+	/*
+	os << i.price;
+	os << i.speedLimit;
+	os << i.InstrumentID;
+	
+	os << i.DateOfStart;
+	os << i.status;
+	os << i.numOberfPassengers;
+	os << i.yearOfCreate;
+	os << i.kilometers;
+	*/
+}
+
+void operator>>(CArchive & is, Instrument & i)
+{
+
+	is >> i.type;
+	is >> i.InstrumentID;
+	is >> i.status;
+	is >> i.yearOfCreate;
+	is >> i.kilometers;
+	is >> i.speedLimit;
+/*
+	is >> i.price;
+	is >> i.speedLimit;
+	is >> i.InstrumentID;
+	
+	is >> i.DateOfStart;
+	is >> i.status;
+	is >> i.numOberfPassengers;
+	is >> i.yearOfCreate;
+	is >> i.kilometers;
+	*/
+}
+
+
 

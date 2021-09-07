@@ -54,16 +54,14 @@ double operator+(const Location &l1, const Location &l2)
 	return l1.distance + l2.distance;
 }
 
-ostream& operator<<(ostream& os,Location &t)
+void operator<<(CArchive& os,Location &t)
 {
 	os << t.getName() << t.getDistance() << t.GetInIsrael();
-	return os;
 }
 
-//istream & operator>>(istream & is, Location & t)
-//{
-//	is >> t.name;
-//	is >> t.distance;
-//	is >> t.inIsrael;
-//	return is;
-//}
+void operator>>(CArchive & is, Location & t)
+{
+	is >> t.name;
+	is >> t.distance;
+	is >> t.inIsrael;
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include "Location.h"
 #include "Instrument.h"
+#include "Client.h"
 #include <fstream>
 
 
@@ -19,6 +20,7 @@ private:
 	Location destination;
 	Instrument *instrument;
 	int numOfReservedSeats;
+	Client client;
 	//Date departure;
 
 public:
@@ -30,11 +32,11 @@ public:
 	
 
 	void Serialize(CArchive&);
-
+	void attachClient(Client c);
+	
 	Location getSource();
 	Location getDestination();
 	Instrument *getInstrument();
-	list<seat> getReservedSeats();
 	//const Date getDeparture();
 
 	double getTravelTime();

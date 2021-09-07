@@ -108,6 +108,8 @@ CString CFinalProjObjectOrientedDlg::buildResult(list<Travel>::iterator t_iter)
 		+L"\nTravel Time: " + time + L", Travel Price: " + price;
 	return fullResult;
 }
+
+
 void CFinalProjObjectOrientedDlg::updateResultLabel()
 {
 	list<Travel>::iterator t_iter = topResult.begin();
@@ -138,6 +140,7 @@ void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, TXT_RES2, res2);
 	DDX_Control(pDX, TXT_RES3, res3);
 	DDX_Control(pDX, TXT_RES4, res4);
+	DDX_Control(pDX, BTN_LoadRes, LastRes);
 }
 
 BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
@@ -153,6 +156,7 @@ BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
 	ON_BN_CLICKED(BTN_RES3, &CFinalProjObjectOrientedDlg::OnBnClickedRes3)
 	ON_BN_CLICKED(BTN_RES2, &CFinalProjObjectOrientedDlg::OnBnClickedRes2)
 	ON_STN_CLICKED(TXT_RES1, &CFinalProjObjectOrientedDlg::OnStnClickedRes1)
+	ON_BN_CLICKED(BTN_LoadRes, &CFinalProjObjectOrientedDlg::OnBnClickedLoadres)
 END_MESSAGE_MAP()
 
 
@@ -398,6 +402,8 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 		list<TransportCompany*>::iterator comp_iter;
 		for (comp_iter = this->companyList.begin(); comp_iter != this->companyList.end(); ++comp_iter)
 		{
+			if (topResult.size() == 4)
+				break;
 			CString tType = (*comp_iter)->GetTypeOfTransportation();
 			if (tType == L"Plane" || tType == L"Train" || tType == L"Bus")
 			{
@@ -500,22 +506,41 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 	std::advance(i_iter, 1);
 
 	Travel t(l_source, l_dest, *i_iter);*/
+
+	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
+	CString filename,emailName;								
+	if (dlg.DoModal() == IDOK)
+	{
+		//filename = dlg.GetPathName();
+		
+	
+	email_box.GetWindowText(emailName);
+	filename = dlg.GetPathName();
+
 	list<Travel>::iterator t = topResult.begin();
-	Client c;
-	std::find(clientList.begin(), clientList.end(), c);
+	list<Client>::iterator c_iter = clientList.begin();
+	
+	for (c_iter; c_iter != clientList.end(); ++c_iter)			// function to add travel to the customer
+	{
+		if (c_iter->getName() == emailName)
+		{
+			t->attachClient(*c_iter);
+		}
+	}
+	/*
+	if((*c).getTravels().empty())
+		(*c).appendTravel(*t);
+	else {
+		(*c).removeTravel();
+		(*c).appendTravel(*t);
+	}*/
 
-
-	CString filename;
-	email_box.GetWindowText(filename);
 	CFile file(filename, CFile::modeCreate | CFile::modeWrite);
 	CArchive ar(&file, CArchive::store);
 	t->Serialize(ar);
 	ar.Close();
 	file.Close();
-
-	//CArchive ar(&file, CArchive::load);  // It should load check it tomorrow
-
-	
+	}
 
 	
 
@@ -565,4 +590,55 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes4()
 void CFinalProjObjectOrientedDlg::OnStnClickedRes1()
 {
 	// TODO: Add your control notification handler code here
+}
+
+
+void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
+{
+
+	// TODO: Add your control notification handler code here
+	CString filename;							// file name based on user name mail
+	CFileDialog dlg(TRUE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||"));
+	if(dlg.DoModal() == IDOK)
+	{
+	//email_box.GetWindowText(filename);
+	filename = dlg.GetPathName();
+	CFile file(filename, CFile::modeRead);
+	CArchive ar(&file, CArchive::load);
+	//list<Travel>::iterator t;
+	Travel t;
+	t.Serialize(ar);
+	ar.Close();
+	file.Close();
+	Invalidate();
+
+
+
+	/*
+	list<Travel>::iterator t;
+	UpdateData(TRUE);
+
+
+	list<Client>::iterator c_iter = clientList.begin(),c;
+	for (c_iter; c_iter != clientList.end(); ++c_iter)
+	{
+		if (c_iter->getEmail() == filename)
+		{
+			c = c_iter;
+			break;
+		}
+	}
+	list<Travel>::iterator t_iter;
+	t_iter = c->getTravels().begin();
+
+	CString lastResult = buildResult(t_iter);
+	MessageBox(NULL, lastResult);
+	
+
+	//AfxMessageBox(_T((SetWindowTextW(lastResult)), MB_OK | MB_ICONSTOP);
+
+	*/
+	
+
+	}
 }

@@ -29,24 +29,35 @@ const bool Client::getDiscount()
 	return this->discount;
 }
 
-const list<Travel> Client::getTravels()
-{
-	return this->travels;
-}
+// list<Travel> Client::getTravels()
+//{
+//	return this->travels;
+//}
 
-void Client::appendTravel(Travel t)
-{
-	this->travels.push_front(t);
-}
+//void Client::appendTravel(Travel t)
+//{
+//	this->travels.push_back(t);
+//}
 
 void Client::setDiscount(bool b)
 {
 	this->discount = b;
 }
 
-void Client::addTrravel(Travel t)
+//void Client::removeTravel()
+//{
+//	this->travels.pop_front();
+//}
+
+
+void operator<<(CArchive & os, Client & c)
 {
-	this->travels.push_front(t);
+	os << c.name << c.id << c.email << c.discount;
+}
+
+void operator>>(CArchive & is, Client & c)
+{
+	is >> c.name >> c.id >> c.email >> c.discount;
 }
 
 bool operator== (const Client& l1, const Client&l2)

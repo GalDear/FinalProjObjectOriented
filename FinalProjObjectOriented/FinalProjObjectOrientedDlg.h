@@ -88,10 +88,15 @@ public:
 	CStatic res2;
 	CStatic res3;
 	CStatic res4;
-<<<<<<< HEAD
+
 	CButton LastRes;
 	afx_msg void OnBnClickedLoadres();
-=======
+
 	list<CStatic*> resList;
->>>>>>> 1f13f44f06656be839cf1f762201fb9a52888077
+
+	Bus b1, b2, b3, b4, b5, b6;
+	Plane p1, p2, p3, p4;
+	Train t1, t2;
+	Car c1, c2, c3, c4;
+	Scooter s1, s2, s3, s4;
 };

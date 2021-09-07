@@ -41,6 +41,7 @@ public:
 	Instrument();
 	Instrument(CString, long ,bool ,int ,int, int);
 	Instrument(const Instrument &);
+	~Instrument() {};
 
 	// Gets
 	long GetInstrumentID();

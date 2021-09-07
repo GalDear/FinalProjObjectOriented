@@ -28,7 +28,7 @@ CString TransportCompany::GetTypeOfTransportation()
 	return this->typeOfTransportation;
 }
 
-list<Instrument> TransportCompany::GetAvailableInstruments()
+list<Instrument*> TransportCompany::GetAvailableInstruments()
 {
 	return this->availableInstruments;
 }
@@ -54,28 +54,28 @@ void TransportCompany::SetTypeOfTransportation(CString typeOfTransportation)
 }
 
 
-void TransportCompany::addAvailableInstrument(Instrument i)
+void TransportCompany::addAvailableInstrument(Instrument &i)
 {
 	i.setPrice(this->price);
 	i.SetOwner(this->GetBusinessName());
-	this->availableInstruments.push_front(i);
+	this->availableInstruments.push_front(&i);
 }
 
-void TransportCompany::changeInstrumentStatus(Instrument i)
-{
-	list<Instrument>::iterator iter;
-	for (iter = this->availableInstruments.begin(); iter != this->availableInstruments.end(); ++iter)
-	{
-		if (*iter == i)
-		{
-			iter->SetStatus(!iter->GetStatus());
-			this->availableInstruments.erase(iter);
-			this->unAvailableInstruments.push_front(i);
-			break;
-		}
-
-	}
-}
+//void TransportCompany::changeInstrumentStatus(Instrument i)
+//{
+//	list<Instrument*>::iterator iter;
+//	for (iter = this->availableInstruments.begin(); iter != this->availableInstruments.end(); ++iter)
+//	{
+//		if (*iter == i)
+//		{
+//			iter->SetStatus(!iter->GetStatus());
+//			this->availableInstruments.erase(iter);
+//			this->unAvailableInstruments.push_front(i);
+//			break;
+//		}
+//
+//	}
+//}
 
 void TransportCompany::addTravel(Travel t)
 {

@@ -6,7 +6,7 @@
 class TransportCompany :public Business {
 private:
 	CString typeOfTransportation;				// Rent, transportation, train, fly..
-	list<Instrument> availableInstruments;
+	list<Instrument*> availableInstruments;
 	list<Instrument> unAvailableInstruments;
 	list <Travel> availableTravel;
 	const double price;									//  per KM
@@ -19,14 +19,14 @@ public:
 
 
 	CString GetTypeOfTransportation();
-	list<Instrument> GetAvailableInstruments();
+	list<Instrument*> GetAvailableInstruments();
 	list<Instrument> GetNotAvailableInstruments();
 	list <Travel> GetArrayOfAvailableTravels();
 	int GetPrice();
 	
 
 	void SetTypeOfTransportation(CString);
-	void addAvailableInstrument(Instrument);
+	void addAvailableInstrument(Instrument&);
 	void changeInstrumentStatus(Instrument);
 	void addTravel(Travel);
 

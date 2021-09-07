@@ -30,6 +30,7 @@
 #define TXT_RES4						1020
 #define EB_RES3                         1021
 #define BTN_RES4						1022
+#define BTN_LoadRes						1023
 
 // Next default values for new objects
 // 

@@ -24,6 +24,7 @@ Instrument::Instrument(const Instrument &i)
 	this->yearOfCreate = i.yearOfCreate;
 	this->kilometers =i. kilometers;
 	this->speedLimit = i.speedLimit;
+	this->company = i.company;
 }
 
 long Instrument::GetInstrumentID()

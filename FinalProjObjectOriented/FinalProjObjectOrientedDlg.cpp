@@ -101,8 +101,11 @@ CString CFinalProjObjectOrientedDlg::buildResult(list<Travel>::iterator t_iter)
 	price.Format(_T("%.2f"), t_iter->getTravelPrice());
 	id.Format(_T("%d"), t_iter->getInstrument()->GetInstrumentID());
 	Instrument *i = t_iter->getInstrument();
-	gear = i->GetTypeOfGear();
-	type = i->GetTypeOfFuel();
+	if (i->GetType() == "Car" || i->GetType() == "Train")
+	{
+		gear = i->GetTypeOfGear();
+		type = i->GetTypeOfFuel();
+	}
 	CString fullResult = L"Source: " + t_iter->getSource().getName() + L" Destination: " + t_iter->getDestination().getName() + L"\nCompany: " +
 		t_iter->getInstrument()->GetOwner() + L" - " + t_iter->getInstrument()->GetType() + L"(" + id + L"), " + gear + L" " + type
 		+L"\nTravel Time: " + time + L", Travel Price: " + price;
@@ -124,13 +127,6 @@ void CFinalProjObjectOrientedDlg::updateResultLabel()
 		}
 		count++;
 	}
-	/*res2.SetWindowTextW(fullResult);
-	std::advance(t_iter, 1);
-	fullResult = buildResult(t_iter);
-	res3.SetWindowTextW(fullResult);
-	std::advance(t_iter, 1);
-	fullResult = buildResult(t_iter);
-	res4.SetWindowTextW(fullResult);*/
 }
 
 void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-#include "Travel.h"
+//#include "Travel.h"
 
 	/*
 		Details of client and his travel list
@@ -18,7 +18,7 @@ using namespace std;
 		CString id;
 		CString email;
 		bool discount;
-		list<Travel> travels;
+		//list<Travel> travels;
 
 	public:
 		Client(CString, CString, CString, bool); // constructor
@@ -29,11 +29,13 @@ using namespace std;
 		const CString getEmail();
 		const CString getId();
 		const bool getDiscount();
-		const list<Travel> getTravels();
+		//list<Travel> getTravels();
 
-		void appendTravel(Travel);
+		//void appendTravel(Travel);
 		void setDiscount(bool);
-		void addTrravel(Travel);
+		//void removeTravel();
 
+		friend void operator<<(CArchive& os, Client &c);
+		friend void operator>>(CArchive& is, Client &c);
 		friend bool operator== (const Client&, const Client&);
 	};

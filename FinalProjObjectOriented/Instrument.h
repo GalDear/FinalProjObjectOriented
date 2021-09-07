@@ -9,6 +9,9 @@ struct seat {
 	int row;
 	int number;
 	bool availability;
+public:
+	friend void operator<<(CArchive& ar, seat s) { ar << s.row << s.number << s.availability; };
+	friend void operator>>(CArchive& ar, seat s) { ar >> s.row >> s.number >> s.availability; };
 };
 
 class Date 
@@ -25,6 +28,9 @@ public:
 	const int getMonth() const { return month; };
 	const int getYear() const { return year; };
 	friend bool operator==(const Date&, const Date&);
+	friend void operator<<(CArchive& ar, Date d) { ar << d.day << d.month << d.year; };
+	friend void operator>>(CArchive& ar, Date d) { ar >> d.day >> d.month >> d.year; };
+
 
 };
 
@@ -42,7 +48,6 @@ public:
 	int GetSpeedLimit();
 	Date GetDateOfStart();
 	bool GetStatus();
-	list <seat> GetSeats();
 	int GetYearOfCreate();
 	int GetKilometers();
 	CString GetManufacturer();
@@ -55,7 +60,6 @@ public:
 	void SetSpeedLimit(int newSpeedLimit);
 	void SetStatus(bool newStatus);
 	void SetColor(CString newColor);
-	void SetSeats(int, int);
 	void addKilometers(int);
 	void setPrice(double);
 	void SetOwner(CString);
@@ -65,6 +69,8 @@ public:
 	virtual CString GetTypeOfGear() { return L""; };
 	virtual CString GetTypeOfFuel() { return L""; };
 
+	friend void operator<<(CArchive& os, Instrument &i);
+	friend void operator>>(CArchive& is, Instrument &i);
 
 private:
 	CString type;
@@ -73,7 +79,6 @@ private:
 	Date DateOfStart;
 	bool status;				// if the instrument available or need to be fixed
 	int numOberfPassengers;
-	list <seat> seats;
 	int yearOfCreate;
 	int kilometers;// how much kilometers the instrument can do
 	CString manufacturer;

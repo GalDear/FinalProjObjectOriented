@@ -1,3 +1,12 @@
+<<<<<<< HEAD
 ﻿  FinalProjObjectOrientedDlg.cpp
 c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(408): warning C4101: 'r': unreferenced local variable
+=======
+<<<<<<< HEAD
+﻿  Travel.cpp
+  FinalProjObjectOriented.vcxproj -> C:\Users\shaha\source\repos2017\Final_Proj_newVerstion\FinalProjObjectOriented\x64\Debug\FinalProjObjectOriented.exe
+=======
+﻿  Instrument.cpp
+>>>>>>> d5556a98fd012c76c20b0b61370f9d5984309ea3
   FinalProjObjectOriented.vcxproj -> C:\Users\gal.bachar\Documents\BAgit\FinalProjObjectOriented\x64\Debug\FinalProjObjectOriented.exe
+>>>>>>> 1f13f44f06656be839cf1f762201fb9a52888077

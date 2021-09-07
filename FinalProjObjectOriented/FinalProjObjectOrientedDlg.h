@@ -88,5 +88,10 @@ public:
 	CStatic res2;
 	CStatic res3;
 	CStatic res4;
+<<<<<<< HEAD
+	CButton LastRes;
+	afx_msg void OnBnClickedLoadres();
+=======
 	list<CStatic*> resList;
+>>>>>>> 1f13f44f06656be839cf1f762201fb9a52888077
 };

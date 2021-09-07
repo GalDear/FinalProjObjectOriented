@@ -14,6 +14,8 @@ Instrument::Instrument(CString type, long InstrumentID, bool availableOrFaulty, 
 	this->yearOfCreate = yearOfCreate;
 	this->kilometers = kilometersPerInstrument;
 	this->speedLimit = speedLimit;
+	this->company = L"";
+	this->price = 0;
 }
 
 Instrument::Instrument(const Instrument &i)
@@ -25,6 +27,7 @@ Instrument::Instrument(const Instrument &i)
 	this->kilometers =i. kilometers;
 	this->speedLimit = i.speedLimit;
 	this->company = i.company;
+	this->price = i.price;
 }
 
 long Instrument::GetInstrumentID()
@@ -155,7 +158,7 @@ void operator<<(CArchive & os, Instrument & i)
 	*/
 }
 
-void operator>>(CArchive & is, Instrument & i)
+void operator>>(CArchive & is, Instrument &i)
 {
 
 	is >> i.type;
@@ -164,6 +167,13 @@ void operator>>(CArchive & is, Instrument & i)
 	is >> i.yearOfCreate;
 	is >> i.kilometers;
 	is >> i.speedLimit;
+
+	//is >> i.type;
+	//is >> i.InstrumentID;
+	//is >> i.status;
+	//is >> i.yearOfCreate;
+	//is >> i.kilometers;
+	//is >> i.speedLimit;
 /*
 	is >> i.price;
 	is >> i.speedLimit;

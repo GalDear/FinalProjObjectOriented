@@ -25,12 +25,14 @@ Travel::Travel(const Travel &t)
 
 void Travel::Serialize(CArchive &ar)
 {
+	Instrument i;
 	CObject::Serialize(ar);
 	if (ar.IsStoring())
 	{
 		ar << source;
 		ar << destination;
-		ar << instrument;
+		i = *instrument;
+		ar << i;
 		ar << numOfReservedSeats;
 		ar << client;
 	}
@@ -41,8 +43,8 @@ void Travel::Serialize(CArchive &ar)
 		ar.Read(&instrument, sizeof(&instrument));*/
 		ar >> source;
 		ar >> destination;
-		this->instrument = new Instrument();
-		ar >> *instrument;
+		ar >> i;
+		this->instrument = &i;
 		ar >> numOfReservedSeats;
 		ar >> client;
 	}

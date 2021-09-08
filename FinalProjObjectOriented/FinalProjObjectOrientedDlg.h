@@ -14,6 +14,8 @@ public:
 	void updateTopResult(Travel);
 	void updateResultLabel();
 	CString buildResult(list<Travel>::iterator);
+	void hideResults();
+	bool userExist();
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -93,6 +95,7 @@ public:
 	afx_msg void OnBnClickedLoadres();
 
 	list<CStatic*> resList;
+	list<CButton*> resBtn;
 
 	Bus b1, b2, b3, b4, b5, b6;
 	Plane p1, p2, p3, p4;
@@ -102,4 +105,8 @@ public:
 
 	list<Instrument> instrumentLst;
 	list<Travel> loadResult;
+	CButton res1_btn;
+	CButton res2_btn;
+	CButton res3_btn;
+	CButton res4_btn;
 };

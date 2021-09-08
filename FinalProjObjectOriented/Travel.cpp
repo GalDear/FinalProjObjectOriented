@@ -89,7 +89,7 @@ double Travel::getTravelPrice()
 
 void Travel::changeInstrument(Instrument *i)
 {
-	*this->instrument = *i;
+	this->instrument = i;
 }
 
 void Travel::upDateReservedSeat(seat s)

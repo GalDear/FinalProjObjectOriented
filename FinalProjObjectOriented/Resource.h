@@ -31,6 +31,8 @@
 #define EB_RES3                         1021
 #define BTN_RES4						1022
 #define BTN_LoadRes						1023
+#define IDD_LoadDLG						1024
+#define IDC_LoadRes						1025
 
 // Next default values for new objects
 // 

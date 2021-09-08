@@ -1,7 +1,9 @@
-﻿  Travel.cpp
+﻿  FinalProjObjectOrientedDlg.cpp
+c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(465): warning C4101: 'r': unreferenced local variable
+c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(578): warning C4002: too many arguments for function-like macro invocation '_T'
   Generating code
-  3 of 938 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  1 of 1047 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    12 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   FinalProjObjectOriented.vcxproj -> C:\Users\gal.bachar\Documents\BAgit\FinalProjObjectOriented\x64\Release\FinalProjObjectOriented.exe

@@ -145,6 +145,7 @@ void CFinalProjObjectOrientedDlg::updateResultLabel()
 {
 	list<Travel>::iterator t_iter = topResult.begin();
 	list<CStatic*>::iterator res_iter;
+	list<CButton*>::iterator resBtn_iter = resBtn.begin();
 	CString fullResult;
 	int count = 0;
 	for (res_iter = resList.begin(); res_iter != resList.end(); ++res_iter)
@@ -153,7 +154,9 @@ void CFinalProjObjectOrientedDlg::updateResultLabel()
 		{
 			fullResult = buildResult(t_iter);
 			(*res_iter)->SetWindowTextW(fullResult);
+			(*resBtn_iter)->ShowWindow(SW_SHOW);
 			std::advance(t_iter, 1);
+			std::advance(resBtn_iter, 1);
 		}
 		count++;
 	}
@@ -174,6 +177,10 @@ void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, TXT_RES3, res3);
 	DDX_Control(pDX, TXT_RES4, res4);
 	DDX_Control(pDX, BTN_LoadRes, LastRes);
+	DDX_Control(pDX, BTN_RES1, res1_btn);
+	DDX_Control(pDX, BTN_RES2, res2_btn);
+	DDX_Control(pDX, BTN_RES3, res3_btn);
+	DDX_Control(pDX, BTN_RES4, res4_btn);
 }
 
 BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
@@ -243,6 +250,11 @@ BOOL CFinalProjObjectOrientedDlg::OnInitDialog()
 	Location busArr[] = { Eilat, QiryatShmona, TA, Holon, Haifa, Jerusalem, RishonLezion,Yeruham, BeerSheva,Herzeliya,Azor,BatYam };
 	Location flyArr[] = { Eilat, TA, Haifa, Paris, Cyprus, Barcelona, Madrid, Thailand };
 	Location trainArr[] = { QiryatShmona, TA, Holon, Haifa, Jerusalem, RishonLezion, BeerSheva,Herzeliya,BatYam };
+
+	resBtn.push_back(&res1_btn);
+	resBtn.push_back(&res2_btn);
+	resBtn.push_back(&res3_btn);
+	resBtn.push_back(&res4_btn);
 
 	resList.push_back(&res1);
 	resList.push_back(&res2);
@@ -393,74 +405,105 @@ void CFinalProjObjectOrientedDlg::OnCbnSelchangesource()
 	// TODO: Add your control notification handler code here
 }
 
+void CFinalProjObjectOrientedDlg::hideResults()
+{
+	topResult.clear();
+	list <CStatic*>::iterator res_iter;
+	list<CButton*>::iterator resBtn_iter = resBtn.begin();
+	for (res_iter = resList.begin(); res_iter != resList.end(); ++res_iter)
+	{
+		(*res_iter)->SetWindowTextW(L"");
+		(*resBtn_iter)->ShowWindow(SW_HIDE);
+	}
+}
+
+bool CFinalProjObjectOrientedDlg::userExist()
+{
+	list<Client>::iterator user_iter;
+	for (user_iter = clientList.begin(); user_iter != clientList.end(); ++user_iter)
+	{
+		CString email,id;
+		email_box.GetWindowTextW(email);
+		id_box.GetWindowTextW(id);
+		if (email == user_iter->getEmail() && id == user_iter->getId())
+			return true;
+	}
+	return false;
+}
 
 void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 {
 	// TODO: Add your control notification handler code here
-	topResult.clear();
-	CString st_dest;
-	int nSel = dest.GetCurSel();
-	dest.GetLBText(nSel, st_dest);
+	hideResults();
+	if (userExist())
+	{
+		CString st_dest;
+		int nSel = dest.GetCurSel();
+		dest.GetLBText(nSel, st_dest);
 
-	CString st_source;
-	nSel = source.GetCurSel();
-	source.GetLBText(nSel, st_source);
+		CString st_source;
+		nSel = source.GetCurSel();
+		source.GetLBText(nSel, st_source);
 
-	if (st_dest == st_source)
-		AfxMessageBox(_T("The source and the destination are identical! \n Please change one of them"), MB_OK | MB_ICONSTOP);
+		if (st_dest == st_source)
+			AfxMessageBox(_T("The source and the destination are identical! \n Please change one of them"), MB_OK | MB_ICONSTOP);
+		else
+		{
+
+			list<Location>::iterator loc_iter;
+			for (loc_iter = this->allLoc.begin(); loc_iter != this->allLoc.end(); ++loc_iter)
+			{
+				if (loc_iter->getName() == st_source)
+				{
+					l_source = *loc_iter;
+				}
+				if (loc_iter->getName() == st_dest)
+				{
+					l_dest = *loc_iter;
+				}
+			}
+			double r;
+			list<TransportCompany*>::iterator comp_iter;
+			for (comp_iter = this->companyList.begin(); comp_iter != this->companyList.end(); ++comp_iter)
+			{
+				if (topResult.size() == 4)
+					break;
+				CString tType = (*comp_iter)->GetTypeOfTransportation();
+				if (tType == L"Plane" || tType == L"Train" || tType == L"Bus")
+				{
+					if ((*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
+					{
+						Instrument *i = *(*comp_iter)->GetAvailableInstruments().begin();
+						Travel t(l_source, l_dest, i);
+						updateTopResult(t);
+					}
+				}
+				if (tType == L"Car")
+				{
+					if (l_source.GetInIsrael() && l_dest.GetInIsrael())
+					{
+						Instrument *i = *(*comp_iter)->GetAvailableInstruments().begin();
+						Travel t(l_source, l_dest, i);
+						updateTopResult(t);
+					}
+				}
+				if (l_dest + l_source < 30)
+				{
+					if (tType == L"Scooter")
+					{
+						Instrument *i = *(*comp_iter)->GetAvailableInstruments().begin();
+						Travel t(l_source, l_dest, i);
+						updateTopResult(t);
+					}
+				}
+
+			}
+			updateResultLabel();
+		}
+	}
 	else
 	{
-		
-		list<Location>::iterator loc_iter;
-		for (loc_iter = this->allLoc.begin(); loc_iter != this->allLoc.end(); ++loc_iter)
-		{
-			if (loc_iter->getName() == st_source)
-			{
-				l_source = *loc_iter;
-			}
-			if (loc_iter->getName() == st_dest)
-			{
-				l_dest = *loc_iter;
-			}
-		}
-		double r;
-		list<TransportCompany*>::iterator comp_iter;
-		for (comp_iter = this->companyList.begin(); comp_iter != this->companyList.end(); ++comp_iter)
-		{
-			if (topResult.size() == 4)
-				break;
-			CString tType = (*comp_iter)->GetTypeOfTransportation();
-			if (tType == L"Plane" || tType == L"Train" || tType == L"Bus")
-			{
-				if ((*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
-				{
-					Instrument *i = *(*comp_iter)->GetAvailableInstruments().begin();
-					Travel t(l_source, l_dest, i);
-					updateTopResult(t);
-				}
-			}
-			if (tType == L"Car")
-			{
-				if (l_source.GetInIsrael() && l_dest.GetInIsrael())
-				{
-					Instrument *i = *(*comp_iter)->GetAvailableInstruments().begin();
-					Travel t(l_source, l_dest, i);
-					updateTopResult(t);
-				}
-			}
-			if (l_dest + l_source < 30)
-			{
-				if (tType == L"Scooter")
-				{
-					Instrument *i = *(*comp_iter)->GetAvailableInstruments().begin();
-					Travel t(l_source, l_dest, i);
-					updateTopResult(t);
-				}
-			}
-				
-		}
-		updateResultLabel();
-		
+		AfxMessageBox(_T("The User has not registered in the system.\nplease register first."), MB_OK | MB_ICONSTOP);
 	}
 
 	//CDialogEx::OnOK();
@@ -634,20 +677,19 @@ void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
 	//list<Travel>::iterator t;
 	Travel t;
 	t.Serialize(ar);
-	loadResult.push_back(t);
+	
 	list<Travel>::iterator travel_iter = loadResult.begin();
 	
-	list<Instrument>::iterator t_iter = instrumentLst.begin(),currentInstrument_iter;
+	list<Instrument>::iterator t_iter = instrumentLst.begin();
 	for (t_iter; t_iter != instrumentLst.end(); ++t_iter)
 	{
 		if (t_iter->GetInstrumentID() == t.getInstrument()->GetInstrumentID())
 		{
-			currentInstrument_iter = t_iter;
 			break;
 		}
 	}
-
-
+	t.changeInstrument(&(*t_iter));
+	loadResult.push_back(t);
 	createLoadDLG dlg2;
 	loadRes = buildResult(travel_iter);
 	(dlg2.LoadRes).SetWindowTextW(loadRes);
@@ -658,14 +700,6 @@ void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
 	ar.Close();
 	file.Close();
 	Invalidate();
-
-
-
-
-
-
-
-
 
 
 

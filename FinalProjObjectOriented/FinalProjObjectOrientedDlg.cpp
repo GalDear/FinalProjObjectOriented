@@ -8,6 +8,7 @@
 #include "FinalProjObjectOrientedDlg.h"
 #include "afxdialogex.h"
 #include "createClientDLG.h"
+#include "createLoadDLG.h"
 #include <fstream> 
 
 #ifdef _DEBUG
@@ -64,16 +65,36 @@ CFinalProjObjectOrientedDlg::CFinalProjObjectOrientedDlg(CWnd* pParent /*=nullpt
 	Wind(L"Scooter", 0.8, L"Wind", 9, 2019, L"Wind@support.com", L"036186543", 8),
 
 	b1(18, L"Bus", 10, true, 2015, 100000), b2(365, L"Bus", 11, true, 2018, 80000),
-	b3(95, L"Bus", 12, true, 2016, 180000),  b4(1, L"Bus", 13, true, 2020, 30000),b5(900, L"Bus", 14, true, 2019, 64500), b6(450, L"Bus", 15, true, 2016, 122000),
+	b3(95, L"Bus", 12, true, 2016, 180000), b4(1, L"Bus", 13, true, 2020, 30000), b5(900, L"Bus", 14, true, 2019, 64500), b6(450, L"Bus", 15, true, 2016, 122000),
 	p3(Date(1, 5, 2021), L"Plane", 22, true, 2021, 10000), p4(Date(1, 9, 2021), L"Plane", 23, true, 2019, 475900), p1(Date(16, 4, 2021), L"Plane", 20, true, 2020, 30000),
-	p2(Date(28, 8, 2021), L"Plane", 21, true, 2021, 500500), t1(Date(6, 1, 2021), L"Electric", L"Train", 30, true, 2021, 106000),t2(Date(20, 5, 2021), L"Fuel", L"Train", 31, true, 2020, 475900),
-	c1(Date(6, 8, 2021), L"Electric", true, L"Car", 40, true, 2021, 8000),c2(Date(20, 5, 2021), L"Fuel", false, L"Car", 41, true, 2021, 15000), c3(Date(25, 3, 2021), L"Electric", true, L"Car", 42, true, 2021, 8000), 
+	p2(Date(28, 8, 2021), L"Plane", 21, true, 2021, 500500), t1(Date(6, 1, 2021), L"Electric", L"Train", 30, true, 2021, 106000), t2(Date(20, 5, 2021), L"Fuel", L"Train", 31, true, 2020, 475900),
+	c1(Date(6, 8, 2021), L"Electric", true, L"Car", 40, true, 2021, 8000), c2(Date(20, 5, 2021), L"Fuel", false, L"Car", 41, true, 2021, 15000), c3(Date(25, 3, 2021), L"Electric", true, L"Car", 42, true, 2021, 8000),
 	c4(Date(1, 7, 2021), L"Fuel", false, L"Car", 43, true, 2021, 19050), s1(true, L"Scooter", 50, true, 2021, 700), s3(true, L"Scooter", 52, true, 2021, 555), s4(false, L"Scooter", 53, true, 2021, 780),
 	s2(true, L"Scooter", 51, true, 2021, 999)
-
+	
 
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	instrumentLst.push_front(b1);
+	instrumentLst.push_front(b2);
+	instrumentLst.push_front(b3);
+	instrumentLst.push_front(b4);
+	instrumentLst.push_front(b5);
+	instrumentLst.push_front(b6);
+	instrumentLst.push_front(p1);
+	instrumentLst.push_front(p2);
+	instrumentLst.push_front(p3);
+	instrumentLst.push_front(p4);
+	instrumentLst.push_front(t1);
+	instrumentLst.push_front(t2);
+	instrumentLst.push_front(c1);
+	instrumentLst.push_front(c2);
+	instrumentLst.push_front(c3);
+	instrumentLst.push_front(c4);
+	instrumentLst.push_front(s1);
+	instrumentLst.push_front(s2);
+	instrumentLst.push_front(s3);
+	instrumentLst.push_front(s4);
 }
 
 void CFinalProjObjectOrientedDlg::updateTopResult(Travel t)
@@ -406,6 +427,8 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 		list<TransportCompany*>::iterator comp_iter;
 		for (comp_iter = this->companyList.begin(); comp_iter != this->companyList.end(); ++comp_iter)
 		{
+			if (topResult.size() == 4)
+				break;
 			CString tType = (*comp_iter)->GetTypeOfTransportation();
 			if (tType == L"Plane" || tType == L"Train" || tType == L"Bus")
 			{
@@ -599,8 +622,9 @@ void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
 {
 
 	// TODO: Add your control notification handler code here
-	CString filename;							// file name based on user name mail
+	CString filename, loadRes;							// file name based on user name mail
 	CFileDialog dlg(TRUE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||"));
+
 	if(dlg.DoModal() == IDOK)
 	{
 	//email_box.GetWindowText(filename);
@@ -610,9 +634,38 @@ void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
 	//list<Travel>::iterator t;
 	Travel t;
 	t.Serialize(ar);
+	loadResult.push_back(t);
+	list<Travel>::iterator travel_iter = loadResult.begin();
+	
+	list<Instrument>::iterator t_iter = instrumentLst.begin(),currentInstrument_iter;
+	for (t_iter; t_iter != instrumentLst.end(); ++t_iter)
+	{
+		if (t_iter->GetInstrumentID() == t.getInstrument()->GetInstrumentID())
+		{
+			currentInstrument_iter = t_iter;
+			break;
+		}
+	}
+
+
+	createLoadDLG dlg2;
+	loadRes = buildResult(travel_iter);
+	(dlg2.LoadRes).SetWindowTextW(loadRes);
+	dlg2.DoModal();
+	
+
+
 	ar.Close();
 	file.Close();
 	Invalidate();
+
+
+
+
+
+
+
+
 
 
 

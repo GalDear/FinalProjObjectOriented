@@ -73,6 +73,8 @@ public:
 	friend void operator<<(CArchive& os, Instrument &i);
 	friend void operator>>(CArchive& is, Instrument &i);
 
+	CString company;
+
 private:
 	CString type;
 	long InstrumentID;
@@ -85,5 +87,5 @@ private:
 	CString manufacturer;
 	CString color;
 	double price;
-	CString company;
+	//CString company;
 };

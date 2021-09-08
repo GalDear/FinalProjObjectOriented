@@ -99,4 +99,7 @@ public:
 	Train t1, t2;
 	Car c1, c2, c3, c4;
 	Scooter s1, s2, s3, s4;
+
+	list<Instrument> instrumentLst;
+	list<Travel> loadResult;
 };

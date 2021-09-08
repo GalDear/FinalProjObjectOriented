@@ -138,53 +138,29 @@ bool operator==(const Instrument &i1, const Instrument &i2)
 
 void operator<<(CArchive & os, Instrument & i)
 {
-
-	os << i.type;
-	os << i.InstrumentID;
-	os << i.status;
-	os << i.yearOfCreate;
-	os << i.kilometers;
-	os << i.speedLimit;
-	/*
 	os << i.price;
 	os << i.speedLimit;
 	os << i.InstrumentID;
-	
 	os << i.DateOfStart;
 	os << i.status;
 	os << i.numOberfPassengers;
 	os << i.yearOfCreate;
 	os << i.kilometers;
-	*/
+	
 }
 
 void operator>>(CArchive & is, Instrument &i)
 {
-
-	is >> i.type;
-	is >> i.InstrumentID;
-	is >> i.status;
-	is >> i.yearOfCreate;
-	is >> i.kilometers;
-	is >> i.speedLimit;
-
-	//is >> i.type;
-	//is >> i.InstrumentID;
-	//is >> i.status;
-	//is >> i.yearOfCreate;
-	//is >> i.kilometers;
-	//is >> i.speedLimit;
-/*
 	is >> i.price;
 	is >> i.speedLimit;
 	is >> i.InstrumentID;
-	
 	is >> i.DateOfStart;
 	is >> i.status;
 	is >> i.numOberfPassengers;
 	is >> i.yearOfCreate;
 	is >> i.kilometers;
-	*/
+	
+	
 }
 
 

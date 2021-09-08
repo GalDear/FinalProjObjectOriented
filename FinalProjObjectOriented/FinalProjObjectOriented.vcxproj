@@ -194,6 +194,7 @@
     <ClInclude Include="CarCompany.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="createClientDLG.h" />
+    <ClInclude Include="createLoadDLG.h" />
     <ClInclude Include="TransportCompany.h" />
     <ClInclude Include="FinalProjObjectOriented.h" />
     <ClInclude Include="FinalProjObjectOrientedDlg.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="CarCompany.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="createClientDLG.cpp" />
+    <ClCompile Include="createLoadDLG.cpp" />
     <ClCompile Include="TransportCompany.cpp" />
     <ClCompile Include="FinalProjObjectOriented.cpp" />
     <ClCompile Include="FinalProjObjectOrientedDlg.cpp" />

@@ -146,6 +146,8 @@ void operator<<(CArchive & os, Instrument & i)
 	os << i.numOberfPassengers;
 	os << i.yearOfCreate;
 	os << i.kilometers;
+	os << i.type;
+	os << i.company;
 	
 }
 
@@ -159,7 +161,8 @@ void operator>>(CArchive & is, Instrument &i)
 	is >> i.numOberfPassengers;
 	is >> i.yearOfCreate;
 	is >> i.kilometers;
-	
+	is >> i.type;
+	is >> i.company;
 	
 }
 

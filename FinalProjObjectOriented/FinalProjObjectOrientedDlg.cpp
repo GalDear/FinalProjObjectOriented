@@ -11,6 +11,7 @@
 #include "createLoadDLG.h"
 #include <fstream> 
 
+#define UWM_CUSTOM (WM_APP+1)
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -139,6 +140,7 @@ CString CFinalProjObjectOrientedDlg::buildResult(list<Travel>::iterator t_iter)
 		+L"\nTravel Time: " + time + L", Travel Price: " + price;
 	return fullResult;
 }
+
 
 
 void CFinalProjObjectOrientedDlg::updateResultLabel()
@@ -675,24 +677,19 @@ void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
 	CFile file(filename, CFile::modeRead);
 	CArchive ar(&file, CArchive::load);
 	//list<Travel>::iterator t;
-	Travel t;
-	t.Serialize(ar);
-	
-	list<Travel>::iterator travel_iter = loadResult.begin();
+	tr.Serialize(ar);
 	
 	list<Instrument>::iterator t_iter = instrumentLst.begin();
 	for (t_iter; t_iter != instrumentLst.end(); ++t_iter)
 	{
-		if (t_iter->GetInstrumentID() == t.getInstrument()->GetInstrumentID())
+		if (t_iter->GetInstrumentID() == tr.getInstrument()->GetInstrumentID())
 		{
 			break;
 		}
 	}
-	t.changeInstrument(&(*t_iter));
-	loadResult.push_back(t);
-	createLoadDLG dlg2;
-	loadRes = buildResult(travel_iter);
-	(dlg2.LoadRes).SetWindowTextW(loadRes);
+	/*t.changeInstrument(&(*t_iter));*/
+
+	createLoadDLG dlg2(tr);
 	dlg2.DoModal();
 	
 

@@ -2,13 +2,14 @@
 
 
 // createLoadDLG dialog
-
 class createLoadDLG : public CDialogEx
 {
 	DECLARE_DYNAMIC(createLoadDLG)
 
 public:
-	createLoadDLG(CWnd* pParent = nullptr);   // standard constructor
+	createLoadDLG(Travel,CWnd* pParent = nullptr);   // standard constructor
+	CString buildResultFromLoad(Travel);
+	virtual BOOL OnInitDialog();
 	virtual ~createLoadDLG();
 
 // Dialog Data
@@ -23,4 +24,5 @@ protected:
 public:
 	CStatic LoadRes;
 	afx_msg void OnBnClickedOk();
+	CString res;
 };

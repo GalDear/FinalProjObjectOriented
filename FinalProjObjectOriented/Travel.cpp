@@ -37,14 +37,11 @@ void Travel::Serialize(CArchive &ar)
 		ar << client;
 	}
 	else 
-	{/*
-		ar.Read(&source, sizeof(&source));
-		ar.Read(&destination, sizeof(&destination));
-		ar.Read(&instrument, sizeof(&instrument));*/
+	{
 		ar >> source;
 		ar >> destination;
-		ar >> i;
-		this->instrument = &i;
+		this->instrument = new Instrument();
+		ar >> *this->instrument;
 		ar >> numOfReservedSeats;
 		ar >> client;
 	}
@@ -95,6 +92,13 @@ void Travel::changeInstrument(Instrument *i)
 void Travel::upDateReservedSeat(seat s)
 {
 
+}
+void Travel::operator=(const Travel &t)
+{
+	this->source = t.source;
+	this->destination = t.destination;
+	this->instrument = t.instrument;
+	this->numOfReservedSeats = t.numOfReservedSeats;
 }
 //void Travel::UpDateDate(Date d)
 //{

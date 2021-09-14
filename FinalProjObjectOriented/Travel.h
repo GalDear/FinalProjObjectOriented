@@ -47,6 +47,7 @@ public:
 	//void UpDateDate(Date);
 
 	friend bool operator==(const Travel&, const Travel&);
+	void operator=(const Travel&);
 
 	/*friend ostream& operator<<(ostream& os, Travel &t);
 	friend istream& operator>>(istream& is, Travel &t);*/

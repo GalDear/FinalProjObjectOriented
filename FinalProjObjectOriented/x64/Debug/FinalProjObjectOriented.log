@@ -1,4 +1,1 @@
-﻿  FinalProjObjectOrientedDlg.cpp
-c:\users\shaha\source\repos2017\final_proj_newverstion\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(426): warning C4101: 'r': unreferenced local variable
-c:\users\shaha\source\repos2017\final_proj_newverstion\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(535): warning C4002: too many arguments for function-like macro invocation '_T'
-  FinalProjObjectOriented.vcxproj -> C:\Users\shaha\source\repos2017\Final_Proj_newVerstion\FinalProjObjectOriented\x64\Debug\FinalProjObjectOriented.exe
+﻿  FinalProjObjectOriented.vcxproj -> C:\Users\shaha\source\repos2017\Final_Proj_newVerstion\FinalProjObjectOriented\x64\Debug\FinalProjObjectOriented.exe

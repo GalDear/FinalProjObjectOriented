@@ -51,6 +51,7 @@ void createLoadDLG::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(createLoadDLG, CDialogEx)
 	
 	ON_BN_CLICKED(IDOK, &createLoadDLG::OnBnClickedOk)
+	ON_STN_CLICKED(IDC_LoadRes, &createLoadDLG::OnStnClickedLoadres)
 END_MESSAGE_MAP()
 
 
@@ -81,7 +82,7 @@ BOOL createLoadDLG::OnInitDialog()
 	//  when the application's main window is not a dialog
 	CFont font;
 	font.CreateFont(
-		50,                        // nHeight
+		10,                        // nHeight
 		0,                         // nWidth
 		0,                         // nEscapement
 		0,                         // nOrientation
@@ -106,4 +107,10 @@ void createLoadDLG::OnBnClickedOk()
 {
 	// TODO: Add your control notification handler code here
 	CDialogEx::OnOK();
+}
+
+
+void createLoadDLG::OnStnClickedLoadres()
+{
+	// TODO: Add your control notification handler code here
 }

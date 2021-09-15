@@ -197,6 +197,7 @@ BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
 	ON_BN_CLICKED(BTN_RES1, &CFinalProjObjectOrientedDlg::OnBnClickedRes1)
 	ON_BN_CLICKED(BTN_RES3, &CFinalProjObjectOrientedDlg::OnBnClickedRes3)
 	ON_BN_CLICKED(BTN_RES2, &CFinalProjObjectOrientedDlg::OnBnClickedRes2)
+	ON_BN_CLICKED(BTN_RES4, &CFinalProjObjectOrientedDlg::OnBnClickedRes4)
 	ON_STN_CLICKED(TXT_RES1, &CFinalProjObjectOrientedDlg::OnStnClickedRes1)
 	ON_BN_CLICKED(BTN_LoadRes, &CFinalProjObjectOrientedDlg::OnBnClickedLoadres)
 END_MESSAGE_MAP()
@@ -568,22 +569,10 @@ void CFinalProjObjectOrientedDlg::OnEnChangeMail()
 
 void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 {
-	// TODO: Add your control notification handler code here
-	/*topResult.push_front(&Eged);
-	list<TransportCompany*>::iterator t_iter = topResult.begin();
-	list<Instrument> available_inst = (*t_iter)->GetAvailableInstruments();
-	list<Instrument>::iterator i_iter = available_inst.begin();
-	std::advance(i_iter, 1);
-
-	Travel t(l_source, l_dest, *i_iter);*/
-
 	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
 	CString filename,emailName;								
 	if (dlg.DoModal() == IDOK)
 	{
-		//filename = dlg.GetPathName();
-		
-	
 	email_box.GetWindowText(emailName);
 	filename = dlg.GetPathName();
 
@@ -597,60 +586,106 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 			t->attachClient(*c_iter);
 		}
 	}
-	/*
-	if((*c).getTravels().empty())
-		(*c).appendTravel(*t);
-	else {
-		(*c).removeTravel();
-		(*c).appendTravel(*t);
-	}*/
-
 	CFile file(filename, CFile::modeCreate | CFile::modeWrite);
 	CArchive ar(&file, CArchive::store);
 	t->Serialize(ar);
 	ar.Close();
 	file.Close();
 	}
-
-	
-
-	/*bool found = (std::find(clientList.begin(), clientList.end(), c) != clientList.end());
-	if (!found)
-		AfxMessageBox(_T("The is no client data, please fill your details"),  BTN_RES1 | MB_ICONSTOP);
-	else
-	{
-		c.addTrravel(t);
-		AfxMessageBox(_T("Travel saved!"), BTN_RES1 | MB_ICONSTOP);
-	}*/
-
-
-
-
 }
 
 
-void CFinalProjObjectOrientedDlg::OnBnClickedRes3()
-{
-	// TODO: Add your control notification handler code here
-}
+
 
 
 void CFinalProjObjectOrientedDlg::OnBnClickedRes2()
 {
 	// TODO: Add your control notification handler code here
-	/*list<TransportCompany*>::iterator t_iter = topResult.begin();
-	std::advance(t_iter, 1);
-	list<Instrument> available_inst = (*t_iter)->GetAvailableInstruments();
-	list<Instrument>::iterator i_iter = available_inst.begin();
-	std::advance(i_iter, 1);
-	Travel t(l_source, l_dest, *i_iter);*/
+
+	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
+	CString filename, emailName;
+	if (dlg.DoModal() == IDOK)
+	{
+		email_box.GetWindowText(emailName);
+		filename = dlg.GetPathName();
+
+		list<Travel>::iterator t = topResult.begin();
+		std::advance(t, 1);
+		list<Client>::iterator c_iter = clientList.begin();
+
+		for (c_iter; c_iter != clientList.end(); ++c_iter)			// function to add travel to the customer
+		{
+			if (c_iter->getName() == emailName)
+			{
+				t->attachClient(*c_iter);
+			}
+		}
+		CFile file(filename, CFile::modeCreate | CFile::modeWrite);
+		CArchive ar(&file, CArchive::store);
+		t->Serialize(ar);
+		ar.Close();
+		file.Close();
+	}
 }
 
+void CFinalProjObjectOrientedDlg::OnBnClickedRes3()
+{
+	// TODO: Add your control notification handler code here
+	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
+	CString filename, emailName;
+	if (dlg.DoModal() == IDOK)
+	{
+		email_box.GetWindowText(emailName);
+		filename = dlg.GetPathName();
+
+		list<Travel>::iterator t = topResult.begin();
+		std::advance(t, 2);
+		list<Client>::iterator c_iter = clientList.begin();
+
+		for (c_iter; c_iter != clientList.end(); ++c_iter)			// function to add travel to the customer
+		{
+			if (c_iter->getName() == emailName)
+			{
+				t->attachClient(*c_iter);
+			}
+		}
+		CFile file(filename, CFile::modeCreate | CFile::modeWrite);
+		CArchive ar(&file, CArchive::store);
+		t->Serialize(ar);
+		ar.Close();
+		file.Close();
+	}
+}
 
 
 void CFinalProjObjectOrientedDlg::OnBnClickedRes4()
 {
 	// TODO: Add your control notification handler code here
+
+	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
+	CString filename, emailName;
+	if (dlg.DoModal() == IDOK)
+	{
+		email_box.GetWindowText(emailName);
+		filename = dlg.GetPathName();
+
+		list<Travel>::iterator t = topResult.begin();
+		std::advance(t, 3);
+		list<Client>::iterator c_iter = clientList.begin();
+
+		for (c_iter; c_iter != clientList.end(); ++c_iter)			// function to add travel to the customer
+		{
+			if (c_iter->getName() == emailName)
+			{
+				t->attachClient(*c_iter);
+			}
+		}
+		CFile file(filename, CFile::modeCreate | CFile::modeWrite);
+		CArchive ar(&file, CArchive::store);
+		t->Serialize(ar);
+		ar.Close();
+		file.Close();
+	}
 }
 
 

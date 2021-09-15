@@ -27,7 +27,7 @@ void createClientDLG::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT1, name_box);
 	DDX_Control(pDX, IDC_EDIT2, email_box);
 	DDX_Control(pDX, IDC_EDIT3, id_box);
-	DDX_Control(pDX, IDC_CHECK1, is_discount_check);
+	DDX_Control(pDX, IDC_COMBOCheckDis, DiscountChoice);
 }
 
 
@@ -59,15 +59,15 @@ void createClientDLG::OnBnClickedOk()
 	name_box.GetWindowText(this->name);
 	email_box.GetWindowText(this->email);
 	id_box.GetWindowText(this->id);
-	/*
+	
 	CString Discount;
 	int nSel = DiscountChoice.GetCurSel();
 	DiscountChoice.GetLBText(nSel, Discount);
 	if (Discount == "Soldier" || Discount == "Student" || Discount == "Senior citizen")
 		this->hasDiscount = true;
 	else
-		this->hasDiscount = false;*/
-	this->hasDiscount = is_discount_check.GetCheck();
+		this->hasDiscount = false;
+	//this->hasDiscount = is_discount_check.GetCheck();
 
 	CDialogEx::OnOK();
 }

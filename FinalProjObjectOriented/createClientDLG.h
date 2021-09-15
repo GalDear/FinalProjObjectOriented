@@ -21,7 +21,6 @@ protected:
 	CEdit name_box;
 	CEdit email_box;
 	CEdit id_box;
-	CButton is_discount_check;
 
 	DECLARE_MESSAGE_MAP()
 public:
@@ -33,7 +32,7 @@ public:
 	afx_msg void OnBnClickedOk();
 	afx_msg void OnBnClickedCheck1();
 	afx_msg void OnCbnSelchangeDiscountchoice();
-	CComboBox DiscountChoice;
 	afx_msg void OnEnChangeEdit1();
 	afx_msg void OnCbnSelchangeCombo2();
+	CComboBox DiscountChoice;
 };

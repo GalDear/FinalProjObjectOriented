@@ -25,4 +25,5 @@ public:
 	CStatic LoadRes;
 	afx_msg void OnBnClickedOk();
 	CString res;
+	afx_msg void OnStnClickedLoadres();
 };

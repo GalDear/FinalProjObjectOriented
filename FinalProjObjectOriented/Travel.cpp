@@ -9,8 +9,6 @@ Travel::Travel(Location source, Location destination, Instrument *instrument)
 	this->source = source;
 	this->destination = destination;
 	this->instrument = instrument;
-	//this->departure = departure;
-	numOfReservedSeats = 0;
 }
 
 
@@ -33,7 +31,6 @@ void Travel::Serialize(CArchive &ar)
 		ar << destination;
 		i = *instrument;
 		ar << i;
-		ar << numOfReservedSeats;
 		ar << client;
 	}
 	else 
@@ -42,7 +39,6 @@ void Travel::Serialize(CArchive &ar)
 		ar >> destination;
 		this->instrument = new Instrument();
 		ar >> *this->instrument;
-		ar >> numOfReservedSeats;
 		ar >> client;
 	}
 }
@@ -71,7 +67,7 @@ Instrument *Travel::getInstrument()
 
 double Travel::getTravelTime()
 {
-	return ((this->source + this->destination) / this->instrument->GetSpeedLimit());
+	return ((((this->source + this->destination) / this->instrument->GetSpeedLimit()) / 100 ) * 60);
 }
 
 double Travel::getTravelPrice()
@@ -79,20 +75,9 @@ double Travel::getTravelPrice()
 	return ((this->destination + this->source)*this->instrument->getPrice());
 }
 
-//const Date Travel::getDeparture()
-//{
-//	return this->departure;
-//}
 
-void Travel::changeInstrument(Instrument *i)
-{
-	this->instrument = i;
-}
 
-void Travel::upDateReservedSeat(seat s)
-{
 
-}
 void Travel::operator=(const Travel &t)
 {
 	this->source = t.source;
@@ -100,29 +85,10 @@ void Travel::operator=(const Travel &t)
 	this->instrument = t.instrument;
 	this->numOfReservedSeats = t.numOfReservedSeats;
 }
-//void Travel::UpDateDate(Date d)
-//{
-//	this->departure = d;
-//}
+
 bool operator==(const Travel &t1, const Travel &t2)
 {
-	if (/*t1.departure == t2.departure &&*/ t1.destination == t2.destination && t1.source == t2.source && t1.instrument == t2.instrument)
+	if ( t1.destination == t2.destination && t1.source == t2.source && t1.instrument == t2.instrument)
 		return true;
 	return false;
 }
-
-//ostream & operator<<(ostream & os, Travel & t)
-//{
-//	os << t.getSource;
-//	os << t.getDestination;
-//	os << t.getInstrument;
-//	os << t.numOfReservedSeats;
-//}
-//
-//istream & operator>>(istream & is, Travel & t)
-//{
-//	is >> t.source;
-//	is >> t.destination;
-//	is >> t.instrument;
-//	is >> t.numOfReservedSeats;
-//}

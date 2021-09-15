@@ -29,26 +29,11 @@ const bool Client::getDiscount()
 	return this->discount;
 }
 
-// list<Travel> Client::getTravels()
-//{
-//	return this->travels;
-//}
-
-//void Client::appendTravel(Travel t)
-//{
-//	this->travels.push_back(t);
-//}
 
 void Client::setDiscount(bool b)
 {
 	this->discount = b;
 }
-
-//void Client::removeTravel()
-//{
-//	this->travels.pop_front();
-//}
-
 
 void operator<<(CArchive & os, Client & c)
 {

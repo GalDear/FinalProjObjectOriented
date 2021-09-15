@@ -1,12 +1,10 @@
 #pragma once
 
 #include <iostream>
-#include<string.h>
+#include <string.h>
 #include <list>
 
 using namespace std;
-
-//#include "Travel.h"
 
 	/*
 		Details of client and his travel list
@@ -18,7 +16,6 @@ using namespace std;
 		CString id;
 		CString email;
 		bool discount;
-		//list<Travel> travels;
 
 	public:
 		Client(CString, CString, CString, bool); // constructor
@@ -29,11 +26,8 @@ using namespace std;
 		const CString getEmail();
 		const CString getId();
 		const bool getDiscount();
-		//list<Travel> getTravels();
 
-		//void appendTravel(Travel);
 		void setDiscount(bool);
-		//void removeTravel();
 
 		friend void operator<<(CArchive& os, Client &c);
 		friend void operator>>(CArchive& is, Client &c);

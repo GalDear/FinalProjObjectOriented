@@ -135,9 +135,9 @@ CString CFinalProjObjectOrientedDlg::buildResult(list<Travel>::iterator t_iter)
 	Instrument *i = t_iter->getInstrument();
 	gear = i->GetTypeOfGear();
 	type = i->GetTypeOfFuel();
-	CString fullResult = L"Source: " + t_iter->getSource().getName() + L" Destination: " + t_iter->getDestination().getName() + L"\nCompany: " +
+	CString fullResult = L"Source: " + t_iter->getSource().getName() + L"\nDestination: " + t_iter->getDestination().getName() + L"\nCompany: " +
 		t_iter->getInstrument()->GetOwner() + L" - " + t_iter->getInstrument()->GetType() + L"(" + id + L"), " + gear + L" " + type
-		+L"\nTravel Time: " + time + L", Travel Price: " + price;
+		+L"\nTravel Time: " + time + L"h\nTravel Price: " + price + L" NIS";
 	return fullResult;
 }
 
@@ -436,7 +436,6 @@ bool CFinalProjObjectOrientedDlg::userExist()
 
 void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 {
-	// TODO: Add your control notification handler code here
 	hideResults();
 	if (userExist())
 	{
@@ -508,27 +507,12 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 	{
 		AfxMessageBox(_T("The User has not registered in the system.\nplease register first."), MB_OK | MB_ICONSTOP);
 	}
-
-	//CDialogEx::OnOK();
 }
 
 
 void CFinalProjObjectOrientedDlg::OnBnClickedButton1()
 {
 	// TODO: Add your control notification handler code here
-	/*CString st_dest;
-	int nSel = dest.GetCurSel();
-	dest.GetLBText(nSel, st_dest);
-
-	CString st_source;
-	nSel = source.GetCurSel();
-	source.GetLBText(nSel, st_source);*/
-
-	/*if (st_dest == st_source)
-	{
-		AfxMessageBox(_T("The source and the destination are identical! \n Please change one of them"), MB_OK | MB_ICONSTOP);
-	}
-	else{*/
 		createClientDLG dlg;
 		dlg.DoModal();
 		Client c(dlg.name, dlg.id, dlg.email, dlg.hasDiscount);
@@ -538,9 +522,6 @@ void CFinalProjObjectOrientedDlg::OnBnClickedButton1()
 			clientList.push_front(c);
 		else
 			AfxMessageBox(_T("The client already exist"), MB_OK | MB_ICONSTOP);
-	//}
-
-
 }
 
 
@@ -600,8 +581,6 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 
 void CFinalProjObjectOrientedDlg::OnBnClickedRes2()
 {
-	// TODO: Add your control notification handler code here
-
 	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
 	CString filename, emailName;
 	if (dlg.DoModal() == IDOK)
@@ -630,7 +609,6 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes2()
 
 void CFinalProjObjectOrientedDlg::OnBnClickedRes3()
 {
-	// TODO: Add your control notification handler code here
 	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
 	CString filename, emailName;
 	if (dlg.DoModal() == IDOK)
@@ -660,8 +638,6 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes3()
 
 void CFinalProjObjectOrientedDlg::OnBnClickedRes4()
 {
-	// TODO: Add your control notification handler code here
-
 	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
 	CString filename, emailName;
 	if (dlg.DoModal() == IDOK)
@@ -700,18 +676,13 @@ void CFinalProjObjectOrientedDlg::OnStnClickedRes1()
 
 void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
 {
-
-	// TODO: Add your control notification handler code here
 	CString filename, loadRes;							// file name based on user name mail
 	CFileDialog dlg(TRUE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||"));
-
 	if(dlg.DoModal() == IDOK)
 	{
-	//email_box.GetWindowText(filename);
 	filename = dlg.GetPathName();
 	CFile file(filename, CFile::modeRead);
 	CArchive ar(&file, CArchive::load);
-	//list<Travel>::iterator t;
 	tr.Serialize(ar);
 	
 	list<Instrument>::iterator t_iter = instrumentLst.begin();
@@ -722,44 +693,10 @@ void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
 			break;
 		}
 	}
-	/*t.changeInstrument(&(*t_iter));*/
-
 	createLoadDLG dlg2(tr);
 	dlg2.DoModal();
-	
-
-
 	ar.Close();
 	file.Close();
 	Invalidate();
-
-
-
-	/*
-	list<Travel>::iterator t;
-	UpdateData(TRUE);
-
-
-	list<Client>::iterator c_iter = clientList.begin(),c;
-	for (c_iter; c_iter != clientList.end(); ++c_iter)
-	{
-		if (c_iter->getEmail() == filename)
-		{
-			c = c_iter;
-			break;
-		}
-	}
-	list<Travel>::iterator t_iter;
-	t_iter = c->getTravels().begin();
-
-	CString lastResult = buildResult(t_iter);
-	MessageBox(NULL, lastResult);
-	
-
-	//AfxMessageBox(_T((SetWindowTextW(lastResult)), MB_OK | MB_ICONSTOP);
-
-	*/
-	
-
 	}
 }

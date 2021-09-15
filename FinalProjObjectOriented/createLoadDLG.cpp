@@ -28,9 +28,9 @@ CString createLoadDLG::buildResultFromLoad(Travel t)
 	Instrument *i = t.getInstrument();
 	gear = i->GetTypeOfGear();
 	type = i->GetTypeOfFuel();
-	CString fullResult = L"Source: " + t.getSource().getName() + L" Destination: " + t.getDestination().getName() + L"\nCompany: " +
+	CString fullResult = L"Source: " + t.getSource().getName() + L"\nDestination: " + t.getDestination().getName() + L"\nCompany: " +
 		t.getInstrument()->GetOwner() + L" - " + t.getInstrument()->GetType() + L"(" + id + L"), " + gear + L" " + type
-		+ L"\nTravel Time: " + time + L", Travel Price: " + price;
+		+ L"\nTravel Time: " + time + L"h\nTravel Price: " + price + L" NIS";
 	return fullResult;
 }
 

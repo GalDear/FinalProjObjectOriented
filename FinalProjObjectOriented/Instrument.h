@@ -51,16 +51,12 @@ public:
 	bool GetStatus();
 	int GetYearOfCreate();
 	int GetKilometers();
-	CString GetManufacturer();
-	CString GetColor();
-	int getNumOfSeats();
 	double getPrice();
 	CString GetOwner();
 
 	// Sets
 	void SetSpeedLimit(int newSpeedLimit);
 	void SetStatus(bool newStatus);
-	void SetColor(CString newColor);
 	void addKilometers(int);
 	void setPrice(double);
 	void SetOwner(CString);
@@ -73,7 +69,7 @@ public:
 	friend void operator<<(CArchive& os, Instrument &i);
 	friend void operator>>(CArchive& is, Instrument &i);
 
-	CString company;
+	//CString company;
 
 private:
 	CString type;
@@ -81,11 +77,8 @@ private:
 	int speedLimit;				// speed limit of the instrument
 	Date DateOfStart;
 	bool status;				// if the instrument available or need to be fixed
-	int numOberfPassengers;
 	int yearOfCreate;
-	int kilometers;// how much kilometers the instrument can do
-	CString manufacturer;
-	CString color;
+	int kilometers;				// how much kilometers the instrument can do
 	double price;
-	//CString company;
+	CString company;
 };

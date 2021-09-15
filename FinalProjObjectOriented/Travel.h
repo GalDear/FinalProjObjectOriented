@@ -21,7 +21,6 @@ private:
 	Instrument *instrument;
 	int numOfReservedSeats;
 	Client client;
-	//Date departure;
 
 public:
 	Travel(Location, Location, Instrument*);
@@ -37,20 +36,13 @@ public:
 	Location getSource();
 	Location getDestination();
 	Instrument *getInstrument();
-	//const Date getDeparture();
 
 	double getTravelTime();
 	double getTravelPrice();
 
-	void changeInstrument(Instrument*);
-	void upDateReservedSeat(seat);
-	//void UpDateDate(Date);
 
 	friend bool operator==(const Travel&, const Travel&);
 	void operator=(const Travel&);
-
-	/*friend ostream& operator<<(ostream& os, Travel &t);
-	friend istream& operator>>(istream& is, Travel &t);*/
 
 };
 

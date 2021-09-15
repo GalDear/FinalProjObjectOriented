@@ -67,8 +67,6 @@ void createClientDLG::OnBnClickedOk()
 		this->hasDiscount = true;
 	else
 		this->hasDiscount = false;
-	//this->hasDiscount = is_discount_check.GetCheck();
-
 	CDialogEx::OnOK();
 }
 

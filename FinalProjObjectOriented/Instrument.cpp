@@ -67,20 +67,7 @@ int Instrument::GetKilometers()
 	return this->kilometers;
 }
 
-int Instrument::getNumOfSeats()
-{
-	return this->numOberfPassengers;
-}
 
-CString Instrument::GetManufacturer()
-{
-	return this->manufacturer;
-}
-
-CString Instrument::GetColor()
-{
-	return this->color;
-}
 
 double Instrument::getPrice()
 {
@@ -102,10 +89,6 @@ void Instrument::SetStatus(bool newStatus)
 	this->status = newStatus;
 }
 
-void Instrument::SetColor(CString newColor)
-{
-	this->color = newColor;
-}
 
 
 
@@ -143,7 +126,6 @@ void operator<<(CArchive & os, Instrument & i)
 	os << i.InstrumentID;
 	os << i.DateOfStart;
 	os << i.status;
-	os << i.numOberfPassengers;
 	os << i.yearOfCreate;
 	os << i.kilometers;
 	os << i.type;
@@ -158,7 +140,6 @@ void operator>>(CArchive & is, Instrument &i)
 	is >> i.InstrumentID;
 	is >> i.DateOfStart;
 	is >> i.status;
-	is >> i.numOberfPassengers;
 	is >> i.yearOfCreate;
 	is >> i.kilometers;
 	is >> i.type;

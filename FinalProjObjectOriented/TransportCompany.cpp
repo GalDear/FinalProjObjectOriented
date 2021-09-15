@@ -21,8 +21,6 @@ TransportCompany::TransportCompany(const TransportCompany &t) : price(t.price), 
 	this->typeOfTransportation = typeOfTransportation;
 }
 
-
-
 CString TransportCompany::GetTypeOfTransportation()
 {
 	return this->typeOfTransportation;
@@ -31,11 +29,6 @@ CString TransportCompany::GetTypeOfTransportation()
 list<Instrument*> TransportCompany::GetAvailableInstruments()
 {
 	return this->availableInstruments;
-}
-
-list<Instrument> TransportCompany::GetNotAvailableInstruments()
-{
-	return this->unAvailableInstruments;
 }
 
 list<Travel> TransportCompany::GetArrayOfAvailableTravels()
@@ -60,22 +53,6 @@ void TransportCompany::addAvailableInstrument(Instrument &i)
 	i.SetOwner(this->GetBusinessName());
 	this->availableInstruments.push_front(&i);
 }
-
-//void TransportCompany::changeInstrumentStatus(Instrument i)
-//{
-//	list<Instrument*>::iterator iter;
-//	for (iter = this->availableInstruments.begin(); iter != this->availableInstruments.end(); ++iter)
-//	{
-//		if (*iter == i)
-//		{
-//			iter->SetStatus(!iter->GetStatus());
-//			this->availableInstruments.erase(iter);
-//			this->unAvailableInstruments.push_front(i);
-//			break;
-//		}
-//
-//	}
-//}
 
 void TransportCompany::addTravel(Travel t)
 {

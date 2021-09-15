@@ -51,6 +51,7 @@ public:
 
 	Location l_source;
 	Location l_dest;
+	Location l_tlv;
 
 	CComboBox source;
 	CComboBox dest;

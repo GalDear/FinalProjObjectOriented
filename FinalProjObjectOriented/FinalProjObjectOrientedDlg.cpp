@@ -413,8 +413,9 @@ void CFinalProjObjectOrientedDlg::hideResults()
 	topResult.clear();
 	list <CStatic*>::iterator res_iter;
 	list<CButton*>::iterator resBtn_iter = resBtn.begin();
-	for (res_iter = resList.begin(); res_iter != resList.end(); ++res_iter)
+	for (res_iter = resList.begin(); res_iter != resList.end(); ++resBtn_iter, ++res_iter)
 	{
+		
 		(*res_iter)->SetWindowTextW(L"");
 		(*resBtn_iter)->ShowWindow(SW_HIDE);
 	}
@@ -463,6 +464,10 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 				{
 					l_dest = *loc_iter;
 				}
+				if (loc_iter->getName() == L"Tel-Aviv")
+				{
+					l_tlv = *loc_iter;
+				}
 			}
 			double r;
 			list<TransportCompany*>::iterator comp_iter;
@@ -471,29 +476,65 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 				if (topResult.size() == 4)
 					break;
 				CString tType = (*comp_iter)->GetTypeOfTransportation();
+				list <Instrument*> tmp = (*comp_iter)->GetAvailableInstruments();
+				list <Instrument*>::iterator inst_iter = tmp.begin();
+				int numberOfInstruments = (*comp_iter)->GetAvailableInstruments().size();
+				std::advance(inst_iter, (rand() % numberOfInstruments));
+				Instrument *i = *inst_iter;
 				if (tType == L"Plane" || tType == L"Train" || tType == L"Bus")
 				{
 					if ((*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
 					{
-						Instrument *i = *(*comp_iter)->GetAvailableInstruments().begin();
 						Travel t(l_source, l_dest, i);
 						updateTopResult(t);
+					}
+					else
+					{
+						Location tmp_source;
+						if (!(*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
+						{
+							Travel t(l_tlv, l_dest, i);
+							updateTopResult(t);
+						}
+						else if((*comp_iter)->hasStation(l_source) && !(*comp_iter)->hasStation(l_dest))
+						{
+							Travel t(l_source, l_tlv, i);
+							updateTopResult(t);
+						}
+												
 					}
 				}
 				if (tType == L"Car")
 				{
 					if (l_source.GetInIsrael() && l_dest.GetInIsrael())
 					{
-						Instrument *i = *(*comp_iter)->GetAvailableInstruments().begin();
 						Travel t(l_source, l_dest, i);
 						updateTopResult(t);
+					}
+					else
+					{
+						if (!l_source.GetInIsrael())
+						{
+							if (l_dest.GetInIsrael())
+							{
+								Travel t(l_tlv, l_dest, i);
+								updateTopResult(t);
+							}
+						}
+						else
+						{
+							if (l_source.GetInIsrael())
+							{
+								Travel t(l_source, l_tlv, i);
+								updateTopResult(t);
+							}
+						}
 					}
 				}
 				if (l_dest + l_source < 30)
 				{
 					if (tType == L"Scooter")
 					{
-						Instrument *i = *(*comp_iter)->GetAvailableInstruments().begin();
 						Travel t(l_source, l_dest, i);
 						updateTopResult(t);
 					}

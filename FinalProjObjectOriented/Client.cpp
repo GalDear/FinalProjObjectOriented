@@ -35,6 +35,14 @@ void Client::setDiscount(bool b)
 	this->discount = b;
 }
 
+void Client::operator=(const Client &c)
+{
+	this->name = c.name;
+	this->email = c.email;
+	this->id = c.id;
+	this->discount = c.discount;
+}
+
 void operator<<(CArchive & os, Client & c)
 {
 	os << c.name << c.id << c.email << c.discount;

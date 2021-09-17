@@ -1,7 +1,8 @@
 #pragma once
-#include "Location.h"
+//#include "Location.h"
 #include "Instrument.h"
 #include "Client.h"
+#include "TransportCompany.h"
 #include <fstream>
 
 
@@ -21,6 +22,7 @@ private:
 	Instrument *instrument;
 	int numOfReservedSeats;
 	Client client;
+	double travelPrice;
 
 public:
 	Travel(Location, Location, Instrument*);
@@ -31,14 +33,17 @@ public:
 	
 
 	void Serialize(CArchive&);
-	void attachClient(Client c);
+	void attachClient(Client *c);
+
+	void setTravelPrice(TransportCompany*);
 	
 	Location getSource();
 	Location getDestination();
 	Instrument *getInstrument();
+	Client getClient();
 
 	double getTravelTime();
-	double getTravelPrice();
+	const double getTravelPrice();
 
 
 	friend bool operator==(const Travel&, const Travel&);

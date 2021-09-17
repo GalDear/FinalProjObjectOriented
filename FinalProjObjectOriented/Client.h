@@ -32,4 +32,5 @@ using namespace std;
 		friend void operator<<(CArchive& os, Client &c);
 		friend void operator>>(CArchive& is, Client &c);
 		friend bool operator== (const Client&, const Client&);
+		void operator=(const Client&);
 	};

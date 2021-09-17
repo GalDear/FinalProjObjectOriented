@@ -59,7 +59,49 @@ void createClientDLG::OnBnClickedOk()
 	name_box.GetWindowText(this->name);
 	email_box.GetWindowText(this->email);
 	id_box.GetWindowText(this->id);
-	
+	bool validName = true, validEmail = true, validId= true;
+	for (int i = 0; i < this->name.GetLength(); i++)
+	{
+		if (this->name[i] < 65 || (this->name[i] > 90 && this->name[i] < 97) || this->name[i] > 122)
+		{
+			AfxMessageBox(_T("Invalid Name"), MB_OK | MB_ICONSTOP);
+			validName = false;
+			break;
+		}
+	}
+
+
+	int found = 0;
+	for (int i = 1; i < this->email.GetLength(); i++)
+	{
+		if (this->email[i] == L'@')
+			found++;
+		if (this->email[i] == L'.' && found == 1 && this->email[i - 1] != L'@')
+			found++;
+	}
+	if (found < 2)
+	{
+		AfxMessageBox(_T("Invalid Email"), MB_OK | MB_ICONSTOP);
+		validEmail = false;
+	}
+
+	for (int i = 0; i < this->id.GetLength(); i++)
+	{
+		if (this->id[i] < L'0' || this->id[i] > L'9')
+		{
+			AfxMessageBox(_T("Invalid ID"), MB_OK | MB_ICONSTOP);
+			validId = false;
+			break;
+		}	
+	}
+
+	if (!validEmail || !validId || !validName)
+	{
+		this->name = L"";
+		this->email = L"";
+		this->id = L"";
+	}
+		
 	CString Discount;
 	int nSel = DiscountChoice.GetCurSel();
 	DiscountChoice.GetLBText(nSel, Discount);
@@ -67,7 +109,8 @@ void createClientDLG::OnBnClickedOk()
 		this->hasDiscount = true;
 	else
 		this->hasDiscount = false;
-	CDialogEx::OnOK();
+	if (this->name != L"" && this->id != L"" && this->email != L"")
+		CDialogEx::OnOK();
 }
 
 

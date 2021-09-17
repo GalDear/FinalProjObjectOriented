@@ -1,13 +1,13 @@
 #pragma once
 #include "Business.h"
 #include "Location.h"
-#include "Travel.h"
+//#include "Travel.h"
 
 class TransportCompany :public Business {
 private:
 	CString typeOfTransportation;				// Rent, transportation, train, fly..
 	list<Instrument*> availableInstruments;
-	list <Travel> availableTravel;
+	//list <Travel> availableTravel;
 	const double price;									//  per KM
 
 public:
@@ -19,17 +19,18 @@ public:
 
 	CString GetTypeOfTransportation();
 	list<Instrument*> GetAvailableInstruments();
-	list <Travel> GetArrayOfAvailableTravels();
-	int GetPrice();
+	//list <Travel> GetArrayOfAvailableTravels();
+	double GetPrice();
 	
 
 	void SetTypeOfTransportation(CString);
 	void addAvailableInstrument(Instrument&);
-	void addTravel(Travel);
+	//void addTravel(Travel);
 
 
 	double calcPrice(Location l1, Location l2);
 
 	virtual bool hasStation(Location) { return false; };
+
 	
 };

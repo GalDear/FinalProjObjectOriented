@@ -28,7 +28,7 @@ CString createLoadDLG::buildResultFromLoad(Travel t)
 	Instrument *i = t.getInstrument();
 	gear = i->GetTypeOfGear();
 	type = i->GetTypeOfFuel();
-	CString fullResult = L"Source: " + t.getSource().getName() + L"\nDestination: " + t.getDestination().getName() + L"\nCompany: " +
+	CString fullResult = L"Hello: " +t.getClient().getName() + L"\nHere you can find all the details about your travel\nSource: " + t.getSource().getName() + L"\nDestination: " + t.getDestination().getName() + L"\nCompany: " +
 		t.getInstrument()->GetOwner() + L" - " + t.getInstrument()->GetType() + L"(" + id + L")\nTravel Time: "
 		+ time + L"h\nTravel Price: " + price + L" NIS";
 	return fullResult;
@@ -80,24 +80,7 @@ BOOL createLoadDLG::OnInitDialog()
 	}
 	// Set the icon for this dialog.  The framework does this automatically
 	//  when the application's main window is not a dialog
-	CFont font;
-	font.CreateFont(
-		10,                        // nHeight
-		0,                         // nWidth
-		0,                         // nEscapement
-		0,                         // nOrientation
-		FW_NORMAL,                 // nWeight
-		FALSE,                     // bItalic
-		FALSE,                     // bUnderline
-		0,                         // cStrikeOut
-		ANSI_CHARSET,              // nCharSet
-		OUT_DEFAULT_PRECIS,        // nOutPrecision
-		CLIP_DEFAULT_PRECIS,       // nClipPrecision
-		DEFAULT_QUALITY,           // nQuality
-		DEFAULT_PITCH | FF_SWISS,  // nPitchAndFamily
-		_T("Arial"));                 // lpszFacename
 
-	LoadRes.SetFont(&font);
 	LoadRes.SetWindowTextW(res);
 	return TRUE;
 }

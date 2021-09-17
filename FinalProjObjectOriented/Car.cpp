@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Car.h"
 
-Car::Car(Date d, CString typeOfFuel, bool gearType, CString type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument) : gear(gearType ? "Auto" : "Manual"), Instrument(type, InstrumentID, availableOrFaulty, yearOfCreate, kilometersPerInstrument,150)
+Car::Car(Date d, CString typeOfFuel, bool gearType, CString type, long InstrumentID, bool availableOrFaulty, int yearOfCreate, int kilometersPerInstrument) : gear(gearType ? "Auto" : "Manual"), Instrument(type, InstrumentID, availableOrFaulty, yearOfCreate, kilometersPerInstrument,80)
 {
 	this->testDate = d;
 	this->typeOfFuel = typeOfFuel;

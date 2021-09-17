@@ -31,12 +31,12 @@ list<Instrument*> TransportCompany::GetAvailableInstruments()
 	return this->availableInstruments;
 }
 
-list<Travel> TransportCompany::GetArrayOfAvailableTravels()
-{
-	return this->availableTravel;
-}
+//list<Travel> TransportCompany::GetArrayOfAvailableTravels()
+//{
+//	return this->availableTravel;
+//}
 
-int TransportCompany::GetPrice()
+double TransportCompany::GetPrice()
 {
 	return this->price;
 }
@@ -54,24 +54,24 @@ void TransportCompany::addAvailableInstrument(Instrument &i)
 	this->availableInstruments.push_front(&i);
 }
 
-void TransportCompany::addTravel(Travel t)
-{
-	bool exist = false;
-	list<Travel>::iterator iter;
-	for (iter = this->availableTravel.begin(); iter != this->availableTravel.end(); ++iter)
-	{
-		if (*iter == t)
-		{
-			cout << "The Travel is already part of the travles list" << endl;
-			exist = true;
-			break;
-		}
-	}
-	if (!exist)
-	{
-		availableTravel.push_front(t);
-	}
-}
+//void TransportCompany::addTravel(Travel t)
+//{
+//	bool exist = false;
+//	list<Travel>::iterator iter;
+//	for (iter = this->availableTravel.begin(); iter != this->availableTravel.end(); ++iter)
+//	{
+//		if (*iter == t)
+//		{
+//			cout << "The Travel is already part of the travles list" << endl;
+//			exist = true;
+//			break;
+//		}
+//	}
+//	if (!exist)
+//	{
+//		availableTravel.push_front(t);
+//	}
+//}
 
 double TransportCompany::calcPrice(Location l1, Location l2)
 {

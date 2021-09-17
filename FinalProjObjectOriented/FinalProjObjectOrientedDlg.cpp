@@ -435,6 +435,20 @@ bool CFinalProjObjectOrientedDlg::userExist()
 	return false;
 }
 
+Client CFinalProjObjectOrientedDlg::searchClient()
+{
+	list<Client>::iterator c_iter = clientList.begin();
+	CString email;
+	email_box.GetWindowTextW(email);
+	for (c_iter; c_iter != clientList.end(); ++c_iter)			// function to add travel to the customer
+	{
+		if (c_iter->getEmail() == email)
+		{
+			return *c_iter;
+		}
+	}
+}
+
 void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 {
 	hideResults();
@@ -471,6 +485,7 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 			}
 			double r;
 			list<TransportCompany*>::iterator comp_iter;
+			Client c = searchClient();
 			for (comp_iter = this->companyList.begin(); comp_iter != this->companyList.end(); ++comp_iter)
 			{
 				if (topResult.size() == 4)
@@ -481,27 +496,36 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 				int numberOfInstruments = (*comp_iter)->GetAvailableInstruments().size();
 				std::advance(inst_iter, (rand() % numberOfInstruments));
 				Instrument *i = *inst_iter;
+
 				if (tType == L"Plane" || tType == L"Train" || tType == L"Bus")
 				{
 					if ((*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
 					{
 						Travel t(l_source, l_dest, i);
+						t.attachClient(&c);
+						t.setTravelPrice(*comp_iter);
 						updateTopResult(t);
 					}
 					else
 					{
-						Location tmp_source;
-						if (!(*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
+						if (l_source.getName() != L"Tel-Aviv" && l_dest.getName() != L"Tel-Aviv")
 						{
-							Travel t(l_tlv, l_dest, i);
-							updateTopResult(t);
-						}
-						else if((*comp_iter)->hasStation(l_source) && !(*comp_iter)->hasStation(l_dest))
-						{
-							Travel t(l_source, l_tlv, i);
-							updateTopResult(t);
-						}
-												
+							Location tmp_source;
+							if (!(*comp_iter)->hasStation(l_source) && (*comp_iter)->hasStation(l_dest))
+							{
+								Travel t(l_tlv, l_dest, i);
+								t.attachClient(&c);
+								t.setTravelPrice(*comp_iter);
+								updateTopResult(t);
+							}
+							else if ((*comp_iter)->hasStation(l_source) && !(*comp_iter)->hasStation(l_dest))
+							{
+								Travel t(l_source, l_tlv, i);
+								t.attachClient(&c);
+								t.setTravelPrice(*comp_iter);
+								updateTopResult(t);
+							}
+						}						
 					}
 				}
 				if (tType == L"Car")
@@ -509,6 +533,8 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 					if (l_source.GetInIsrael() && l_dest.GetInIsrael())
 					{
 						Travel t(l_source, l_dest, i);
+						t.attachClient(&c);
+						t.setTravelPrice(*comp_iter);
 						updateTopResult(t);
 					}
 					else
@@ -518,6 +544,8 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 							if (l_dest.GetInIsrael())
 							{
 								Travel t(l_tlv, l_dest, i);
+								t.attachClient(&c);
+								t.setTravelPrice(*comp_iter);
 								updateTopResult(t);
 							}
 						}
@@ -526,6 +554,8 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 							if (l_source.GetInIsrael())
 							{
 								Travel t(l_source, l_tlv, i);
+								t.attachClient(&c);
+								t.setTravelPrice(*comp_iter);
 								updateTopResult(t);
 							}
 						}
@@ -536,6 +566,8 @@ void CFinalProjObjectOrientedDlg::OnBnClickedOk()
 					if (tType == L"Scooter")
 					{
 						Travel t(l_source, l_dest, i);
+						t.attachClient(&c);
+						t.setTravelPrice(*comp_iter);
 						updateTopResult(t);
 					}
 				}
@@ -556,13 +588,15 @@ void CFinalProjObjectOrientedDlg::OnBnClickedButton1()
 	// TODO: Add your control notification handler code here
 		createClientDLG dlg;
 		dlg.DoModal();
-		Client c(dlg.name, dlg.id, dlg.email, dlg.hasDiscount);
-	
-		bool found = (std::find(clientList.begin(), clientList.end(), c) != clientList.end());
-		if (!found)
-			clientList.push_front(c);
-		else
-			AfxMessageBox(_T("The client already exist"), MB_OK | MB_ICONSTOP);
+		if (dlg.name != L"" && dlg.id != L"" && dlg.email != L"")
+		{
+			Client c(dlg.name, dlg.id, dlg.email, dlg.hasDiscount);
+			bool found = (std::find(clientList.begin(), clientList.end(), c) != clientList.end());
+			if (!found)
+				clientList.push_front(c);
+			else
+				AfxMessageBox(_T("The client already exist"), MB_OK | MB_ICONSTOP);
+		}
 }
 
 
@@ -592,87 +626,57 @@ void CFinalProjObjectOrientedDlg::OnEnChangeMail()
 void CFinalProjObjectOrientedDlg::OnBnClickedRes1()
 {
 	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
-	CString filename,emailName;								
+	CString filename;
 	if (dlg.DoModal() == IDOK)
 	{
-	email_box.GetWindowText(emailName);
-	filename = dlg.GetPathName();
-
-	list<Travel>::iterator t = topResult.begin();
-	list<Client>::iterator c_iter = clientList.begin();
-	
-	for (c_iter; c_iter != clientList.end(); ++c_iter)			// function to add travel to the customer
-	{
-		if (c_iter->getName() == emailName)
-		{
-			t->attachClient(*c_iter);
-		}
-	}
-	CFile file(filename, CFile::modeCreate | CFile::modeWrite);
-	CArchive ar(&file, CArchive::store);
-	t->Serialize(ar);
-	ar.Close();
-	file.Close();
-	}
-}
-
-
-
-
-
-void CFinalProjObjectOrientedDlg::OnBnClickedRes2()
-{
-	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
-	CString filename, emailName;
-	if (dlg.DoModal() == IDOK)
-	{
-		email_box.GetWindowText(emailName);
 		filename = dlg.GetPathName();
 
 		list<Travel>::iterator t = topResult.begin();
-		std::advance(t, 1);
-		list<Client>::iterator c_iter = clientList.begin();
-
-		for (c_iter; c_iter != clientList.end(); ++c_iter)			// function to add travel to the customer
-		{
-			if (c_iter->getName() == emailName)
-			{
-				t->attachClient(*c_iter);
-			}
-		}
 		CFile file(filename, CFile::modeCreate | CFile::modeWrite);
 		CArchive ar(&file, CArchive::store);
 		t->Serialize(ar);
 		ar.Close();
 		file.Close();
+		AfxMessageBox(_T("Your travel (1) has been saved"), MB_OK | MB_ICONINFORMATION);
+	}
+}
+
+
+void CFinalProjObjectOrientedDlg::OnBnClickedRes2()
+{
+	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
+	CString filename;
+	if (dlg.DoModal() == IDOK)
+	{
+		filename = dlg.GetPathName();
+
+		list<Travel>::iterator t = topResult.begin();
+		std::advance(t, 1);
+		CFile file(filename, CFile::modeCreate | CFile::modeWrite);
+		CArchive ar(&file, CArchive::store);
+		t->Serialize(ar);
+		ar.Close();
+		file.Close();
+		AfxMessageBox(_T("Your travel (2) has been saved"), MB_OK | MB_ICONINFORMATION);
 	}
 }
 
 void CFinalProjObjectOrientedDlg::OnBnClickedRes3()
 {
 	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
-	CString filename, emailName;
+	CString filename;
 	if (dlg.DoModal() == IDOK)
 	{
-		email_box.GetWindowText(emailName);
 		filename = dlg.GetPathName();
 
 		list<Travel>::iterator t = topResult.begin();
 		std::advance(t, 2);
-		list<Client>::iterator c_iter = clientList.begin();
-
-		for (c_iter; c_iter != clientList.end(); ++c_iter)			// function to add travel to the customer
-		{
-			if (c_iter->getName() == emailName)
-			{
-				t->attachClient(*c_iter);
-			}
-		}
 		CFile file(filename, CFile::modeCreate | CFile::modeWrite);
 		CArchive ar(&file, CArchive::store);
 		t->Serialize(ar);
 		ar.Close();
 		file.Close();
+		AfxMessageBox(_T("Your travel (3) has been saved"), MB_OK | MB_ICONINFORMATION);
 	}
 }
 
@@ -680,32 +684,21 @@ void CFinalProjObjectOrientedDlg::OnBnClickedRes3()
 void CFinalProjObjectOrientedDlg::OnBnClickedRes4()
 {
 	CFileDialog dlg(FALSE, _T(".travel"), NULL, 0, _T("Travels (*.travel)|*.travel|All Files (*.*)|*.*||", OnStnClickedRes1()));
-	CString filename, emailName;
+	CString filename;
 	if (dlg.DoModal() == IDOK)
 	{
-		email_box.GetWindowText(emailName);
 		filename = dlg.GetPathName();
 
 		list<Travel>::iterator t = topResult.begin();
 		std::advance(t, 3);
-		list<Client>::iterator c_iter = clientList.begin();
-
-		for (c_iter; c_iter != clientList.end(); ++c_iter)			// function to add travel to the customer
-		{
-			if (c_iter->getName() == emailName)
-			{
-				t->attachClient(*c_iter);
-			}
-		}
 		CFile file(filename, CFile::modeCreate | CFile::modeWrite);
 		CArchive ar(&file, CArchive::store);
 		t->Serialize(ar);
 		ar.Close();
 		file.Close();
+		AfxMessageBox(_T("Result (4) has been saved"), MB_OK | MB_ICONINFORMATION);
 	}
 }
-
-
 
 
 
@@ -726,14 +719,14 @@ void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
 	CArchive ar(&file, CArchive::load);
 	tr.Serialize(ar);
 	
-	list<Instrument>::iterator t_iter = instrumentLst.begin();
+	/*list<Instrument>::iterator t_iter = instrumentLst.begin();
 	for (t_iter; t_iter != instrumentLst.end(); ++t_iter)
 	{
 		if (t_iter->GetInstrumentID() == tr.getInstrument()->GetInstrumentID())
 		{
 			break;
 		}
-	}
+	}*/
 	createLoadDLG dlg2(tr);
 	dlg2.DoModal();
 	ar.Close();

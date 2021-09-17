@@ -9,6 +9,7 @@ Travel::Travel(Location source, Location destination, Instrument *instrument)
 	this->source = source;
 	this->destination = destination;
 	this->instrument = instrument;
+	this->travelPrice = 0;
 }
 
 
@@ -17,7 +18,8 @@ Travel::Travel(const Travel &t)
 	this->source = t.source;
 	this->destination = t.destination;
 	this->instrument = t.instrument;
-	this->numOfReservedSeats = t.numOfReservedSeats;
+	this->travelPrice = t.travelPrice;
+	this->client = t.client;
 }
 
 
@@ -29,6 +31,7 @@ void Travel::Serialize(CArchive &ar)
 	{
 		ar << source;
 		ar << destination;
+		ar << travelPrice;
 		i = *instrument;
 		ar << i;
 		ar << client;
@@ -37,15 +40,16 @@ void Travel::Serialize(CArchive &ar)
 	{
 		ar >> source;
 		ar >> destination;
+		ar >> travelPrice;
 		this->instrument = new Instrument();
 		ar >> *this->instrument;
 		ar >> client;
 	}
 }
 
-void Travel::attachClient(Client c)
+void Travel::attachClient(Client *c)
 {
-	this->client = c;
+	this->client = *c;
 }
 
 Location Travel::getSource()
@@ -63,6 +67,11 @@ Instrument *Travel::getInstrument()
 	return this->instrument;
 }
 
+Client Travel::getClient()
+{
+	return this->client;
+}
+
 
 
 double Travel::getTravelTime()
@@ -70,11 +79,20 @@ double Travel::getTravelTime()
 	return ((((this->source + this->destination) / this->instrument->GetSpeedLimit()) / 100 ) * 60);
 }
 
-double Travel::getTravelPrice()
+const double Travel::getTravelPrice()
 {
-	return ((this->destination + this->source)*this->instrument->getPrice());
+	return this->travelPrice;
 }
 
+void Travel::setTravelPrice(TransportCompany* comp)
+{
+	double d = comp->Discount();
+	double p = comp->GetPrice();
+	if(client.getDiscount())
+		this->travelPrice = ((this->destination + this->source)*d);
+	else
+		this->travelPrice = ((this->destination + this->source)*p);
+}
 
 
 

@@ -16,6 +16,7 @@ public:
 	CString buildResult(list<Travel>::iterator);
 	void hideResults();
 	bool userExist();
+	Client searchClient();
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME

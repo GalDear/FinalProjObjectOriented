@@ -1,8 +1,2 @@
-﻿  FinalProjObjectOrientedDlg.cpp
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(481): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(472): warning C4101: 'r': unreferenced local variable
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(594): warning C4002: too many arguments for function-like macro invocation '_T'
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(625): warning C4002: too many arguments for function-like macro invocation '_T'
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(653): warning C4002: too many arguments for function-like macro invocation '_T'
-c:\users\gal.bachar\documents\bagit\finalprojobjectoriented\finalprojobjectoriented\finalprojobjectorienteddlg.cpp(682): warning C4002: too many arguments for function-like macro invocation '_T'
+﻿  createLoadDLG.cpp
   FinalProjObjectOriented.vcxproj -> C:\Users\gal.bachar\Documents\BAgit\FinalProjObjectOriented\x64\Debug\FinalProjObjectOriented.exe

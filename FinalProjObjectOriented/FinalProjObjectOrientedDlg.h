@@ -112,4 +112,6 @@ public:
 	CButton res4_btn;
 
 	Travel tr;
+	CButton btn_resetResults;
+	afx_msg void OnBnClickedBtnReset();
 };

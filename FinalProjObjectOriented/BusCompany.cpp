@@ -17,7 +17,7 @@ bool BusCompany::hasStation(Location l)
 
 double BusCompany::Discount()
 {
-	int price = this->GetPrice();
+	double price = this->GetPrice();
 	return price * 0.90;
 }
 

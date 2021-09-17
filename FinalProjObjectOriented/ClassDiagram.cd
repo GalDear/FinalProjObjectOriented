@@ -10,7 +10,7 @@
   <Class Name="BusCompany" Collapsed="true">
     <Position X="2.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAACAAAAAAAAAAAAACAAAAAAAAIgAAAAAEAAA=</HashCode>
+      <HashCode>CAAAAAAAAKAAAAAAAAAAAAACAAgAAAAAIgAAAAAEAAA=</HashCode>
       <FileName>BusCompany.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -24,14 +24,14 @@
   <Class Name="Client" Collapsed="true">
     <Position X="12" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAEAgAAAAAAAAggAAAAACAAAABEAACAAAAkAAIAAgQ=</HashCode>
+      <HashCode>AgAAAgAAAAAAAAggAAAAACAAAAAEAAAAAAAkAAIAAgQ=</HashCode>
       <FileName>Client.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TransportCompany" Collapsed="true">
     <Position X="6.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAABAAAAAAAAAAEAEBIAAQAAEJAAAEQBAAACgAEAAEA=</HashCode>
+      <HashCode>CAABAAAAAIAAAAEAEAIAAQAAAAACAAQBAAACAAAAAAA=</HashCode>
       <FileName>TransportCompany.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -45,21 +45,21 @@
   <Class Name="CFinalProjObjectOrientedDlg" Collapsed="true">
     <Position X="15.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EoGCCBMAhAAEgEYIABAAIBIQQAKgCgQCADFEAAAQAAA=</HashCode>
+      <HashCode>uMGAgpMABBAEQM8IgDAAqIIQgBHwCBQ/wDxkCHAQcA8=</HashCode>
       <FileName>FinalProjObjectOrientedDlg.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FlyCompany" Collapsed="true">
     <Position X="5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAIAQAAAAAAAAABAAAAACAAAAEAAAIgAABAAEAAA=</HashCode>
+      <HashCode>CAAAAIAQAIAAAAAAABAAAAACAAgAEAAAIgAABAAEAAA=</HashCode>
       <FileName>FlyCompany.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Instrument" Collapsed="true">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAUAQAAMCIAQAAAEgAQAAIIESAbBgAGEAAgAAAAAAAA=</HashCode>
+      <HashCode>QAUBACAMAIAQAAAEgAQAAZAESATBAAEEAAEAAAAAAAQ=</HashCode>
       <FileName>Instrument.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -80,14 +80,14 @@
   <Class Name="TrainCompany" Collapsed="true">
     <Position X="9.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAAAAAAAAAAAAAAAACAAAAAAABIgAAAAAEAAA=</HashCode>
+      <HashCode>CAAAAAAAAIAAAAAAAAAAAAACAAgAAAABIgAAAAAEAAA=</HashCode>
       <FileName>TrainCompany.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Travel" Collapsed="true">
     <Position X="15.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAEAQAAAAIAAAAIAAAIAAIIAACAQQAgBAAAIAg=</HashCode>
+      <HashCode>gEAIgAAEAAAAAAIAACAIAAAgACKIAACAQAAgBAAAAAA=</HashCode>
       <FileName>Travel.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -101,7 +101,7 @@
   <Class Name="Car" Collapsed="true">
     <Position X="7.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAUAAAAQAAQAAAAAAAAAAAAQAAEBAAAAAAA=</HashCode>
+      <HashCode>AAAAADAAAAUAAAAQAAQAAAAAAAAAAAAQAAEBAAAAAAA=</HashCode>
       <FileName>Car.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -122,7 +122,7 @@
   <Class Name="Train" Collapsed="true">
     <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgABAAAAEAAAAAAAQAAAAAAAABAAEAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgABAAAAEAAAAAAAQAAAAAAAABAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Train.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -133,19 +133,5 @@
       <FileName>CarCompany.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Struct Name="seat" Collapsed="true">
-    <Position X="13.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAQAAAAAAAAAACAQAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Instrument.h</FileName>
-    </TypeIdentifier>
-  </Struct>
-  <Struct Name="Date" Collapsed="true">
-    <Position X="12" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAkAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Instrument.h</FileName>
-    </TypeIdentifier>
-  </Struct>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -183,6 +183,7 @@ void CFinalProjObjectOrientedDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, BTN_RES2, res2_btn);
 	DDX_Control(pDX, BTN_RES3, res3_btn);
 	DDX_Control(pDX, BTN_RES4, res4_btn);
+	DDX_Control(pDX, IDC_BTN_RESET, btn_resetResults);
 }
 
 BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
@@ -200,6 +201,7 @@ BEGIN_MESSAGE_MAP(CFinalProjObjectOrientedDlg, CDialogEx)
 	ON_BN_CLICKED(BTN_RES4, &CFinalProjObjectOrientedDlg::OnBnClickedRes4)
 	ON_STN_CLICKED(TXT_RES1, &CFinalProjObjectOrientedDlg::OnStnClickedRes1)
 	ON_BN_CLICKED(BTN_LoadRes, &CFinalProjObjectOrientedDlg::OnBnClickedLoadres)
+	ON_BN_CLICKED(IDC_BTN_RESET, &CFinalProjObjectOrientedDlg::OnBnClickedBtnReset)
 END_MESSAGE_MAP()
 
 
@@ -719,18 +721,16 @@ void CFinalProjObjectOrientedDlg::OnBnClickedLoadres()
 	CArchive ar(&file, CArchive::load);
 	tr.Serialize(ar);
 	
-	/*list<Instrument>::iterator t_iter = instrumentLst.begin();
-	for (t_iter; t_iter != instrumentLst.end(); ++t_iter)
-	{
-		if (t_iter->GetInstrumentID() == tr.getInstrument()->GetInstrumentID())
-		{
-			break;
-		}
-	}*/
 	createLoadDLG dlg2(tr);
 	dlg2.DoModal();
 	ar.Close();
 	file.Close();
 	Invalidate();
 	}
+}
+
+
+void CFinalProjObjectOrientedDlg::OnBnClickedBtnReset()
+{
+	hideResults();
 }
